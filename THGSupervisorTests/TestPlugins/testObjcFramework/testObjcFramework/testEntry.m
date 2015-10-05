@@ -11,7 +11,7 @@
 
 @import THGSupervisor;
 
-extern Class<Pluggable> __nullable pluginClass() {
+extern Class<Pluggable> _Nonnull pluginClass() {
     //return nil;
     return [TestObjcClass class];
 }

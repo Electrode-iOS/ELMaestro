@@ -17,10 +17,12 @@ public class TestPlugin: NSObject, PluggableFeature {
         return "io.theholygrail.testplugin"
     }
     
-    public var dependencies: [NSBundle]? { return nil }
+    public var dependencies: [DependencyID]? {
+        return ["io.theholygrail.testObjcFramework"]
+    }
     
-    public func initializeForContainer(containedBundleID: String?) {
-        print(containedBundleID)
+    required public init?(containerBundleID: String?) {
+        super.init()
     }
     
     // Provides the default route to this plugin or feature.

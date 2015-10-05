@@ -18,16 +18,42 @@ objc : extern MyPluginClass * __nullable pluginForBundle(NSString * __nonnull ap
 
 */
 
+public typealias DependencyID = String
+
 @objc
 public protocol Pluggable {
     var identifier: String { get }
-    var dependencies: [NSBundle]? { get }
+    var dependencies: [DependencyID]? { get }
 
-    func initializeForContainer(containedBundleID: String?)
+    init?(containerBundleID: String?)
 
     // Provides the default route to this plugin or feature.
     func startup(supervisor: Supervisor) -> Route?
 }
+
+public extension Pluggable {
+    func dependsOn(dependencyID: DependencyID) -> Bool {
+        if let deps = dependencies {
+            return deps.contains(dependencyID)
+        }
+        return false
+    }
+    
+    func pluginDescription() -> String {
+        var result = ""
+        
+        result += "\(identifier)\n"
+        
+        if let deps = dependencies {
+            for i in 0..<deps.count {
+                result += "  (\(deps[i]))\n"
+            }
+        }
+        
+        return result
+    }    
+}
+
 
 @objc
 public protocol PluggableFeature: Pluggable {
@@ -64,3 +90,4 @@ public protocol PluggableFeature: Pluggable {
     */
     optional func applicationHandleWatchKitExtensionRequest(userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!)
 }
+

@@ -39,12 +39,17 @@ class THGSupervisorTests: XCTestCase {
     }
     
     func testBasicLoading() {
-        
-        print("mainBundle = \(NSBundle.mainBundle().bundleIdentifier)")
-        
         let supervisor = ApplicationSupervisor.sharedInstance
         
-        supervisor.loadPlugin(testFramework.pluginInstance())
-        //supervisor.loadPlugin(testObjcFramework.pluginClass())
+        supervisor.loadPlugin(testFramework.pluginClass())
+        supervisor.loadPlugin(testObjcFramework.pluginClass())
+        
+        supervisor.startup()
+        
+        XCTAssertTrue(supervisor.pluginLoaded("io.theholygrail.testplugin"))
+        XCTAssertTrue(supervisor.pluginLoaded("io.theholygrail.testObjcFramework"))
+
+        XCTAssertTrue(supervisor.pluginStarted("io.theholygrail.testplugin"))
+        XCTAssertTrue(supervisor.pluginStarted("io.theholygrail.testObjcFramework"))
     }
 }

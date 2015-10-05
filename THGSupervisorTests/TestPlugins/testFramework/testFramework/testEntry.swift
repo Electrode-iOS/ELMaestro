@@ -9,6 +9,6 @@
 import Foundation
 import THGSupervisor
 
-public func pluginInstance() -> Pluggable? {
-    return TestPlugin()
+public func pluginClass() -> Pluggable.Type {
+    return TestPlugin.self
 }

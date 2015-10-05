@@ -16,11 +16,11 @@
     return [NSBundle bundleForClass:[TestObjcClass class]].bundleIdentifier;
 }
 
-- (NSArray<NSString *> * _Nullable)dependencies {
+- (NSArray<DependencyID *> * _Nullable)dependencies {
     return nil;
 }
 
-- (instancetype)initWithContainedBundleID:(NSString *)containedBundleID {
+- (instancetype)initWithContainerBundleID:(NSString *)containerBundleID {
     self = [super init];
     return self;
 }

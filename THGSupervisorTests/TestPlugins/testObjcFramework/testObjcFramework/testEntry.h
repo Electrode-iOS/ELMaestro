@@ -18,6 +18,6 @@
 #import <testObjcFramework/TestObjcClass.h>
 #import <THGSupervisor/THGSupervisor-Swift.h>
 
-extern Class<Pluggable> __nullable pluginClass();
+extern Class<Pluggable> _Nonnull pluginClass();
 
 #endif
