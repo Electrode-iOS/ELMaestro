@@ -1,0 +1,4 @@
+.DS_Store
+*.xcodeproj/project.xcworkspace/xcshareddata
+UserInterfaceState.xcuserstate
+xcuserdata

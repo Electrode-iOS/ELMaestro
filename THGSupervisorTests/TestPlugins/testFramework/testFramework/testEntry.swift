@@ -1,0 +1,14 @@
+//
+//  testEntry.swift
+//  testFramework
+//
+//  Created by Brandon Sneed on 6/17/15.
+//  Copyright (c) 2015 StereoLab. All rights reserved.
+//
+
+import Foundation
+import THGSupervisor
+
+public func pluginInstance() -> Pluggable? {
+    return TestPlugin()
+}
