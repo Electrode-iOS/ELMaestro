@@ -18,12 +18,12 @@ objc : extern MyPluginClass * __nullable pluginForBundle(NSString * __nonnull ap
 
 */
 
-public typealias DependencyID = String
+public typealias PluggableID = String
 
 @objc
 public protocol Pluggable {
-    var identifier: String { get }
-    var dependencies: [DependencyID]? { get }
+    var identifier: PluggableID { get }
+    var dependencies: [PluggableID]? { get }
 
     init?(containerBundleID: String?)
 
@@ -32,7 +32,7 @@ public protocol Pluggable {
 }
 
 public extension Pluggable {
-    func dependsOn(dependencyID: DependencyID) -> Bool {
+    func dependsOn(dependencyID: PluggableID) -> Bool {
         if let deps = dependencies {
             return deps.contains(dependencyID)
         }

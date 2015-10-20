@@ -43,19 +43,19 @@ public class Supervisor: UIResponder {
         }
     }
     
-    public func pluginLoaded(dependencyID: DependencyID) -> Bool {
+    public func pluginLoaded(dependencyID: PluggableID) -> Bool {
         return loadedPlugins.contains({ (item) -> Bool in
             return (item.identifier == dependencyID)
         })
     }
     
-    public func pluginStarted(dependencyID: DependencyID) -> Bool {
+    public func pluginStarted(dependencyID: PluggableID) -> Bool {
         return startedPlugins.contains({ (item) -> Bool in
             return (item.identifier == dependencyID)
         })
     }
     
-    private func pluginByID(id: DependencyID) -> Pluggable? {
+    private func pluginByID(id: PluggableID) -> Pluggable? {
         let found = loadedPlugins.filter { (plugin) -> Bool in
             if plugin.identifier == id {
                 return true
