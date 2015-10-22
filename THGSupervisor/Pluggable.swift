@@ -22,13 +22,24 @@ public typealias PluggableID = String
 
 @objc
 public protocol Pluggable {
-    var identifier: PluggableID { get }
+    /// The unique identifier for this plugin
+    /// e.g. com.mycompany.myapp.mainui
+    static var identifier: PluggableID { get }
+
+    /// A list of ```PluggableID``` that this ```Pluggable``` relies on
     var dependencies: [PluggableID]? { get }
 
     init?(containerBundleID: String?)
 
     // Provides the default route to this plugin or feature.
     func startup(supervisor: Supervisor) -> Route?
+}
+
+public extension Pluggable {
+    var identifier: PluggableID { get {
+        return Self.identifier
+    }
+    }
 }
 
 public extension Pluggable {
@@ -42,7 +53,7 @@ public extension Pluggable {
     func pluginDescription() -> String {
         var result = ""
         
-        result += "\(identifier)\n"
+        result += "\(Self.identifier)\n"
         
         if let deps = dependencies {
             for i in 0..<deps.count {
