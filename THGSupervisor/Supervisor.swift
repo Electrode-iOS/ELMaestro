@@ -8,6 +8,8 @@
 
 import Foundation
 
+public typealias callPluginClosure = (plugin: Pluggable) -> Void
+
 @objc
 public class Supervisor: UIResponder {
     
@@ -71,7 +73,19 @@ public class Supervisor: UIResponder {
         
         return nil
     }
-    
+
+    public func callLoadedPlugins(closure: callPluginClosure) {
+        // identify the plugins we will actually load.
+        loadedPlugins = validateProposedPlugins(proposedPlugins)
+
+        for i in 0..<loadedPlugins.count {
+            let plugin = loadedPlugins[i]
+
+            closure(plugin: plugin)
+        }
+    }
+
+
     private func startPlugin(plugin: Pluggable) {
         if !pluginStarted(plugin.identifier) {
             print("starting: \(plugin.identifier)")
