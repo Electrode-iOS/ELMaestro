@@ -68,7 +68,10 @@ public extension Pluggable {
 
 @objc
 public protocol PluggableFeature: Pluggable {
-    
+
+    /// Launch Handling
+    optional func application(supervisor: ApplicationSupervisor, application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+
     /**
     URL Handling
     */
