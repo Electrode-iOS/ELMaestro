@@ -107,7 +107,7 @@ public class Supervisor: UIResponder {
     }
     
     private func validateProposedPlugins(proposedPlugins: [Pluggable]) -> [Pluggable] {
-        var acceptedPlugins = [Pluggable]()
+        let acceptedPlugins = NSMutableSet()
         
         for i in 0..<proposedPlugins.count {
             print("checking proposal: \(proposedPlugins[i].identifier).")
@@ -122,7 +122,7 @@ public class Supervisor: UIResponder {
                     // the dependency is present, validate it.
                     if present {
                         hasDeps = true
-                        acceptedPlugins.append(proposedPlugins[i])
+                        acceptedPlugins.addObject(proposedPlugins[i])
                     } else {
                         print("ERROR: proposed plugin \(item) is missing dependency \(item).")
                     }
@@ -130,13 +130,14 @@ public class Supervisor: UIResponder {
             } else {
                 // it doesn't have any dependencies, so it's validated.
                 hasDeps = false
-                acceptedPlugins.append(proposedPlugins[i])
+                acceptedPlugins.addObject(proposedPlugins[i])
             }
             let subtext = hasDeps ? "(dependencies present)" : "(no dependencies required)"
             print("validating proposal: \(proposedPlugins[i].identifier) \(subtext)")
         }
-        
-        return acceptedPlugins
+
+        let results = acceptedPlugins.allObjects
+        return results as! [Pluggable]
     }
     
     private var proposedPlugins = [Pluggable]()
