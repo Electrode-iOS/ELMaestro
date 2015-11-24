@@ -1,13 +1,23 @@
 # KingArthur
-THGSupervisor module.
 
-Plugin scaffolding for iOS Applications written in swift.
+THGSupervisor module. Plugin scaffolding for iOS Applications written in swift.
 
-___
+## Requirements
 
-## Introduction
+KingArthur requires the following [THG](https://github.com/TheHolyGrail/) frameworks:
 
-TBD
+- [`THGRouter`/Maynard](https://github.com/TheHolyGrail/Maynard).
+  - [`THGFoundation`/Excalibur](https://github.com/TheHolyGrail/Excalibur).
+
+[THG](https://github.com/TheHolyGrail/) frameworks are designed to live side-by-side in the file system, like so:
+
+* \MyProject
+* \MyProject\Maynard
+* \MyProject\Excalibur
+
+## Installation
+
+Install by adding THGSuperisor.xcodeproj to your project and configuring your target to link THGSuperisor.framework.
 
 ## Usage
 
