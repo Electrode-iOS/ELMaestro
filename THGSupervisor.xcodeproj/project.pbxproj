@@ -7,17 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		172C12641C050B2800FB3261 /* THGRouter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172C12611C050B1D00FB3261 /* THGRouter.framework */; };
 		CA2079791BB323B0005353D9 /* THGSupervisor.h in Headers */ = {isa = PBXBuildFile; fileRef = CA2079781BB323B0005353D9 /* THGSupervisor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA20797F1BB323B0005353D9 /* THGSupervisor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2079731BB323B0005353D9 /* THGSupervisor.framework */; };
 		CA2079861BB323B0005353D9 /* THGSupervisorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2079851BB323B0005353D9 /* THGSupervisorTests.swift */; };
 		CA2079991BB323F7005353D9 /* Supervisor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2079981BB323F7005353D9 /* Supervisor.swift */; };
 		CA20799B1BB32406005353D9 /* Pluggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA20799A1BB32406005353D9 /* Pluggable.swift */; };
-		CA20799D1BB32B9E005353D9 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA20799C1BB32B9E005353D9 /* Route.swift */; };
 		CA6822CB1BB4674300562A62 /* testFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA6822BB1BB466F000562A62 /* testFramework.framework */; };
 		CA6822CC1BB4674300562A62 /* testObjcFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA6822C41BB466F700562A62 /* testObjcFramework.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		172C12601C050B1D00FB3261 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 172C125A1C050B1D00FB3261 /* THGRouter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CA3930DB1BD011E90021CD95;
+			remoteInfo = THGRouter;
+		};
+		172C12621C050B1D00FB3261 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 172C125A1C050B1D00FB3261 /* THGRouter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CA39313C1BD59A370021CD95;
+			remoteInfo = THGRouterTests;
+		};
 		CA2079801BB323B0005353D9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CA20796A1BB323B0005353D9 /* Project object */;
@@ -70,6 +84,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		172C125A1C050B1D00FB3261 /* THGRouter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = THGRouter.xcodeproj; path = ../Maynard/THGRouter.xcodeproj; sourceTree = "<group>"; };
 		CA2079731BB323B0005353D9 /* THGSupervisor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = THGSupervisor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA2079771BB323B0005353D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA2079781BB323B0005353D9 /* THGSupervisor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THGSupervisor.h; sourceTree = "<group>"; };
@@ -78,7 +93,6 @@
 		CA2079851BB323B0005353D9 /* THGSupervisorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THGSupervisorTests.swift; sourceTree = "<group>"; };
 		CA2079981BB323F7005353D9 /* Supervisor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Supervisor.swift; sourceTree = "<group>"; };
 		CA20799A1BB32406005353D9 /* Pluggable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pluggable.swift; sourceTree = "<group>"; };
-		CA20799C1BB32B9E005353D9 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		CA6822B51BB466F000562A62 /* testFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = testFramework.xcodeproj; path = testFramework/testFramework.xcodeproj; sourceTree = "<group>"; };
 		CA6822BE1BB466F700562A62 /* testObjcFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = testObjcFramework.xcodeproj; path = testObjcFramework/testObjcFramework.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				172C12641C050B2800FB3261 /* THGRouter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,9 +119,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		172C12571C050B0900FB3261 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				172C125A1C050B1D00FB3261 /* THGRouter.xcodeproj */,
+			);
+			name = Modules;
+			sourceTree = "<group>";
+		};
+		172C125B1C050B1D00FB3261 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				172C12611C050B1D00FB3261 /* THGRouter.framework */,
+				172C12631C050B1D00FB3261 /* THGRouterTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		CA2079691BB323B0005353D9 = {
 			isa = PBXGroup;
 			children = (
+				172C12571C050B0900FB3261 /* Modules */,
 				CA2079751BB323B0005353D9 /* THGSupervisor */,
 				CA2079821BB323B0005353D9 /* THGSupervisorTests */,
 				CA2079741BB323B0005353D9 /* Products */,
@@ -128,7 +161,6 @@
 				CA2079781BB323B0005353D9 /* THGSupervisor.h */,
 				CA2079981BB323F7005353D9 /* Supervisor.swift */,
 				CA20799A1BB32406005353D9 /* Pluggable.swift */,
-				CA20799C1BB32B9E005353D9 /* Route.swift */,
 				CA2079761BB323B0005353D9 /* Supporting Files */,
 			);
 			path = THGSupervisor;
@@ -276,6 +308,10 @@
 					ProductGroup = CA6822BF1BB466F700562A62 /* Products */;
 					ProjectRef = CA6822BE1BB466F700562A62 /* testObjcFramework.xcodeproj */;
 				},
+				{
+					ProductGroup = 172C125B1C050B1D00FB3261 /* Products */;
+					ProjectRef = 172C125A1C050B1D00FB3261 /* THGRouter.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -286,6 +322,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		172C12611C050B1D00FB3261 /* THGRouter.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = THGRouter.framework;
+			remoteRef = 172C12601C050B1D00FB3261 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		172C12631C050B1D00FB3261 /* THGRouterTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = THGRouterTests.xctest;
+			remoteRef = 172C12621C050B1D00FB3261 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		CA6822BB1BB466F000562A62 /* testFramework.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -338,7 +388,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA20799D1BB32B9E005353D9 /* Route.swift in Sources */,
 				CA20799B1BB32406005353D9 /* Pluggable.swift in Sources */,
 				CA2079991BB323F7005353D9 /* Supervisor.swift in Sources */,
 			);
