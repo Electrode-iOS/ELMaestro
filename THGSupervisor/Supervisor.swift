@@ -127,7 +127,7 @@ public class Supervisor: UIResponder {
     
     private var proposedPlugins = [Pluggable]()
     private var loadedPlugins = [Pluggable]()
-    private var startedPlugins = [Pluggable]()
+    public private(set) var startedPlugins = [Pluggable]()
 }
 
 @objc
