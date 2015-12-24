@@ -1,4 +1,4 @@
-# KingArthur
+# KingArthur [![Build Status](https://travis-ci.org/TheHolyGrail/KingArthur.svg?branch=master)](https://travis-ci.org/TheHolyGrail/KingArthur)
 
 THGSupervisor module. Plugin scaffolding for iOS Applications written in swift.
 
