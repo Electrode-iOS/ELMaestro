@@ -8,6 +8,8 @@
 
 import Foundation
 
+public typealias callPluginClosure = (plugin: Pluggable) -> Void
+
 @objc
 public class Supervisor: UIResponder {
     
@@ -43,19 +45,19 @@ public class Supervisor: UIResponder {
         }
     }
     
-    public func pluginLoaded(dependencyID: DependencyID) -> Bool {
+    public func pluginLoaded(dependencyID: PluggableID) -> Bool {
         return loadedPlugins.contains({ (item) -> Bool in
             return (item.identifier == dependencyID)
         })
     }
     
-    public func pluginStarted(dependencyID: DependencyID) -> Bool {
+    public func pluginStarted(dependencyID: PluggableID) -> Bool {
         return startedPlugins.contains({ (item) -> Bool in
             return (item.identifier == dependencyID)
         })
     }
     
-    private func pluginByID(id: DependencyID) -> Pluggable? {
+    private func pluginByID(id: PluggableID) -> Pluggable? {
         let found = loadedPlugins.filter { (plugin) -> Bool in
             if plugin.identifier == id {
                 return true
@@ -71,7 +73,19 @@ public class Supervisor: UIResponder {
         
         return nil
     }
-    
+
+    public func callLoadedPlugins(closure: callPluginClosure) {
+        // identify the plugins we will actually load.
+        loadedPlugins = validateProposedPlugins(proposedPlugins)
+
+        for i in 0..<loadedPlugins.count {
+            let plugin = loadedPlugins[i]
+
+            closure(plugin: plugin)
+        }
+    }
+
+
     private func startPlugin(plugin: Pluggable) {
         if !pluginStarted(plugin.identifier) {
             print("starting: \(plugin.identifier)")
@@ -93,7 +107,7 @@ public class Supervisor: UIResponder {
     }
     
     private func validateProposedPlugins(proposedPlugins: [Pluggable]) -> [Pluggable] {
-        var acceptedPlugins = [Pluggable]()
+        let acceptedPlugins = NSMutableSet()
         
         for i in 0..<proposedPlugins.count {
             print("checking proposal: \(proposedPlugins[i].identifier).")
@@ -108,7 +122,7 @@ public class Supervisor: UIResponder {
                     // the dependency is present, validate it.
                     if present {
                         hasDeps = true
-                        acceptedPlugins.append(proposedPlugins[i])
+                        acceptedPlugins.addObject(proposedPlugins[i])
                     } else {
                         print("ERROR: proposed plugin \(item) is missing dependency \(item).")
                     }
@@ -116,13 +130,14 @@ public class Supervisor: UIResponder {
             } else {
                 // it doesn't have any dependencies, so it's validated.
                 hasDeps = false
-                acceptedPlugins.append(proposedPlugins[i])
+                acceptedPlugins.addObject(proposedPlugins[i])
             }
             let subtext = hasDeps ? "(dependencies present)" : "(no dependencies required)"
             print("validating proposal: \(proposedPlugins[i].identifier) \(subtext)")
         }
-        
-        return acceptedPlugins
+
+        let results = acceptedPlugins.allObjects
+        return results as! [Pluggable]
     }
     
     private var proposedPlugins = [Pluggable]()
