@@ -1,6 +1,6 @@
 //
-//  THGSupervisorTests.swift
-//  THGSupervisorTests
+//  ELMaestroTests.swift
+//  ELMaestroTests
 //
 //  Created by Brandon Sneed on 9/23/15.
 //  Copyright (c) 2015 theholygrail. All rights reserved.
@@ -8,13 +8,13 @@
 
 import UIKit
 import XCTest
-import THGSupervisor
+import ELMaestro
 
 // test plugins
 import testFramework
 import testObjcFramework
 
-class THGSupervisorTests: XCTestCase {
+class ELMaestroTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -46,10 +46,10 @@ class THGSupervisorTests: XCTestCase {
         
         supervisor.startup()
         
-        XCTAssertTrue(supervisor.pluginLoaded("io.theholygrail.testplugin"))
-        XCTAssertTrue(supervisor.pluginLoaded("io.theholygrail.testObjcFramework"))
+        XCTAssertTrue(supervisor.pluginLoaded("com.walmartlabs.testplugin"))
+        XCTAssertTrue(supervisor.pluginLoaded("com.walmartlabs.testObjcFramework"))
 
-        XCTAssertTrue(supervisor.pluginStarted("io.theholygrail.testplugin"))
-        XCTAssertTrue(supervisor.pluginStarted("io.theholygrail.testObjcFramework"))
+        XCTAssertTrue(supervisor.pluginStarted("com.walmartlabs.testplugin"))
+        XCTAssertTrue(supervisor.pluginStarted("com.walmartlabs.testObjcFramework"))
     }
 }

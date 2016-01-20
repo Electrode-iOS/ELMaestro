@@ -16,7 +16,7 @@
  */
 
 #import <testObjcFramework/TestObjcClass.h>
-#import <THGSupervisor/THGSupervisor-Swift.h>
+#import <ELMaestro/ELMaestro-Swift.h>
 
 extern Class<Pluggable> _Nonnull pluginClass();
 

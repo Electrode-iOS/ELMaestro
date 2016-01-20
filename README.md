@@ -1,20 +1,20 @@
-# KingArthur [![Build Status](https://travis-ci.org/TheHolyGrail/KingArthur.svg?branch=master)](https://travis-ci.org/TheHolyGrail/KingArthur)
+# KingArthur [![Build Status](https://travis-ci.org/WalmartLabs/KingArthur.svg?branch=master)](https://travis-ci.org/WalmartLabs/KingArthur)
 
-THGSupervisor module. Plugin scaffolding for iOS Applications written in swift.
+ELMaestro module. Plugin scaffolding for iOS Applications written in swift.
 
 ## Requirements
 
-KingArthur requires the following [THG](https://github.com/TheHolyGrail/) frameworks:
+KingArthur requires the following [THG](https://github.com/WalmartLabs/) frameworks:
 
-- [`THGRouter`/Maynard](https://github.com/TheHolyGrail/Maynard).
-- [`THGFoundation`/Excalibur](https://github.com/TheHolyGrail/Excalibur).
-- [`THGLog`/Shrubbery](https://github.com/TheHolyGrail/Shrubbery).
-- [`THGDispatch`/KillerRabbit](https://github.com/TheHolyGrail/KillerRabbit).
+- [`ELRouter`/ELRouter](https://github.com/WalmartLabs/ELRouter).
+- [`ELFoundation`/Excalibur](https://github.com/WalmartLabs/Excalibur).
+- [`ELLog`/Shrubbery](https://github.com/WalmartLabs/Shrubbery).
+- [`ELDispatch`/KillerRabbit](https://github.com/WalmartLabs/KillerRabbit).
 
-[THG](https://github.com/TheHolyGrail/) frameworks are designed to live side-by-side in the file system, like so:
+[THG](https://github.com/WalmartLabs/) frameworks are designed to live side-by-side in the file system, like so:
 
 * \MyProject
-* \MyProject\Maynard
+* \MyProject\ELRouter
 * \MyProject\Excalibur
 * \MyProject\Shrubbery
 * \MyProject\KillerRabbit
@@ -31,7 +31,7 @@ TBD
 
 We appreciate your contributions to all of our projects and look forward to interacting with you via Pull Requests, the issue tracker, via Twitter, etc.  We're happy to help you, and to have you help us.  We'll strive to answer every PR and issue and be very transparent in what we do.
 
-When contributing code, please refer to our Dennis (https://github.com/TheHolyGrail/Dennis).
+When contributing code, please refer to our Dennis (https://github.com/WalmartLabs/Dennis).
 
 ###### THG's Primary Contributors
 
@@ -45,7 +45,7 @@ Cody Garvin (@migs647)<br>
 
 The MIT License (MIT)
 
-Copyright (c) 2015 Walmart, TheHolyGrail, and other Contributors
+Copyright (c) 2015 Walmart, WalmartLabs, and other Contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

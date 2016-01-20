@@ -2,10 +2,10 @@ language: objective-c
 osx_image: xcode7.2
 
 install: 
-  - git clone https://github.com/TheHolyGrail/Maynard.git ../Maynard
-  - git clone https://github.com/TheHolyGrail/Excalibur.git ../Excalibur
-  - git clone https://github.com/TheHolyGrail/KillerRabbit.git ../KillerRabbit
-  - git clone https://github.com/TheHolyGrail/Shrubbery.git ../Shrubbery
+  - git clone https://github.com/WalmartLabs/ELRouter.git ../ELRouter
+  - git clone https://github.com/WalmartLabs/Excalibur.git ../Excalibur
+  - git clone https://github.com/WalmartLabs/KillerRabbit.git ../KillerRabbit
+  - git clone https://github.com/WalmartLabs/Shrubbery.git ../Shrubbery
 
 script:
-   - xctool -project THGSupervisor.xcodeproj -scheme THGSupervisor -sdk iphonesimulator build test
+   - xctool -project ELMaestro.xcodeproj -scheme ELMaestro -sdk iphonesimulator build test

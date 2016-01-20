@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CA2079721BB323B0005353D9"
-               BuildableName = "THGSupervisor.framework"
-               BlueprintName = "THGSupervisor"
-               ReferencedContainer = "container:THGSupervisor.xcodeproj">
+               BuildableName = "ELMaestro.framework"
+               BlueprintName = "ELMaestro"
+               ReferencedContainer = "container:ELMaestro.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,9 +46,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CA2079721BB323B0005353D9"
-            BuildableName = "THGSupervisor.framework"
-            BlueprintName = "THGSupervisor"
-            ReferencedContainer = "container:THGSupervisor.xcodeproj">
+            BuildableName = "ELMaestro.framework"
+            BlueprintName = "ELMaestro"
+            ReferencedContainer = "container:ELMaestro.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -64,9 +64,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CA2079721BB323B0005353D9"
-            BuildableName = "THGSupervisor.framework"
-            BlueprintName = "THGSupervisor"
-            ReferencedContainer = "container:THGSupervisor.xcodeproj">
+            BuildableName = "ELMaestro.framework"
+            BlueprintName = "ELMaestro"
+            ReferencedContainer = "container:ELMaestro.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

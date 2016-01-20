@@ -1,6 +1,6 @@
 //
 //  Plugin.swift
-//  THGSupervisor
+//  ELMaestro
 //
 //  Created by Brandon Sneed on 9/23/15.
 //  Copyright (c) 2015 theholygrail. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import THGRouter
+import ELRouter
 
 /* 
 

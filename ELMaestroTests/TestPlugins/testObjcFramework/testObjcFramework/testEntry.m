@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "testEntry.h"
 
-@import THGSupervisor;
+@import ELMaestro;
 
 extern Class<Pluggable> _Nonnull pluginClass() {
     //return nil;

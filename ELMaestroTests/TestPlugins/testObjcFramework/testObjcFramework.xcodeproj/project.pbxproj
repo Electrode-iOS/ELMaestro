@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CA6822D01BB467A600562A62 /* THGSupervisor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA6822CF1BB467A600562A62 /* THGSupervisor.framework */; };
+		CA61C9711C504AD400742949 /* ELRouter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA61C9701C504AD400742949 /* ELRouter.framework */; };
+		CA6822D01BB467A600562A62 /* ELMaestro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA6822CF1BB467A600562A62 /* ELMaestro.framework */; };
 		CA85A9A41B322F940000FEEF /* testObjcFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = CA85A9A31B322F940000FEEF /* testObjcFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA85A9AA1B322F940000FEEF /* testObjcFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA85A99E1B322F940000FEEF /* testObjcFramework.framework */; };
 		CA85A9B11B322F940000FEEF /* testObjcFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA85A9B01B322F940000FEEF /* testObjcFrameworkTests.swift */; };
@@ -28,7 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CA6822CF1BB467A600562A62 /* THGSupervisor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = THGSupervisor.framework; path = "../../../build/Debug-iphoneos/THGSupervisor.framework"; sourceTree = "<group>"; };
+		CA61C9701C504AD400742949 /* ELRouter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ELRouter.framework; path = "../../../../ELRouter/build/Debug-iphoneos/ELRouter.framework"; sourceTree = "<group>"; };
+		CA6822CF1BB467A600562A62 /* ELMaestro.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ELMaestro.framework; path = "../../../build/Debug-iphoneos/ELMaestro.framework"; sourceTree = "<group>"; };
 		CA85A99E1B322F940000FEEF /* testObjcFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = testObjcFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA85A9A21B322F940000FEEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA85A9A31B322F940000FEEF /* testObjcFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testObjcFramework.h; sourceTree = "<group>"; };
@@ -46,7 +48,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA6822D01BB467A600562A62 /* THGSupervisor.framework in Frameworks */,
+				CA61C9711C504AD400742949 /* ELRouter.framework in Frameworks */,
+				CA6822D01BB467A600562A62 /* ELMaestro.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,7 +67,8 @@
 		CA85A9941B322F940000FEEF = {
 			isa = PBXGroup;
 			children = (
-				CA6822CF1BB467A600562A62 /* THGSupervisor.framework */,
+				CA61C9701C504AD400742949 /* ELRouter.framework */,
+				CA6822CF1BB467A600562A62 /* ELMaestro.framework */,
 				CA85A9A01B322F940000FEEF /* testObjcFramework */,
 				CA85A9AD1B322F940000FEEF /* testObjcFrameworkTests */,
 				CA85A99F1B322F940000FEEF /* Products */,
@@ -355,7 +359,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.theholygrail.testObjcFramework;
+				PRODUCT_BUNDLE_IDENTIFIER = com.walmartlabs.testObjcFramework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -374,7 +378,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.theholygrail.testObjcFramework;
+				PRODUCT_BUNDLE_IDENTIFIER = com.walmartlabs.testObjcFramework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};

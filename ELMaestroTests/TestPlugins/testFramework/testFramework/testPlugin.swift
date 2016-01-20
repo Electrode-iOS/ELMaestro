@@ -7,18 +7,19 @@
 //
 
 import Foundation
-import THGSupervisor
+import ELMaestro
+import ELRouter
 
 // this has to be Objc to cross the boundary of the framework.
 
 @objc
 public class TestPlugin: NSObject, PluggableFeature {
     public var identifier: String {
-        return "io.theholygrail.testplugin"
+        return "com.walmartlabs.testplugin"
     }
     
     public var dependencies: [DependencyID]? {
-        return ["io.theholygrail.testObjcFramework"]
+        return ["com.walmartlabs.testObjcFramework"]
     }
     
     required public init?(containerBundleID: String?) {

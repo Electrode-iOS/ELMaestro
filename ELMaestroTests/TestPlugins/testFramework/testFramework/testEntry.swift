@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import THGSupervisor
+import ELMaestro
 
 public func pluginClass() -> Pluggable.Type {
     return TestPlugin.self
