@@ -297,7 +297,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
-				ORGANIZATIONNAME = theholygrail;
+				ORGANIZATIONNAME = WalmartLabs;
 				TargetAttributes = {
 					CA2079721BB323B0005353D9 = {
 						CreatedOnToolsVersion = 6.4;
