@@ -1,27 +1,27 @@
-# KingArthur [![Build Status](https://travis-ci.org/WalmartLabs/KingArthur.svg?branch=master)](https://travis-ci.org/WalmartLabs/KingArthur)
+# ELMaestro [![Build Status](https://travis-ci.org/Electrode-iOS/ELMaestro.svg?branch=master)](https://travis-ci.org/Electrode-iOS/ELMaestro)
 
-ELMaestro module. Plugin scaffolding for iOS Applications written in swift.
+ELMaestro is a Swift framework that provides plugin scaffolding for iOS Applications.
 
 ## Requirements
 
-KingArthur requires the following [THG](https://github.com/WalmartLabs/) frameworks:
+ELMaestro requires Swift 2.1, Xcode 7.2 and the following [Electrode-iOS](https://github.com/Electrode-iOS/) frameworks:
 
-- [`ELRouter`/ELRouter](https://github.com/WalmartLabs/ELRouter).
-- [`ELFoundation`/Excalibur](https://github.com/WalmartLabs/Excalibur).
-- [`ELLog`/Shrubbery](https://github.com/WalmartLabs/Shrubbery).
-- [`ELDispatch`/KillerRabbit](https://github.com/WalmartLabs/KillerRabbit).
+- [`ELRouter`](https://github.com/Electrode-iOS/ELRouter).
+- [`ELFoundation`](https://github.com/Electrode-iOS/ELFoundation).
+- [`ELLog`](https://github.com/Electrode-iOS/ELLog).
+- [`ELDispatch`](https://github.com/Electrode-iOS/ELDispatch).
 
-[THG](https://github.com/WalmartLabs/) frameworks are designed to live side-by-side in the file system, like so:
+[Electrode-iOS](https://github.com/Electrode-iOS/) frameworks are designed to live side-by-side in the file system, like so:
 
 * \MyProject
 * \MyProject\ELRouter
-* \MyProject\Excalibur
-* \MyProject\Shrubbery
-* \MyProject\KillerRabbit
+* \MyProject\ELFoundation
+* \MyProject\ELLog
+* \MyProject\ELDispatch
 
 ## Installation
 
-Install by adding THGSuperisor.xcodeproj to your project and configuring your target to link THGSuperisor.framework.
+Install by adding ELMaestro.xcodeproj to your project and configuring your target to link ELMaestro.framework.
 
 ## Usage
 
