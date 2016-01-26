@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ELRouter
 
 @objc
 public class Supervisor: UIResponder {
@@ -41,6 +42,8 @@ public class Supervisor: UIResponder {
             
             startPlugin(plugin)
         }
+        
+        Router.sharedInstance.updateNavigator()
     }
     
     public func pluginLoaded(dependencyID: DependencyID) -> Bool {
