@@ -16,6 +16,7 @@
 		CA61C97C1C504B4600742949 /* ELRouter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172C12611C050B1D00FB3261 /* ELRouter.framework */; };
 		CA6822CB1BB4674300562A62 /* testFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA6822BB1BB466F000562A62 /* testFramework.framework */; };
 		CA6822CC1BB4674300562A62 /* testObjcFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA6822C41BB466F700562A62 /* testObjcFramework.framework */; };
+		CAB863351CA1C2380051F45A /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB863341CA1C2380051F45A /* Module.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,7 @@
 		CA20799A1BB32406005353D9 /* Pluggable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pluggable.swift; sourceTree = "<group>"; };
 		CA6822B51BB466F000562A62 /* testFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = testFramework.xcodeproj; path = testFramework/testFramework.xcodeproj; sourceTree = "<group>"; };
 		CA6822BE1BB466F700562A62 /* testObjcFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = testObjcFramework.xcodeproj; path = testObjcFramework/testObjcFramework.xcodeproj; sourceTree = "<group>"; };
+		CAB863341CA1C2380051F45A /* Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 			children = (
 				CA2079781BB323B0005353D9 /* ELMaestro.h */,
 				CA2079981BB323F7005353D9 /* Supervisor.swift */,
+				CAB863341CA1C2380051F45A /* Module.swift */,
 				CA20799A1BB32406005353D9 /* Pluggable.swift */,
 				CA2079761BB323B0005353D9 /* Supporting Files */,
 			);
@@ -408,6 +411,7 @@
 			files = (
 				CA20799B1BB32406005353D9 /* Pluggable.swift in Sources */,
 				CA2079991BB323F7005353D9 /* Supervisor.swift in Sources */,
+				CAB863351CA1C2380051F45A /* Module.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

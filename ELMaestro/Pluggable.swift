@@ -23,7 +23,7 @@ public typealias DependencyID = String
 
 @objc
 public protocol Pluggable {
-    var identifier: String { get }
+    var identifier: DependencyID { get }
     var dependencies: [DependencyID]? { get }
 
     init?(containerBundleID: String?)

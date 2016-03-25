@@ -58,8 +58,8 @@ public class Supervisor: UIResponder {
         })
     }
     
-    private func pluginByID(id: DependencyID) -> Pluggable? {
-        let found = loadedPlugins.filter { (plugin) -> Bool in
+    private func pluginByIdentifier(id: DependencyID) -> Pluggable? {
+        let found = startedPlugins.filter { (plugin) -> Bool in
             if plugin.identifier == id {
                 return true
             }
@@ -82,7 +82,7 @@ public class Supervisor: UIResponder {
             // try find any dependencies that haven't been started yet.
             if let deps = plugin.dependencies {
                 for i in 0..<deps.count {
-                    if let dep = pluginByID(deps[i]) {
+                    if let dep = pluginByIdentifier(deps[i]) {
                         // if it's already loaded, this does nothing.
                         startPlugin(dep)
                     }
@@ -132,6 +132,7 @@ public class Supervisor: UIResponder {
     private var loadedPlugins = [Pluggable]()
     public private(set) var startedPlugins = [Pluggable]()
 }
+
 
 @objc
 public class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
