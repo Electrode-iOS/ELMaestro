@@ -62,7 +62,7 @@ public class Supervisor: UIResponder {
         var result: AnyClass? = nil
         
         if let plugin = pluginByIdentifier(id) as? PluggableFeature {
-            result = plugin.moduleAPI?()
+            result = plugin.pluginAPI?()
         }
         
         return result
