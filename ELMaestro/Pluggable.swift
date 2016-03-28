@@ -59,19 +59,27 @@ public extension Pluggable {
 @objc
 public protocol PluggableFeature: Pluggable {
     
+    /** 
+     API factory method for a module's API it exports. You will likely want to
+     typecast this, ie:  
+     
+        let wishListAPI = supervisor.apiForPluginID(WishListID) as? WishListAPI
+    */
+    optional func moduleAPI() -> AnyClass?
+    
     /**
-    URL Handling
+     URL Handling
     */
     optional func routeForURL(url: NSURL) -> Route?
     
     /**
-    Notification handling
+     Notification handling
     */
     optional func routeForLocalNotification(notification: UILocalNotification) -> Route?
     optional func routeForRemoteNotification(userInfo: [NSObject : AnyObject]) -> Route?
     
     /**
-    Application lifecycle events
+     Application lifecycle events
     */
     func applicationWillTerminate()
     func applicationDidReceiveMemoryWarning()
@@ -82,12 +90,12 @@ public protocol PluggableFeature: Pluggable {
     optional func applicationDidBecomeActive()
     
     /**
-    Application events for background event handling
+     Application events for background event handling
     */
     optional func applicationHandleEventsForBackgroundURLSession(identifier: String, completionHandler: () -> Void)
     
     /**
-    Application events for watchkit handling -- is this needed?
+     Application events for watchkit handling -- is this needed?
     */
     optional func applicationHandleWatchKitExtensionRequest(userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!)
 }
