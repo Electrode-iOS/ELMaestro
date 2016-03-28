@@ -63,7 +63,7 @@ public protocol PluggableFeature: Pluggable {
      API factory method for a module's API it exports. You will likely want to
      typecast this, ie:  
      
-        let wishListAPI = supervisor.apiForPluginID(WishListID) as? WishListAPI
+        let wishListAPI = supervisor.pluginAPIForID(WishListID) as? WishListAPI
     */
     optional func moduleAPI() -> AnyClass?
     
