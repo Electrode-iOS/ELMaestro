@@ -58,7 +58,7 @@ public class Supervisor: UIResponder {
         })
     }
     
-    private func pluginAPIForID(id: DependencyID) -> AnyClass? {
+    public func pluginAPIForID(id: DependencyID) -> AnyClass? {
         var result: AnyClass? = nil
         
         if let plugin = pluginByIdentifier(id) as? PluggableFeature {
