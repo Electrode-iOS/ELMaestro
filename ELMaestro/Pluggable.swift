@@ -65,7 +65,7 @@ public protocol PluggableFeature: Pluggable {
      
         let wishListAPI = supervisor.pluginAPIForID(WishListID) as? WishListAPI
     */
-    optional func pluginAPI() -> AnyClass?
+    optional func pluginAPI() -> AnyObject?
     
     /**
      URL Handling

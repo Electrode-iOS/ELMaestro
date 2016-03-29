@@ -58,8 +58,8 @@ public class Supervisor: UIResponder {
         })
     }
     
-    public func pluginAPIForID(id: DependencyID) -> AnyClass? {
-        var result: AnyClass? = nil
+    public func pluginAPIForID(id: DependencyID) -> AnyObject? {
+        var result: AnyObject? = nil
         
         if let plugin = pluginByIdentifier(id) as? PluggableFeature {
             result = plugin.pluginAPI?()
@@ -70,7 +70,7 @@ public class Supervisor: UIResponder {
     
     private func pluginByIdentifier(id: DependencyID) -> Pluggable? {
         let found = startedPlugins.filter { (plugin) -> Bool in
-            if plugin.identifier == id {
+            if plugin.identifier.lowercaseString == id.lowercaseString {
                 return true
             }
             return false
@@ -146,7 +146,26 @@ public class Supervisor: UIResponder {
 
 @objc
 public class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
-    public static let sharedInstance = ApplicationSupervisor()
+    /* 
+     I had to do the sharedInstance stuff a bit differently here since the app
+     ends up instantiating the first ApplicationSupervisor.
+    */
+    private struct Static {
+        static var onceToken: dispatch_once_t = 0
+        static var instance: ApplicationSupervisor? = nil
+    }
+
+    public static var sharedInstance: ApplicationSupervisor {
+        let instance = Static.instance
+        return instance!
+    }
+    
+    override public init() {
+        super.init()
+        dispatch_once(&Static.onceToken) {
+            Static.instance = self
+        }
+    }
     
     public var window: UIWindow? = nil
     
