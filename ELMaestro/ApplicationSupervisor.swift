@@ -63,7 +63,13 @@ public class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
     
     public func applicationWillTerminate(application: UIApplication) {
         for feature in startedFeaturePlugins {
-            feature.applicationDidBecomeActive?()
+            feature.applicationWillTerminate()
+        }
+    }
+    
+    public func applicationDidReceiveMemoryWarning(application: UIApplication) {
+        for feature in startedFeaturePlugins {
+            feature.applicationDidReceiveMemoryWarning()
         }
     }
 }
