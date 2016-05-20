@@ -98,5 +98,11 @@ public protocol PluggableFeature: Pluggable {
      Application events for watchkit handling -- is this needed?
     */
     optional func applicationHandleWatchKitExtensionRequest(userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!)
+    
+    /**
+     Application events for homescreen force touch action
+     */
+    @available(iOS 9.0, *)
+    optional func applicationPerformActionForShortcutItem(shortcutItem: UIApplicationShortcutItem, completionHandler: () -> Void)
 }
 
