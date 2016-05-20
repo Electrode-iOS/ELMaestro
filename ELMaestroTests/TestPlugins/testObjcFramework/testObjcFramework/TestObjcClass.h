@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-//#import <ELMaestro/ELMaestro-Swift.h>
 @import ELMaestro;
 
 @interface TestObjcClass : NSObject<Pluggable>
