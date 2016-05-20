@@ -72,4 +72,14 @@ public class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
             feature.applicationDidReceiveMemoryWarning()
         }
     }
+    
+    @available(iOS 9.0, *)
+    public func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+        for feature in startedFeaturePlugins {
+            let handled = feature.applicationPerformActionForShortcutItem?(shortcutItem, completionHandler: completionHandler)
+            if handled == true {
+                break
+            }
+        }
+    }
 }
