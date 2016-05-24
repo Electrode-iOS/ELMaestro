@@ -51,4 +51,15 @@ public protocol PluggableFeature: Pluggable {
      Application events for watchkit handling -- is this needed?
      */
     optional func applicationHandleWatchKitExtensionRequest(userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!)
+    
+    @available(iOS 9.0, *)
+    /**
+     Application events for handling force touch springboard shortcuts
+     
+     - parameter shortcutItem:      The shortcut shortcut item
+     - parameter completionHandler: The completion handler, fired after the shortcut has been handled
+     
+     - returns: Whether the action was performed by the plugin
+     */
+    optional func applicationPerformActionForShortcutItem(shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) -> Bool
 }
