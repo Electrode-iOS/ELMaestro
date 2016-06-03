@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		172C12641C050B2800FB3261 /* ELRouter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172C12611C050B1D00FB3261 /* ELRouter.framework */; };
+		17FF6D241CEE699F00F843B6 /* ApplicationSupervisor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FF6D231CEE699F00F843B6 /* ApplicationSupervisor.swift */; };
+		17FF6D291CEE69C300F843B6 /* PluggableFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FF6D281CEE69C300F843B6 /* PluggableFeature.swift */; };
 		CA2079791BB323B0005353D9 /* ELMaestro.h in Headers */ = {isa = PBXBuildFile; fileRef = CA2079781BB323B0005353D9 /* ELMaestro.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA20797F1BB323B0005353D9 /* ELMaestro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2079731BB323B0005353D9 /* ELMaestro.framework */; };
 		CA2079861BB323B0005353D9 /* ELMaestroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2079851BB323B0005353D9 /* ELMaestroTests.swift */; };
 		CA2079991BB323F7005353D9 /* Supervisor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2079981BB323F7005353D9 /* Supervisor.swift */; };
 		CA20799B1BB32406005353D9 /* Pluggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA20799A1BB32406005353D9 /* Pluggable.swift */; };
+		CA5EAD791D00E4BD00C40E8B /* BackgroundPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EAD781D00E4BD00C40E8B /* BackgroundPrivacy.swift */; };
 		CA61C97C1C504B4600742949 /* ELRouter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172C12611C050B1D00FB3261 /* ELRouter.framework */; };
 		CA6822CB1BB4674300562A62 /* testFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA6822BB1BB466F000562A62 /* testFramework.framework */; };
 		CA6822CC1BB4674300562A62 /* testObjcFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA6822C41BB466F700562A62 /* testObjcFramework.framework */; };
@@ -101,6 +104,8 @@
 
 /* Begin PBXFileReference section */
 		172C125A1C050B1D00FB3261 /* ELRouter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ELRouter.xcodeproj; path = ../ELRouter/ELRouter.xcodeproj; sourceTree = "<group>"; };
+		17FF6D231CEE699F00F843B6 /* ApplicationSupervisor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSupervisor.swift; sourceTree = "<group>"; };
+		17FF6D281CEE69C300F843B6 /* PluggableFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluggableFeature.swift; sourceTree = "<group>"; };
 		CA2079731BB323B0005353D9 /* ELMaestro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ELMaestro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA2079771BB323B0005353D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA2079781BB323B0005353D9 /* ELMaestro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ELMaestro.h; sourceTree = "<group>"; };
@@ -109,6 +114,7 @@
 		CA2079851BB323B0005353D9 /* ELMaestroTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ELMaestroTests.swift; sourceTree = "<group>"; };
 		CA2079981BB323F7005353D9 /* Supervisor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Supervisor.swift; sourceTree = "<group>"; };
 		CA20799A1BB32406005353D9 /* Pluggable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pluggable.swift; sourceTree = "<group>"; };
+		CA5EAD781D00E4BD00C40E8B /* BackgroundPrivacy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundPrivacy.swift; sourceTree = "<group>"; };
 		CA6822B51BB466F000562A62 /* testFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = testFramework.xcodeproj; path = testFramework/testFramework.xcodeproj; sourceTree = "<group>"; };
 		CA6822BE1BB466F700562A62 /* testObjcFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = testObjcFramework.xcodeproj; path = testObjcFramework/testObjcFramework.xcodeproj; sourceTree = "<group>"; };
 		CAB863341CA1C2380051F45A /* Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
@@ -177,9 +183,12 @@
 			isa = PBXGroup;
 			children = (
 				CA2079781BB323B0005353D9 /* ELMaestro.h */,
-				CA2079981BB323F7005353D9 /* Supervisor.swift */,
+				17FF6D231CEE699F00F843B6 /* ApplicationSupervisor.swift */,
 				CAB863341CA1C2380051F45A /* Module.swift */,
 				CA20799A1BB32406005353D9 /* Pluggable.swift */,
+				17FF6D281CEE69C300F843B6 /* PluggableFeature.swift */,
+				CA2079981BB323F7005353D9 /* Supervisor.swift */,
+				CA5EAD781D00E4BD00C40E8B /* BackgroundPrivacy.swift */,
 				CA2079761BB323B0005353D9 /* Supporting Files */,
 			);
 			path = ELMaestro;
@@ -409,8 +418,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17FF6D241CEE699F00F843B6 /* ApplicationSupervisor.swift in Sources */,
+				CA5EAD791D00E4BD00C40E8B /* BackgroundPrivacy.swift in Sources */,
 				CA20799B1BB32406005353D9 /* Pluggable.swift in Sources */,
 				CA2079991BB323F7005353D9 /* Supervisor.swift in Sources */,
+				17FF6D291CEE69C300F843B6 /* PluggableFeature.swift in Sources */,
 				CAB863351CA1C2380051F45A /* Module.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
