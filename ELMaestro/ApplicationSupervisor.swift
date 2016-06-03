@@ -33,6 +33,11 @@ public class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
     
     public var window: UIWindow? = nil
     
+    /// This property can be set to show a privacy view on top of the visible view controller.
+    public var backgroundPrivacyView: UIView = ApplicationSupervisor.defaultPrivacyView()
+    /// The default value is Opt-In.
+    public var backgroundPrivacyOptions = BackgroundPrivacyOptions.OptIn
+    
     public func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         return true
     }
@@ -44,6 +49,9 @@ public class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
     }
     
     public func applicationDidEnterBackground(application: UIApplication) {
+        // this will only show the privacy view if the proper criteria is met.
+        showPrivacyView()
+        
         for feature in startedFeaturePlugins {
             feature.applicationDidEnterBackground?()
         }
@@ -53,6 +61,9 @@ public class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
         for feature in startedFeaturePlugins {
             feature.applicationWillEnterForeground?()
         }
+        
+        // this will remove the privacy view if it was displayed.
+        hidePrivacyView()
     }
     
     public func applicationDidBecomeActive(application: UIApplication) {
