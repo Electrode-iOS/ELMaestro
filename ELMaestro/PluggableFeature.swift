@@ -43,6 +43,24 @@ public protocol PluggableFeature: Pluggable {
     optional func applicationDidBecomeActive()
     
     /**
+     Local and Remote Notification events
+     */
+    optional func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings)
+    optional func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification)
+    optional func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void)
+    optional func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData)
+    optional func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError)
+    optional func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void)
+    optional func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], completionHandler: () -> Void)
+    
+    @available(iOS 9.0, *)
+    optional func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, withResponseInfo responseInfo: [NSObject : AnyObject], completionHandler: () -> Void)
+    
+    @available(iOS 9.0, *)
+
+    optional func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], withResponseInfo responseInfo: [NSObject : AnyObject], completionHandler: () -> Void)
+    
+    /**
      Application events for background event handling
      */
     optional func applicationHandleEventsForBackgroundURLSession(identifier: String, completionHandler: () -> Void)
