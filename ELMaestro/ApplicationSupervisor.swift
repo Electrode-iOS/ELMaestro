@@ -39,7 +39,22 @@ public class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
     public var backgroundPrivacyOptions = BackgroundPrivacyOptions.OptIn
     
     public func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        return true
+        var result = true
+        
+        if startedPlugins.count == 0 {
+            assertionFailure("Perform plugin startup before calling application:didFinishLaunchWithOptions:")
+        } else {
+            for feature in startedFeaturePlugins {
+                let value = feature.application?(application, didFinishLaunchingWithOptions: launchOptions)
+                if let value = value {
+                    // oh, if we only had a |= operator for bools....
+                    let resultValue = result.hashValue | value.hashValue
+                    result = (resultValue == 1)
+                }
+            }
+        }
+        
+        return result
     }
     
     public func applicationWillResignActive(application: UIApplication) {

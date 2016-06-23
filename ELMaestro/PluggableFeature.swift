@@ -26,6 +26,11 @@ public protocol PluggableFeature: Pluggable {
     optional func routeForURL(url: NSURL) -> Route?
     
     /**
+     After all plugins have been started, the system will dispatch this to your plugin.
+     */
+    optional func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+    
+    /**
      Notification handling
      */
     optional func routeForLocalNotification(notification: UILocalNotification) -> Route?
