@@ -45,11 +45,9 @@ public class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
             assertionFailure("Perform plugin startup before calling application:didFinishLaunchWithOptions:")
         } else {
             for feature in startedFeaturePlugins {
-                let value = feature.application?(application, didFinishLaunchingWithOptions: launchOptions)
-                if let value = value {
-                    // oh, if we only had a |= operator for bools....
-                    let resultValue = result.hashValue | value.hashValue
-                    result = (resultValue == 1)
+                // coalesce our return values together
+                if let value = feature.application?(application, didFinishLaunchingWithOptions: launchOptions) {
+                    result = result || value
                 }
             }
         }
