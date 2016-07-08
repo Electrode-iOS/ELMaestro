@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20D6211E1D30186200E86FB0 /* testPluginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D6211D1D30186200E86FB0 /* testPluginAPI.swift */; };
 		CA61C9731C504ADD00742949 /* ELRouter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA61C9721C504ADD00742949 /* ELRouter.framework */; };
 		CA6822CE1BB4679200562A62 /* ELMaestro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA6822CD1BB4679200562A62 /* ELMaestro.framework */; };
 		CA85A8F21B31F83A0000FEEF /* testFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = CA85A8F11B31F83A0000FEEF /* testFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20D6211D1D30186200E86FB0 /* testPluginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testPluginAPI.swift; sourceTree = "<group>"; };
 		CA61C9721C504ADD00742949 /* ELRouter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ELRouter.framework; path = "../../../../ELRouter/build/Debug-iphoneos/ELRouter.framework"; sourceTree = "<group>"; };
 		CA6822CD1BB4679200562A62 /* ELMaestro.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ELMaestro.framework; path = "../../../build/Debug-iphoneos/ELMaestro.framework"; sourceTree = "<group>"; };
 		CA85A8EC1B31F83A0000FEEF /* testFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = testFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +88,7 @@
 				CA85A8F11B31F83A0000FEEF /* testFramework.h */,
 				CA85A9441B31F8C90000FEEF /* testEntry.swift */,
 				CA85A9461B31F8FF0000FEEF /* testPlugin.swift */,
+				20D6211D1D30186200E86FB0 /* testPluginAPI.swift */,
 				CA85A8EF1B31F83A0000FEEF /* Supporting Files */,
 			);
 			path = testFramework;
@@ -227,6 +230,7 @@
 			files = (
 				CA85A9471B31F8FF0000FEEF /* testPlugin.swift in Sources */,
 				CA85A9451B31F8C90000FEEF /* testEntry.swift in Sources */,
+				20D6211E1D30186200E86FB0 /* testPluginAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
