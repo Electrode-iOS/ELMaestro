@@ -39,7 +39,7 @@ class ELMaestroTests: XCTestCase {
     }
     
     func testBasicLoading() {
-        let supervisor = ApplicationSupervisor.sharedInstance
+        let supervisor = ApplicationSupervisor()
         
         supervisor.loadPlugin(testFramework.pluginClass())
         supervisor.loadPlugin(testObjcFramework.pluginClass())
