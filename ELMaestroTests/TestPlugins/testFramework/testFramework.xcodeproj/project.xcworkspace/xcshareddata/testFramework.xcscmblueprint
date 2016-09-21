@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "2813D024FBE560D26A95D0E2CDBE367336A25B0B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "2813D024FBE560D26A95D0E2CDBE367336A25B0B" : 9223372036854775807,
+    "ABC43406D9D37932D5E4C9F5487AFE570D641A31" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "75971990-FD66-40CB-901C-4359DB9AE47F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "2813D024FBE560D26A95D0E2CDBE367336A25B0B" : "ELMaestro\/",
+    "ABC43406D9D37932D5E4C9F5487AFE570D641A31" : "ELRouter\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "testFramework",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ELMaestroTests\/TestPlugins\/testFramework\/testFramework.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Electrode-iOS\/ELMaestro.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2813D024FBE560D26A95D0E2CDBE367336A25B0B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Electrode-iOS\/ELRouter.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "ABC43406D9D37932D5E4C9F5487AFE570D641A31"
+    }
+  ]
+}
