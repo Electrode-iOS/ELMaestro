@@ -65,6 +65,10 @@ public protocol PluggableFeature: Pluggable {
 
     optional func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], withResponseInfo responseInfo: [NSObject : AnyObject], completionHandler: () -> Void)
     
+    // Continuity
+    // application:continueUserActivity:restorationHandler:
+    optional func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool
+    
     /**
      Application events for background event handling
      */
