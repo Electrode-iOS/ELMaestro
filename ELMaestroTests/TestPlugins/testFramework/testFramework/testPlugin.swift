@@ -8,7 +8,6 @@
 
 import Foundation
 import ELMaestro
-import ELRouter
 
 // this has to be Objc to cross the boundary of the framework.
 
@@ -29,28 +28,14 @@ public class TestPlugin: NSObject, PluggableFeature {
     }
     
     // Provides the default route to this plugin or feature.
-    public func startup(supervisor: Supervisor) -> Route? {
-        return nil
+    public func startup(supervisor: Supervisor) {
+        
     }
     
     // MARK: API
     
     public func pluginAPI() -> AnyObject? {
         return _pluginAPI
-    }
-    
-    // MARK: URL Handling
-    public func routeForURL(url: NSURL) -> Route? {
-        return nil
-    }
-    
-    // MARK: Notification Handling
-    public func routeForLocalNotification(notification: UILocalNotification) -> Route? {
-        return nil
-    }
-    
-    public func routeForRemoteNotification(userInfo: [NSObject : AnyObject]) -> Route? {
-        return nil
     }
     
     // MARK: Application lifecycle events
