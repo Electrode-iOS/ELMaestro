@@ -3,12 +3,11 @@
 //  ELMaestro
 //
 //  Created by Brandon Sneed on 9/23/15.
-//  Copyright (c) 2015 theholygrail. All rights reserved.
+//  Copyright (c) 2015 WalmartLabs. All rights reserved.
 //
 
 import Foundation
 import UIKit
-import ELRouter
 
 /* 
 
@@ -29,7 +28,7 @@ public protocol Pluggable {
     init?(containerBundleID: String?)
 
     // Provides the default route to this plugin or feature.
-    func startup(supervisor: Supervisor) -> Route?
+    func startup(supervisor: Supervisor)
 }
 
 public extension Pluggable {
