@@ -8,10 +8,9 @@
 
 import Foundation
 import UIKit
-import ELRouter
+
 @objc
 public protocol PluggableFeature: Pluggable {
-    
     /**
      API factory method for a module's API it exports. You will likely want to
      typecast this, ie:
@@ -21,20 +20,9 @@ public protocol PluggableFeature: Pluggable {
     optional func pluginAPI() -> AnyObject?
     
     /**
-     URL Handling
-     */
-    optional func routeForURL(url: NSURL) -> Route?
-    
-    /**
      After all plugins have been started, the system will dispatch this to your plugin.
      */
     optional func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
-    
-    /**
-     Notification handling
-     */
-    optional func routeForLocalNotification(notification: UILocalNotification) -> Route?
-    optional func routeForRemoteNotification(userInfo: [NSObject : AnyObject]) -> Route?
     
     /**
      Application lifecycle events

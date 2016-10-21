@@ -3,19 +3,26 @@
 //  ELMaestro
 //
 //  Created by Brandon Sneed on 9/23/15.
-//  Copyright (c) 2015 theholygrail. All rights reserved.
+//  Copyright (c) 2015 WalmartLabs. All rights reserved.
 //
 
 import Foundation
-import ELRouter
 
 @objc
 public class Supervisor: UIResponder {
+    public private(set) var startedPlugins = [Pluggable]()
+    public var navigator: Navigator?
+    
+    private var proposedPlugins = [Pluggable]()
+    private var loadedPlugins = [Pluggable]()
+    
+    /// Get all of the started plugins that conform to PluggableFeature
+    var startedFeaturePlugins: [PluggableFeature] {
+        return startedPlugins.flatMap { $0 as? PluggableFeature }
+    }
     
     override init() {
         super.init()
-        
-        // ...
     }
     
     public func loadPlugin(pluginType: AnyObject.Type) {
@@ -24,10 +31,8 @@ public class Supervisor: UIResponder {
         
         // WARNING: Don't step through this, or you'll crash Xcode.. cuz it sucks.
         if let pluginType = pluginType as? Pluggable.Type {
-            let plugin = pluginType.init(containerBundleID: "com.fuck.you")
-            if let instance = plugin {
-                print("proposing: \(instance.identifier).")
-                proposedPlugins.append(instance)
+            if let plugin = pluginType.init(containerBundleID: "com.walmartlabs.ELMaestro") {
+                proposedPlugins.append(plugin)
             }
         }
         // END WARNING.
@@ -42,8 +47,6 @@ public class Supervisor: UIResponder {
             
             startPlugin(plugin)
         }
-        
-        Router.sharedInstance.updateNavigator()
     }
     
     public func pluginLoaded(dependencyID: DependencyID) -> Bool {
@@ -137,14 +140,4 @@ public class Supervisor: UIResponder {
         
         return acceptedPlugins
     }
-    
-    private var proposedPlugins = [Pluggable]()
-    private var loadedPlugins = [Pluggable]()
-    public private(set) var startedPlugins = [Pluggable]()
-    
-    /// Get all of the started plugins that conform to PluggableFeature
-    var startedFeaturePlugins: [PluggableFeature] {
-        return startedPlugins.flatMap { $0 as? PluggableFeature }
-    }
 }
-

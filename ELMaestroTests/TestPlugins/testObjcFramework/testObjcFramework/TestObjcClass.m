@@ -26,8 +26,7 @@
 }
 
 
-- (Route * _Nullable)startup:(Supervisor * _Nonnull)supervisor {
-    return nil;
+- (void)startup:(Supervisor * _Nonnull)supervisor {
 }
 
 @end

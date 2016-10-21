@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import ELRouter
 import UIKit
 
 /// Configure if Opt-In or Opt-Out behavior is desired for determining privacy status on background.
@@ -44,7 +43,7 @@ extension ApplicationSupervisor {
     
     internal func showPrivacyView() {
         // get the navigator's selected vc.
-        let activeVC = Router.sharedInstance.navigator?.selectedViewController
+        let activeVC = navigator?.selectedViewController
         // if it's a nav controller, get that too.
         let activeNav = activeVC as? UINavigationController
         // if we have a nav controller, see if we can get it's visible VC.

@@ -14,6 +14,6 @@
 @property(nonatomic, copy, readonly) NSString * _Nonnull identifier;
 @property(nonatomic, copy, readonly) NSArray<DependencyID *> * _Nullable dependencies;
 
-- (Route * _Nullable)startup:(Supervisor * _Nonnull)supervisor;
+- (void)startup:(Supervisor * _Nonnull)supervisor;
 
 @end
