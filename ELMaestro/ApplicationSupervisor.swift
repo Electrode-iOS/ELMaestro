@@ -10,29 +10,19 @@ import Foundation
 
 @objc
 public class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
-    /*
-     I had to do the sharedInstance stuff a bit differently here since the app
-     ends up instantiating the first ApplicationSupervisor.
-     */
-    private struct Static {
-        static var onceToken: dispatch_once_t = 0
-        static var instance: ApplicationSupervisor? = nil
-    }
+    public var window: UIWindow? = nil
     
+    // Only callable from within an UIApplication context
+    // For unit testing, instantiate ApplicationSupervisor directly
+    // It is acceptable for this to crash if the application delegate is not a ApplicationSupervisor
     public static var sharedInstance: ApplicationSupervisor {
-        let instance = Static.instance
-        return instance!
+        return UIApplication.sharedApplication().delegate as! ApplicationSupervisor
     }
     
     override public init() {
         super.init()
-        dispatch_once(&Static.onceToken) {
-            Static.instance = self
-        }
     }
-    
-    public var window: UIWindow? = nil
-    
+
     /// This property can be set to show a privacy view on top of the visible view controller.
     public var backgroundPrivacyView: UIView = ApplicationSupervisor.defaultPrivacyView()
     /// The default value is Opt-In.
@@ -126,18 +116,20 @@ public class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
             feature.application?(application, didFailToRegisterForRemoteNotificationsWithError: error)
         }
     }
-    
-    // NOTE: Don't implement:  application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject])
-    //      ...because application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void)
-    //      will always be called in favor of application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject])
-    //      if both are implemented.
-    //      xcdoc://?url=developer.apple.com/library/etc/redirect/xcode/ios/1151/documentation/UIKit/Reference/UIApplicationDelegate_Protocol/index.html
+
     public func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         for feature in startedFeaturePlugins {
             feature.application?(application, didReceiveRemoteNotification: userInfo, fetchCompletionHandler: completionHandler)
         }
     }
-    
+
+    // NOTE: we needed to add this deprecated version of didReceiveRemoteNotification to work-around a known bug in iOS 10.0.x that has since been fixed in iOS 10.1.
+    // In iOS 8, 9, and 10.1, the full non-deprecated method above will be called instead of this. This will only be called in iOS 10.0.x and in the backgrounded case only.
+    // See this stack overflow thread for more info: http://stackoverflow.com/questions/39382852/didreceiveremotenotification-not-called-ios-10
+    public func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        self.application(application, didReceiveRemoteNotification: userInfo, fetchCompletionHandler: {_ in })
+    }
+
     public func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
         for feature in startedFeaturePlugins {
             feature.application?(application, handleActionWithIdentifier: identifier, forRemoteNotification: userInfo, completionHandler: completionHandler)
@@ -167,4 +159,19 @@ public class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
             }
         }
     }
+    
+    // MARK: Handoff
+    // continueUserActivity will be used for features such as universal linking
+    // https://developer.apple.com/library/prerelease/content/documentation/General/Conceptual/AppSearch/UniversalLinks.html#//apple_ref/doc/uid/TP40016308-CH12-SW2
+    public func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
+        for feature in startedFeaturePlugins {
+            if let featureHandled = feature.application?(application, continueUserActivity: userActivity, restorationHandler: restorationHandler) {
+                if featureHandled {
+                    return true
+                }
+            }
+        }
+        return false // Not handled by any feature plugin
+    }
+    
 }

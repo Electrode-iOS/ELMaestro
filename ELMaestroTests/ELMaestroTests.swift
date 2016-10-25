@@ -39,6 +39,9 @@ class ELMaestroTests: XCTestCase {
     }
     
     func testBasicLoading() {
+        let testPluginID = "com.walmartlabs.testplugin"
+        let testObjcPluginID = "com.walmartlabs.testObjcFramework"
+
         let supervisor = ApplicationSupervisor()
         
         supervisor.loadPlugin(testFramework.pluginClass())
@@ -46,10 +49,36 @@ class ELMaestroTests: XCTestCase {
         
         supervisor.startup()
         
-        XCTAssertTrue(supervisor.pluginLoaded("com.walmartlabs.testplugin"))
-        XCTAssertTrue(supervisor.pluginLoaded("com.walmartlabs.testObjcFramework"))
+        XCTAssertTrue(supervisor.pluginLoaded(testPluginID))
+        XCTAssertTrue(supervisor.pluginLoaded(testObjcPluginID))
 
-        XCTAssertTrue(supervisor.pluginStarted("com.walmartlabs.testplugin"))
-        XCTAssertTrue(supervisor.pluginStarted("com.walmartlabs.testObjcFramework"))
+        XCTAssertTrue(supervisor.pluginStarted(testPluginID))
+        XCTAssertTrue(supervisor.pluginStarted(testObjcPluginID))
+    }
+    
+    func testContinuity() {
+        let testPluginID = "com.walmartlabs.testplugin"
+        let testObjcPluginID = "com.walmartlabs.testObjcFramework"
+
+        let supervisor = ApplicationSupervisor()
+        
+        supervisor.loadPlugin(testFramework.pluginClass())
+        supervisor.loadPlugin(testObjcFramework.pluginClass())
+
+        supervisor.startup()
+        
+        XCTAssertTrue(supervisor.pluginLoaded(testPluginID))
+        XCTAssertTrue(supervisor.pluginLoaded(testObjcPluginID))
+        
+        XCTAssertTrue(supervisor.pluginStarted(testPluginID))
+
+        let api = supervisor.pluginAPIForID(testPluginID) as! TestPluginAPI
+
+        let application = UIApplication.sharedApplication()
+        let userActivity = NSUserActivity(activityType: NSUserActivityTypeBrowsingWeb)
+        let handled = supervisor.application(application, continueUserActivity: userActivity, restorationHandler:{ arr in })
+        
+        XCTAssertTrue(handled, "Expected a plugin to handle continuity")
+        XCTAssertTrue(api.continuityType == NSUserActivityTypeBrowsingWeb, "Expected NSUserActivityTypeBrowsingWeb")
     }
 }
