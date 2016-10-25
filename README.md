@@ -1,6 +1,6 @@
 # ELMaestro 
 
-[![Version](https://img.shields.io/badge/version-v1.1.1-blue.svg)](https://github.com/Electrode-iOS/ELMaestro/releases/latest)
+[![Version](https://img.shields.io/badge/version-v1.1.2-blue.svg)](https://github.com/Electrode-iOS/ELMaestro/releases/latest)
 [![Build Status](https://travis-ci.org/Electrode-iOS/ELMaestro.svg?branch=master)](https://travis-ci.org/Electrode-iOS/ELMaestro)
 
 ELMaestro is a Swift framework that provides plugin scaffolding for iOS Applications.
