@@ -116,18 +116,20 @@ public class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
             feature.application?(application, didFailToRegisterForRemoteNotificationsWithError: error)
         }
     }
-    
-    // NOTE: Don't implement:  application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject])
-    //      ...because application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void)
-    //      will always be called in favor of application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject])
-    //      if both are implemented.
-    //      xcdoc://?url=developer.apple.com/library/etc/redirect/xcode/ios/1151/documentation/UIKit/Reference/UIApplicationDelegate_Protocol/index.html
+
     public func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         for feature in startedFeaturePlugins {
             feature.application?(application, didReceiveRemoteNotification: userInfo, fetchCompletionHandler: completionHandler)
         }
     }
-    
+
+    // NOTE: we needed to add this deprecated version of didReceiveRemoteNotification to work-around a known bug in iOS 10.0.x that has since been fixed in iOS 10.1.
+    // In iOS 8, 9, and 10.1, the full non-deprecated method above will be called instead of this. This will only be called in iOS 10.0.x and in the backgrounded case only.
+    // See this stack overflow thread for more info: http://stackoverflow.com/questions/39382852/didreceiveremotenotification-not-called-ios-10
+    public func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        self.application(application, didReceiveRemoteNotification: userInfo, fetchCompletionHandler: {_ in })
+    }
+
     public func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
         for feature in startedFeaturePlugins {
             feature.application?(application, handleActionWithIdentifier: identifier, forRemoteNotification: userInfo, completionHandler: completionHandler)
