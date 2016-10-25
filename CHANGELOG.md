@@ -1,3 +1,7 @@
+# [1.2.1](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v1.2.1)
+
+- Merged fixes from Xcode 7 compatible version `v1.1.2`
+
 # [1.2.0](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v1.2.0)
 
 - Added support for Xcode 8, Swift 2.3, and iOS SDK 10
