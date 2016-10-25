@@ -22,6 +22,8 @@ public class TestPlugin: NSObject, PluggableFeature {
         return ["com.walmartlabs.testObjcFramework"]
     }
     
+    private let _pluginAPI = TestPluginAPI()
+    
     required public init?(containerBundleID: String?) {
         super.init()
     }
@@ -31,16 +33,18 @@ public class TestPlugin: NSObject, PluggableFeature {
         return nil
     }
     
-    /**
-    URL Handling
-    */
+    // MARK: API
+    
+    public func pluginAPI() -> AnyObject? {
+        return _pluginAPI
+    }
+    
+    // MARK: URL Handling
     public func routeForURL(url: NSURL) -> Route? {
         return nil
     }
     
-    /**
-    Notification handling
-    */
+    // MARK: Notification Handling
     public func routeForLocalNotification(notification: UILocalNotification) -> Route? {
         return nil
     }
@@ -49,14 +53,17 @@ public class TestPlugin: NSObject, PluggableFeature {
         return nil
     }
     
-    /**
-    Application lifecycle events
-    */
+    // MARK: Application lifecycle events
     public func applicationWillTerminate() {
         
     }
     
     public func applicationDidReceiveMemoryWarning() {
         
+    }
+    
+    public func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
+        _pluginAPI.continuityType = userActivity.activityType
+        return true
     }
 }

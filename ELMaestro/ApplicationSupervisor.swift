@@ -10,29 +10,19 @@ import Foundation
 
 @objc
 public class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
-    /*
-     I had to do the sharedInstance stuff a bit differently here since the app
-     ends up instantiating the first ApplicationSupervisor.
-     */
-    private struct Static {
-        static var onceToken: dispatch_once_t = 0
-        static var instance: ApplicationSupervisor? = nil
-    }
+    public var window: UIWindow? = nil
     
+    // Only callable from within an UIApplication context
+    // For unit testing, instantiate ApplicationSupervisor directly
+    // It is acceptable for this to crash if the application delegate is not a ApplicationSupervisor
     public static var sharedInstance: ApplicationSupervisor {
-        let instance = Static.instance
-        return instance!
+        return UIApplication.sharedApplication().delegate as! ApplicationSupervisor
     }
     
     override public init() {
         super.init()
-        dispatch_once(&Static.onceToken) {
-            Static.instance = self
-        }
     }
-    
-    public var window: UIWindow? = nil
-    
+
     /// This property can be set to show a privacy view on top of the visible view controller.
     public var backgroundPrivacyView: UIView = ApplicationSupervisor.defaultPrivacyView()
     /// The default value is Opt-In.
@@ -167,4 +157,19 @@ public class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
             }
         }
     }
+    
+    // MARK: Handoff
+    // continueUserActivity will be used for features such as universal linking
+    // https://developer.apple.com/library/prerelease/content/documentation/General/Conceptual/AppSearch/UniversalLinks.html#//apple_ref/doc/uid/TP40016308-CH12-SW2
+    public func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
+        for feature in startedFeaturePlugins {
+            if let featureHandled = feature.application?(application, continueUserActivity: userActivity, restorationHandler: restorationHandler) {
+                if featureHandled {
+                    return true
+                }
+            }
+        }
+        return false // Not handled by any feature plugin
+    }
+    
 }
