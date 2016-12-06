@@ -1,8 +1,8 @@
 language: objective-c
-osx_image: xcode8
+osx_image: xcode8.1
 
 install: 
   - carthage update --no-build
 
 script:
-   - xcodebuild -scheme ELMaestro -sdk iphonesimulator test -destination 'OS=10.0,name=iPhone 7 Plus' CODE_SIGNING_REQUIRED=NO
+   - xcodebuild -scheme ELMaestro -sdk iphonesimulator test -destination 'OS=10.0,name=iPhone 6s Plus' CODE_SIGNING_REQUIRED=NO
