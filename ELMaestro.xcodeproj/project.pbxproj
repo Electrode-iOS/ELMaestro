@@ -317,7 +317,6 @@
 					};
 					CA20797D1BB323B0005353D9 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = DXZ5VF8836;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -542,7 +541,7 @@
 		071268EC1C8F8FEC002A6106 /* QADeployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = DXZ5VF8836;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -694,7 +693,7 @@
 		CA20798D1BB323B0005353D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = DXZ5VF8836;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -710,7 +709,7 @@
 		CA20798E1BB323B0005353D9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = DXZ5VF8836;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ELMaestroTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.walmartlabs.$(PRODUCT_NAME:rfc1034identifier)";
