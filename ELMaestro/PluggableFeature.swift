@@ -17,12 +17,12 @@ public protocol PluggableFeature: Pluggable {
      
      let wishListAPI = supervisor.pluginAPIForID(WishListID) as? WishListAPI
      */
-    optional func pluginAPI() -> AnyObject?
+    @objc optional func pluginAPI() -> AnyObject?
     
     /**
      After all plugins have been started, the system will dispatch this to your plugin.
      */
-    optional func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+    @objc optional func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [AnyHashable: Any]?) -> Bool
     
     /**
      Application lifecycle events
@@ -30,44 +30,44 @@ public protocol PluggableFeature: Pluggable {
     func applicationWillTerminate()
     func applicationDidReceiveMemoryWarning()
     
-    optional func applicationWillResignActive()
-    optional func applicationDidEnterBackground()
-    optional func applicationWillEnterForeground()
-    optional func applicationDidBecomeActive()
+    @objc optional func applicationWillResignActive()
+    @objc optional func applicationDidEnterBackground()
+    @objc optional func applicationWillEnterForeground()
+    @objc optional func applicationDidBecomeActive()
     
     /**
      Local and Remote Notification events
      */
-    optional func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings)
-    optional func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification)
-    optional func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void)
-    optional func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData)
-    optional func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError)
-    optional func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void)
-    optional func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], completionHandler: () -> Void)
+    @objc optional func application(_ application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings)
+    @objc optional func application(_ application: UIApplication, didReceiveLocalNotification notification: UILocalNotification)
+    @objc optional func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void)
+    @objc optional func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data)
+    @objc optional func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError)
+    @objc optional func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void)
+    @objc optional func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable: Any], completionHandler: () -> Void)
     
-    @available(iOS 9.0, *)
-    optional func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, withResponseInfo responseInfo: [NSObject : AnyObject], completionHandler: () -> Void)
+    @objc @available(iOS 9.0, *)
+    optional func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, withResponseInfo responseInfo: [AnyHashable: Any], completionHandler: () -> Void)
     
-    @available(iOS 9.0, *)
+    @objc @available(iOS 9.0, *)
 
-    optional func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], withResponseInfo responseInfo: [NSObject : AnyObject], completionHandler: () -> Void)
+    optional func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable: Any], withResponseInfo responseInfo: [AnyHashable: Any], completionHandler: () -> Void)
     
     // Continuity
     // application:continueUserActivity:restorationHandler:
-    optional func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool
+    @objc optional func application(_ application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([Any]?) -> Void) -> Bool
     
     /**
      Application events for background event handling
      */
-    optional func applicationHandleEventsForBackgroundURLSession(identifier: String, completionHandler: () -> Void)
+    @objc optional func applicationHandleEventsForBackgroundURLSession(_ identifier: String, completionHandler: () -> Void)
     
     /**
      Application events for watchkit handling -- is this needed?
      */
-    optional func applicationHandleWatchKitExtensionRequest(userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!)
+    @objc optional func applicationHandleWatchKitExtensionRequest(_ userInfo: [AnyHashable: Any]?, reply: (([AnyHashable: Any]?) -> Void)!)
     
-    @available(iOS 9.0, *)
+    @objc @available(iOS 9.0, *)
     /**
      Application events for handling force touch springboard shortcuts
      
@@ -76,5 +76,5 @@ public protocol PluggableFeature: Pluggable {
      
      - returns: Whether the action was performed by the plugin
      */
-    optional func applicationPerformActionForShortcutItem(shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) -> Bool
+    optional func applicationPerformActionForShortcutItem(_ shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) -> Bool
 }

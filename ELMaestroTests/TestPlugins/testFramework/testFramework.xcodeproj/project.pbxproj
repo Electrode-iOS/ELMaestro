@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		20D6211E1D30186200E86FB0 /* testPluginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D6211D1D30186200E86FB0 /* testPluginAPI.swift */; };
-		CA6822CE1BB4679200562A62 /* ELMaestro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA6822CD1BB4679200562A62 /* ELMaestro.framework */; };
 		CA85A8F21B31F83A0000FEEF /* testFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = CA85A8F11B31F83A0000FEEF /* testFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA85A8F81B31F83A0000FEEF /* testFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA85A8EC1B31F83A0000FEEF /* testFramework.framework */; };
 		CA85A8FF1B31F83A0000FEEF /* testFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA85A8FE1B31F83A0000FEEF /* testFrameworkTests.swift */; };
@@ -28,8 +27,6 @@
 
 /* Begin PBXFileReference section */
 		20D6211D1D30186200E86FB0 /* testPluginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testPluginAPI.swift; sourceTree = "<group>"; };
-		CA61C9721C504ADD00742949 /* ELRouter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ELRouter.framework; path = "../../../../ELRouter/build/Debug-iphoneos/ELRouter.framework"; sourceTree = "<group>"; };
-		CA6822CD1BB4679200562A62 /* ELMaestro.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ELMaestro.framework; path = "../../../build/Debug-iphoneos/ELMaestro.framework"; sourceTree = "<group>"; };
 		CA85A8EC1B31F83A0000FEEF /* testFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = testFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA85A8F01B31F83A0000FEEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA85A8F11B31F83A0000FEEF /* testFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testFramework.h; sourceTree = "<group>"; };
@@ -45,7 +42,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA6822CE1BB4679200562A62 /* ELMaestro.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,8 +59,6 @@
 		CA85A8E21B31F83A0000FEEF = {
 			isa = PBXGroup;
 			children = (
-				CA61C9721C504ADD00742949 /* ELRouter.framework */,
-				CA6822CD1BB4679200562A62 /* ELMaestro.framework */,
 				CA85A8EE1B31F83A0000FEEF /* testFramework */,
 				CA85A8FB1B31F83A0000FEEF /* testFrameworkTests */,
 				CA85A8ED1B31F83A0000FEEF /* Products */,
@@ -180,7 +174,7 @@
 				TargetAttributes = {
 					CA85A8EB1B31F83A0000FEEF = {
 						CreatedOnToolsVersion = 6.3.2;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0810;
 					};
 					CA85A8F61B31F83A0000FEEF = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -366,7 +360,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -387,7 +381,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.walmartlabs.testFramework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

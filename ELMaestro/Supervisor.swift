@@ -8,8 +8,7 @@
 
 import Foundation
 
-@objc
-public class Supervisor: UIResponder {
+@objc public class Supervisor: UIResponder {
     public private(set) var startedPlugins = [Pluggable]()
     public var navigator: Navigator?
     
@@ -25,7 +24,7 @@ public class Supervisor: UIResponder {
         super.init()
     }
     
-    public func loadPlugin(pluginType: AnyObject.Type) {
+    public func loadPlugin(_ pluginType: AnyObject.Type) {
         // I used AnyObject.Type here, because Pluggable.Type translates
         // to Class<Pluggable> in objc, but returns an AnyObject.Type instead.
         
@@ -45,35 +44,35 @@ public class Supervisor: UIResponder {
         for i in 0..<loadedPlugins.count {
             let plugin = loadedPlugins[i]
             
-            startPlugin(plugin)
+            start(plugin: plugin)
         }
     }
     
     public func pluginLoaded(dependencyID: DependencyID) -> Bool {
-        return loadedPlugins.contains({ (item) -> Bool in
+        return loadedPlugins.contains(where: { (item) -> Bool in
             return (item.identifier == dependencyID)
         })
     }
     
     public func pluginStarted(dependencyID: DependencyID) -> Bool {
-        return startedPlugins.contains({ (item) -> Bool in
+        return startedPlugins.contains(where: { (item) -> Bool in
             return (item.identifier == dependencyID)
         })
     }
     
-    public func pluginAPIForID(id: DependencyID) -> AnyObject? {
+    public func pluginAPI(forIdentifier id: DependencyID) -> AnyObject? {
         var result: AnyObject? = nil
         
-        if let plugin = pluginByIdentifier(id) as? PluggableFeature {
+        if let plugin = plugin(forIdentifier: id) as? PluggableFeature {
             result = plugin.pluginAPI?()
         }
         
         return result
     }
     
-    private func pluginByIdentifier(id: DependencyID) -> Pluggable? {
+    private func plugin(forIdentifier id: DependencyID) -> Pluggable? {
         let found = startedPlugins.filter { (plugin) -> Bool in
-            if plugin.identifier.lowercaseString == id.lowercaseString {
+            if plugin.identifier.lowercased() == id.lowercased() {
                 return true
             }
             return false
@@ -88,16 +87,16 @@ public class Supervisor: UIResponder {
         return nil
     }
     
-    private func startPlugin(plugin: Pluggable) {
-        if !pluginStarted(plugin.identifier) {
+    private func start(plugin: Pluggable) {
+        if !pluginStarted(dependencyID: plugin.identifier) {
             print("starting: \(plugin.identifier)")
             
             // try find any dependencies that haven't been started yet.
             if let deps = plugin.dependencies {
                 for i in 0..<deps.count {
-                    if let dep = pluginByIdentifier(deps[i]) {
+                    if let dep = self.plugin(forIdentifier: deps[i]) {
                         // if it's already loaded, this does nothing.
-                        startPlugin(dep)
+                        start(plugin: dep)
                     }
                 }
             }
@@ -108,7 +107,7 @@ public class Supervisor: UIResponder {
         }
     }
     
-    private func validateProposedPlugins(proposedPlugins: [Pluggable]) -> [Pluggable] {
+    private func validateProposedPlugins(_ proposedPlugins: [Pluggable]) -> [Pluggable] {
         var acceptedPlugins = [Pluggable]()
         
         for i in 0..<proposedPlugins.count {
