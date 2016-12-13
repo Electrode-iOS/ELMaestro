@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		17743C6D1DB738DE0011F500 /* ELLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17743C661DB738D10011F500 /* ELLog.framework */; };
 		17AFCE6C1DB73BE300F2DD81 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AFCE6B1DB73BE300F2DD81 /* Navigator.swift */; };
 		17FF6D241CEE699F00F843B6 /* ApplicationSupervisor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FF6D231CEE699F00F843B6 /* ApplicationSupervisor.swift */; };
 		17FF6D291CEE69C300F843B6 /* PluggableFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FF6D281CEE69C300F843B6 /* PluggableFeature.swift */; };
+		1988B6261E007B5700420202 /* ELLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1988B6171E007B3900420202 /* ELLog.framework */; };
 		CA2079791BB323B0005353D9 /* ELMaestro.h in Headers */ = {isa = PBXBuildFile; fileRef = CA2079781BB323B0005353D9 /* ELMaestro.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA20797F1BB323B0005353D9 /* ELMaestro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2079731BB323B0005353D9 /* ELMaestro.framework */; };
 		CA2079861BB323B0005353D9 /* ELMaestroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2079851BB323B0005353D9 /* ELMaestroTests.swift */; };
@@ -23,30 +23,30 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		17743C651DB738D10011F500 /* PBXContainerItemProxy */ = {
+		1988B6161E007B3900420202 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 17743C5F1DB738D10011F500 /* ELLog.xcodeproj */;
+			containerPortal = 1988B6101E007B3900420202 /* ELLog.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = CA8D47BB1AAE6FF50028B74D;
 			remoteInfo = ELLog;
 		};
-		17743C671DB738D10011F500 /* PBXContainerItemProxy */ = {
+		1988B6181E007B3900420202 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 17743C5F1DB738D10011F500 /* ELLog.xcodeproj */;
+			containerPortal = 1988B6101E007B3900420202 /* ELLog.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = CA8D47C61AAE6FF50028B74D;
 			remoteInfo = ELLogTests;
 		};
-		17743C691DB738D10011F500 /* PBXContainerItemProxy */ = {
+		1988B61A1E007B3900420202 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 17743C5F1DB738D10011F500 /* ELLog.xcodeproj */;
+			containerPortal = 1988B6101E007B3900420202 /* ELLog.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = CA2410631AF966F600AA4410;
 			remoteInfo = ELLog_osx;
 		};
-		17743C6E1DB738E80011F500 /* PBXContainerItemProxy */ = {
+		1988B61F1E007B5200420202 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 17743C5F1DB738D10011F500 /* ELLog.xcodeproj */;
+			containerPortal = 1988B6101E007B3900420202 /* ELLog.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = CA8D47BA1AAE6FF50028B74D;
 			remoteInfo = ELLog;
@@ -103,10 +103,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		17743C5F1DB738D10011F500 /* ELLog.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ELLog.xcodeproj; path = Carthage/Checkouts/ELLog/ELLog.xcodeproj; sourceTree = "<group>"; };
 		17AFCE6B1DB73BE300F2DD81 /* Navigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		17FF6D231CEE699F00F843B6 /* ApplicationSupervisor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSupervisor.swift; sourceTree = "<group>"; };
 		17FF6D281CEE69C300F843B6 /* PluggableFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluggableFeature.swift; sourceTree = "<group>"; };
+		1988B6101E007B3900420202 /* ELLog.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ELLog.xcodeproj; path = ../ELLog/ELLog.xcodeproj; sourceTree = "<group>"; };
 		CA2079731BB323B0005353D9 /* ELMaestro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ELMaestro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA2079771BB323B0005353D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA2079781BB323B0005353D9 /* ELMaestro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ELMaestro.h; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17743C6D1DB738DE0011F500 /* ELLog.framework in Frameworks */,
+				1988B6261E007B5700420202 /* ELLog.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,17 +146,17 @@
 		172C12571C050B0900FB3261 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				17743C5F1DB738D10011F500 /* ELLog.xcodeproj */,
+				1988B6101E007B3900420202 /* ELLog.xcodeproj */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
 		};
-		17743C601DB738D10011F500 /* Products */ = {
+		1988B6111E007B3900420202 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				17743C661DB738D10011F500 /* ELLog.framework */,
-				17743C681DB738D10011F500 /* ELLogTests.xctest */,
-				17743C6A1DB738D10011F500 /* ELLog.framework */,
+				1988B6171E007B3900420202 /* ELLog.framework */,
+				1988B6191E007B3900420202 /* ELLogTests.xctest */,
+				1988B61B1E007B3900420202 /* ELLog.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -275,7 +275,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				17743C6F1DB738E80011F500 /* PBXTargetDependency */,
+				1988B6201E007B5200420202 /* PBXTargetDependency */,
 			);
 			name = ELMaestro;
 			productName = ELMaestro;
@@ -334,8 +334,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 17743C601DB738D10011F500 /* Products */;
-					ProjectRef = 17743C5F1DB738D10011F500 /* ELLog.xcodeproj */;
+					ProductGroup = 1988B6111E007B3900420202 /* Products */;
+					ProjectRef = 1988B6101E007B3900420202 /* ELLog.xcodeproj */;
 				},
 				{
 					ProductGroup = CA6822B61BB466F000562A62 /* Products */;
@@ -355,25 +355,25 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		17743C661DB738D10011F500 /* ELLog.framework */ = {
+		1988B6171E007B3900420202 /* ELLog.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = ELLog.framework;
-			remoteRef = 17743C651DB738D10011F500 /* PBXContainerItemProxy */;
+			remoteRef = 1988B6161E007B3900420202 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		17743C681DB738D10011F500 /* ELLogTests.xctest */ = {
+		1988B6191E007B3900420202 /* ELLogTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ELLogTests.xctest;
-			remoteRef = 17743C671DB738D10011F500 /* PBXContainerItemProxy */;
+			remoteRef = 1988B6181E007B3900420202 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		17743C6A1DB738D10011F500 /* ELLog.framework */ = {
+		1988B61B1E007B3900420202 /* ELLog.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = ELLog.framework;
-			remoteRef = 17743C691DB738D10011F500 /* PBXContainerItemProxy */;
+			remoteRef = 1988B61A1E007B3900420202 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		CA6822BB1BB466F000562A62 /* testFramework.framework */ = {
@@ -449,10 +449,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		17743C6F1DB738E80011F500 /* PBXTargetDependency */ = {
+		1988B6201E007B5200420202 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ELLog;
-			targetProxy = 17743C6E1DB738E80011F500 /* PBXContainerItemProxy */;
+			targetProxy = 1988B61F1E007B5200420202 /* PBXContainerItemProxy */;
 		};
 		CA2079811BB323B0005353D9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
