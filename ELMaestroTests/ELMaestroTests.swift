@@ -33,7 +33,7 @@ class ELMaestroTests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock() {
+        self.measure() {
             // Put the code you want to measure the time of here.
         }
     }
@@ -49,11 +49,11 @@ class ELMaestroTests: XCTestCase {
         
         supervisor.startup()
         
-        XCTAssertTrue(supervisor.pluginLoaded(testPluginID))
-        XCTAssertTrue(supervisor.pluginLoaded(testObjcPluginID))
+        XCTAssertTrue(supervisor.pluginLoaded(dependencyID: testPluginID))
+        XCTAssertTrue(supervisor.pluginLoaded(dependencyID: testObjcPluginID))
 
-        XCTAssertTrue(supervisor.pluginStarted(testPluginID))
-        XCTAssertTrue(supervisor.pluginStarted(testObjcPluginID))
+        XCTAssertTrue(supervisor.pluginStarted(dependencyID: testPluginID))
+        XCTAssertTrue(supervisor.pluginStarted(dependencyID: testObjcPluginID))
     }
     
     func testContinuity() {
@@ -67,16 +67,16 @@ class ELMaestroTests: XCTestCase {
 
         supervisor.startup()
         
-        XCTAssertTrue(supervisor.pluginLoaded(testPluginID))
-        XCTAssertTrue(supervisor.pluginLoaded(testObjcPluginID))
+        XCTAssertTrue(supervisor.pluginLoaded(dependencyID: testPluginID))
+        XCTAssertTrue(supervisor.pluginLoaded(dependencyID: testObjcPluginID))
         
-        XCTAssertTrue(supervisor.pluginStarted(testPluginID))
+        XCTAssertTrue(supervisor.pluginStarted(dependencyID: testPluginID))
 
-        let api = supervisor.pluginAPIForID(testPluginID) as! TestPluginAPI
+        let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
 
-        let application = UIApplication.sharedApplication()
+        let application = UIApplication.shared
         let userActivity = NSUserActivity(activityType: NSUserActivityTypeBrowsingWeb)
-        let handled = supervisor.application(application, continueUserActivity: userActivity, restorationHandler:{ arr in })
+        let handled = supervisor.application(application, continue: userActivity, restorationHandler:{ arr in })
         
         XCTAssertTrue(handled, "Expected a plugin to handle continuity")
         XCTAssertTrue(api.continuityType == NSUserActivityTypeBrowsingWeb, "Expected NSUserActivityTypeBrowsingWeb")

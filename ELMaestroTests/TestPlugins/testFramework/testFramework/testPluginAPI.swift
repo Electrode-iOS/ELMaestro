@@ -9,6 +9,6 @@
 import Foundation
 
 
-public class TestPluginAPI : NSObject {    
-    public var continuityType: String = ""
+open class TestPluginAPI : NSObject {    
+    open var continuityType: String = ""
 }

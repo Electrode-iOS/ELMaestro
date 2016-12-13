@@ -28,11 +28,11 @@ public protocol Pluggable {
     init?(containerBundleID: String?)
 
     // Provides the default route to this plugin or feature.
-    func startup(supervisor: Supervisor)
+    func startup(_ supervisor: Supervisor)
 }
 
 public extension Pluggable {
-    func dependsOn(dependencyID: DependencyID) -> Bool {
+    func dependsOn(_ dependencyID: DependencyID) -> Bool {
         if let deps = dependencies {
             return deps.contains(dependencyID)
         }

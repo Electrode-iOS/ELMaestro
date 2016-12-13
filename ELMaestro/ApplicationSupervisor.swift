@@ -9,14 +9,14 @@
 import Foundation
 
 @objc
-public class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
-    public var window: UIWindow? = nil
+final public class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
+    open var window: UIWindow? = nil
     
     // Only callable from within an UIApplication context
     // For unit testing, instantiate ApplicationSupervisor directly
     // It is acceptable for this to crash if the application delegate is not a ApplicationSupervisor
-    public static var sharedInstance: ApplicationSupervisor {
-        return UIApplication.sharedApplication().delegate as! ApplicationSupervisor
+    open static var sharedInstance: ApplicationSupervisor {
+        return UIApplication.shared.delegate as! ApplicationSupervisor
     }
     
     override public init() {
@@ -24,11 +24,11 @@ public class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
     }
 
     /// This property can be set to show a privacy view on top of the visible view controller.
-    public var backgroundPrivacyView: UIView = ApplicationSupervisor.defaultPrivacyView()
+    open var backgroundPrivacyView: UIView = ApplicationSupervisor.defaultPrivacyView()
     /// The default value is Opt-In.
-    public var backgroundPrivacyOptions = BackgroundPrivacyOptions.OptIn
+    open var backgroundPrivacyOptions = BackgroundPrivacyOptions.optIn
     
-    public func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    open func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         var result = true
         
         if startedPlugins.count == 0 {
@@ -45,13 +45,13 @@ public class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
         return result
     }
     
-    public func applicationWillResignActive(application: UIApplication) {
+    open func applicationWillResignActive(_ application: UIApplication) {
         for feature in startedFeaturePlugins {
             feature.applicationWillResignActive?()
         }
     }
     
-    public func applicationDidEnterBackground(application: UIApplication) {
+    open func applicationDidEnterBackground(_ application: UIApplication) {
         // this will only show the privacy view if the proper criteria is met.
         showPrivacyView()
         
@@ -60,7 +60,7 @@ public class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
         }
     }
     
-    public func applicationWillEnterForeground(application: UIApplication) {
+    open func applicationWillEnterForeground(_ application: UIApplication) {
         for feature in startedFeaturePlugins {
             feature.applicationWillEnterForeground?()
         }
@@ -69,51 +69,51 @@ public class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
         hidePrivacyView()
     }
     
-    public func applicationDidBecomeActive(application: UIApplication) {
+    open func applicationDidBecomeActive(_ application: UIApplication) {
         for feature in startedFeaturePlugins {
             feature.applicationDidBecomeActive?()
         }
     }
     
-    public func applicationWillTerminate(application: UIApplication) {
+    open func applicationWillTerminate(_ application: UIApplication) {
         for feature in startedFeaturePlugins {
             feature.applicationWillTerminate()
         }
     }
     
-    public func applicationDidReceiveMemoryWarning(application: UIApplication) {
+    open func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
         for feature in startedFeaturePlugins {
             feature.applicationDidReceiveMemoryWarning()
         }
     }
     
-    public func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+    open func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
         for feature in startedFeaturePlugins {
             feature.application?(application, didRegisterUserNotificationSettings: notificationSettings)
         }
     }
     
-    public func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+    open func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
         for feature in startedFeaturePlugins {
             feature.application?(application, didReceiveLocalNotification: notification)
         }
     }
     
-    public func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+    open func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, for notification: UILocalNotification, completionHandler: @escaping () -> Void) {
         for feature in startedFeaturePlugins {
             feature.application?(application, handleActionWithIdentifier: identifier, forLocalNotification: notification, completionHandler: completionHandler)
         }
     }
     
-    public func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+    open func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         for feature in startedFeaturePlugins {
             feature.application?(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
         }
     }
     
-    public func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+    open func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         for feature in startedFeaturePlugins {
-            feature.application?(application, didFailToRegisterForRemoteNotificationsWithError: error)
+            feature.application?(application, didFailToRegisterForRemoteNotificationsWithError: error as NSError)
         }
     }
     
@@ -122,34 +122,34 @@ public class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
     //      will always be called in favor of application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject])
     //      if both are implemented.
     //      xcdoc://?url=developer.apple.com/library/etc/redirect/xcode/ios/1151/documentation/UIKit/Reference/UIApplicationDelegate_Protocol/index.html
-    public func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+    open func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         for feature in startedFeaturePlugins {
             feature.application?(application, didReceiveRemoteNotification: userInfo, fetchCompletionHandler: completionHandler)
         }
     }
     
-    public func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
+    open func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
         for feature in startedFeaturePlugins {
             feature.application?(application, handleActionWithIdentifier: identifier, forRemoteNotification: userInfo, completionHandler: completionHandler)
         }
     }
     
     @available(iOS 9.0, *)
-    public func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, withResponseInfo responseInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
+    open func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, for notification: UILocalNotification, withResponseInfo responseInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
         for feature in startedFeaturePlugins {
             feature.application?(application, handleActionWithIdentifier: identifier, forLocalNotification: notification, withResponseInfo: responseInfo, completionHandler: completionHandler)
         }
     }
 
     @available(iOS 9.0, *)
-    public func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], withResponseInfo responseInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
+    open func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable: Any], withResponseInfo responseInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
         for feature in startedFeaturePlugins {
             feature.application?(application, handleActionWithIdentifier: identifier, forRemoteNotification: userInfo, withResponseInfo: responseInfo, completionHandler: completionHandler)
         }
     }
     
     @available(iOS 9.0, *)
-    public func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+    open func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         for feature in startedFeaturePlugins {
             let handled = feature.applicationPerformActionForShortcutItem?(shortcutItem, completionHandler: completionHandler)
             if handled == true {
@@ -161,7 +161,7 @@ public class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
     // MARK: Handoff
     // continueUserActivity will be used for features such as universal linking
     // https://developer.apple.com/library/prerelease/content/documentation/General/Conceptual/AppSearch/UniversalLinks.html#//apple_ref/doc/uid/TP40016308-CH12-SW2
-    public func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
+    open func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         for feature in startedFeaturePlugins {
             if let featureHandled = feature.application?(application, continueUserActivity: userActivity, restorationHandler: restorationHandler) {
                 if featureHandled {

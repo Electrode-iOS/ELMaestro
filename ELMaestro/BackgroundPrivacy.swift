@@ -13,9 +13,9 @@ import UIKit
 @objc
 public enum BackgroundPrivacyOptions: Int {
     /// When used, VCs conform to BackgroundPrivacy protocol for the privacy view to be shown.
-    case OptIn
+    case optIn
     /// When used, VCs that don't conform to BackgroundPrivacy will activate the privacy view.
-    case OptOut
+    case optOut
 }
 
 /// Protocol for working with the background privacy feature.  See the BackgroundPrivacyOptions enum.
@@ -25,7 +25,7 @@ public protocol BackgroundPrivacy {
     This is typically not needed, however in the case of a VC that subclasses another
     it could be beneficial to have a different behavior in the subclass.
     */
-    optional func shouldShowPrivacyView() -> Bool
+    @objc optional func shouldShowPrivacyView() -> Bool
 }
 
 
@@ -36,8 +36,8 @@ extension ApplicationSupervisor {
     Returns a white UIView the size of the screen to use a privacy view.
     */
     public static func defaultPrivacyView() -> UIView {
-        let view = UIView(frame: UIScreen.mainScreen().applicationFrame)
-        view.backgroundColor = UIColor.whiteColor()
+        let view = UIView(frame: UIScreen.main.applicationFrame)
+        view.backgroundColor = UIColor.white
         return view
     }
     
@@ -58,7 +58,7 @@ extension ApplicationSupervisor {
         }
         
         switch backgroundPrivacyOptions {
-        case .OptIn:
+        case .optIn:
             // we have the workingVC, does it conform to BackgroundPrivacy?
             // yes.. then show it.
             if (workingVC is BackgroundPrivacy) == true {
@@ -79,7 +79,7 @@ extension ApplicationSupervisor {
             }
             break
             
-        case .OptOut:
+        case .optOut:
             // we have a workingVC, does it conform to BackgroundPrivacy?
             // no.. then show it.
             if (workingVC is BackgroundPrivacy) == false {
@@ -98,10 +98,10 @@ extension ApplicationSupervisor {
         }
     }
     
-    private func _showPrivacyView() {
-        let window = UIApplication.sharedApplication().keyWindow
+    fileprivate func _showPrivacyView() {
+        let window = UIApplication.shared.keyWindow
         window?.addSubview(backgroundPrivacyView)
-        window?.bringSubviewToFront(backgroundPrivacyView)
+        window?.bringSubview(toFront: backgroundPrivacyView)
     }
     
     internal func hidePrivacyView() {
