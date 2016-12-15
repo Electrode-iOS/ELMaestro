@@ -9,7 +9,7 @@
 import Foundation
 
 @objc
-open public class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
+open class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
     open var window: UIWindow? = nil
     
     // Only callable from within an UIApplication context

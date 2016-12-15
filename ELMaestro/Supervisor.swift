@@ -8,9 +8,9 @@
 
 import Foundation
 
-@objc public class Supervisor: UIResponder {
+@objc open class Supervisor: UIResponder {
     public private(set) var startedPlugins = [Pluggable]()
-    public var navigator: Navigator?
+    public var navigator: SupervisorNavigator?
     
     private var proposedPlugins = [Pluggable]()
     private var loadedPlugins = [Pluggable]()
