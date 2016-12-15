@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol Navigator {
+public protocol SupervisorNavigator {
     var selectedViewController: UIViewController? {get}
 }
