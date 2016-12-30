@@ -1,3 +1,8 @@
+# [2.0.1](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v2.0.1)
+
+- Make `Supervisor` public
+- Make `ApplicationSupervisor` open to support inheritance
+
 # [2.0.0](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v2.0.0)
 
 - Migrate to Swift 3
