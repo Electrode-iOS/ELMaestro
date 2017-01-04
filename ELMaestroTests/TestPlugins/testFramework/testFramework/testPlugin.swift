@@ -45,7 +45,7 @@ open class TestPlugin: NSObject, PluggableFeature {
         
     }
     
-    @nonobjc open func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: ([Any]?) -> Void) -> Bool {
+    open func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         _pluginAPI.continuityType = userActivity.activityType
         return true
     }
