@@ -163,7 +163,7 @@ open class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
     // https://developer.apple.com/library/prerelease/content/documentation/General/Conceptual/AppSearch/UniversalLinks.html#//apple_ref/doc/uid/TP40016308-CH12-SW2
     open func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         for feature in startedFeaturePlugins {
-            if let featureHandled = feature.application?(application, continueUserActivity: userActivity, restorationHandler: restorationHandler) {
+            if let featureHandled = feature.application?(application, continue: userActivity, restorationHandler: restorationHandler) {
                 if featureHandled {
                     return true
                 }
