@@ -1,3 +1,7 @@
+# [2.0.3](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v2.0.3)
+
+- Made `PluggableFeature` consistent with `UIApplicationDelegate` interface for completion handlers.
+
 # [2.0.2](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v2.0.2)
 
 - Fix unit tests that started failing after Swift 3 migration
