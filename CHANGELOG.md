@@ -1,3 +1,7 @@
+# [2.0.4](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v2.0.4)
+
+Use default settings for bitcode
+
 # [2.0.3](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v2.0.3)
 
 - Made `PluggableFeature` consistent with `UIApplicationDelegate` interface for completion handlers.

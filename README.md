@@ -1,20 +1,20 @@
 # ELMaestro 
 
-[![Version](https://img.shields.io/badge/version-v2.0.3-blue.svg)](https://github.com/Electrode-iOS/ELMaestro/releases/latest)
+[![Version](https://img.shields.io/badge/version-v2.0.4-blue.svg)](https://github.com/Electrode-iOS/ELMaestro/releases/latest)
 [![Build Status](https://travis-ci.org/Electrode-iOS/ELMaestro.svg?branch=master)](https://travis-ci.org/Electrode-iOS/ELMaestro)
 
 ELMaestro is a Swift framework that provides plugin scaffolding for iOS Applications.
 
 ## Installation
 
-ELMaestro requires Swift 3 and Xcode 8.1.
+ELMaestro requires Swift 3.1 and Xcode 8.3.
 
 ### Carthage
 
 Install with [Carthage](https://github.com/Carthage/Carthage) by adding the framework to your project's [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile).
 
 ```
-github "Electrode-iOS/ELMaestro" ~> 2.0.3
+github "Electrode-iOS/ELMaestro" ~> 2.0.4
 ```
 
 ### Manual
