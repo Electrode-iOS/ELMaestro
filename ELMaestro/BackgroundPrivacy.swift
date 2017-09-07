@@ -100,7 +100,13 @@ extension ApplicationSupervisor {
     
     fileprivate func _showPrivacyView() {
         let window = UIApplication.shared.keyWindow
+        
+        backgroundPrivacyView.translatesAutoresizingMaskIntoConstraints = false
         window?.addSubview(backgroundPrivacyView)
+        
+        window?.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[view]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": backgroundPrivacyView]))
+        window?.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": backgroundPrivacyView]))
+        
         window?.bringSubview(toFront: backgroundPrivacyView)
     }
     
