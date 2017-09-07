@@ -1,3 +1,7 @@
+# [2.0.5](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v2.0.5)
+
+- Add constraints to privacy view for iPad orientations
+
 # [2.0.4](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v2.0.4)
 
 Use default settings for bitcode
