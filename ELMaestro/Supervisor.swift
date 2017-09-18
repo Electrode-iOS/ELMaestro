@@ -10,6 +10,9 @@ import Foundation
 
 @objc open class Supervisor: UIResponder {
     public private(set) var startedPlugins = [Pluggable]()
+    // unordered, keyed collection of started plugins for faster lookup
+    private var startedPluginsLookup = [String: Pluggable]()
+    
     public var navigator: SupervisorNavigator?
     
     private var proposedPlugins = [Pluggable]()
@@ -71,20 +74,7 @@ import Foundation
     }
     
     private func plugin(forIdentifier id: DependencyID) -> Pluggable? {
-        let found = startedPlugins.filter { (plugin) -> Bool in
-            if plugin.identifier.lowercased() == id.lowercased() {
-                return true
-            }
-            return false
-        }
-        
-        if found.count > 1 {
-            assertionFailure("found more than one plugin with id \(id)!")
-        } else if found.count == 1 {
-            return found[0]
-        }
-        
-        return nil
+        return startedPluginsLookup[id.lowercased()]
     }
     
     private func start(plugin: Pluggable) {
@@ -103,6 +93,12 @@ import Foundation
             
             plugin.startup(self)
             startedPlugins.append(plugin)
+            let lowercasedIdentifier = plugin.identifier.lowercased()
+            guard startedPluginsLookup[lowercasedIdentifier] == nil else {
+                assertionFailure("tried to started more than one plugin with id \(plugin.identifier)!")
+                return
+            }
+            startedPluginsLookup[plugin.identifier.lowercased()] = plugin
             print("started: \(plugin.identifier)")
         }
     }
