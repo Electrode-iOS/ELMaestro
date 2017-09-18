@@ -13,7 +13,7 @@ ELMaestro requires Swift 3.1 and Xcode 8.3.
 Install with [Carthage](https://github.com/Carthage/Carthage) by adding the framework to your project's [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile).
 
 ```
-github "Electrode-iOS/ELMaestro" ~> 2.0.5
+github "Electrode-iOS/ELMaestro"
 ```
 
 ### Manual

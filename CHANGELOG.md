@@ -1,3 +1,7 @@
+# [2.0.6](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v2.0.6)
+
+- Add efficient plugin lookup by id
+
 # [2.0.5](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v2.0.5)
 
 - Add constraints to privacy view for iPad orientations
