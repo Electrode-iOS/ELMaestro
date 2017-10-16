@@ -31,7 +31,7 @@ public protocol BackgroundPrivacy {
 
 // MARK: Privacy extensions for ApplicationSupervisor
 
-extension ApplicationSupervisor {
+extension ApplicationDelegateProxy {
     /**
     Returns a white UIView the size of the screen to use a privacy view.
     */

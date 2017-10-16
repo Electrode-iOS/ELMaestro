@@ -8,168 +8,131 @@
 
 import Foundation
 
-@objc
-open class ApplicationSupervisor: Supervisor, UIApplicationDelegate {
-    open var window: UIWindow? = nil
-    
-    // Only callable from within an UIApplication context
-    // For unit testing, instantiate ApplicationSupervisor directly
-    // It is acceptable for this to crash if the application delegate is not a ApplicationSupervisor
-    open static var sharedInstance: ApplicationSupervisor {
-        return UIApplication.shared.delegate as! ApplicationSupervisor
-    }
-    
-    override public init() {
-        super.init()
-    }
+// Exists only for backward compatibility for Pluggable protocol
+public typealias Supervisor = ApplicationSupervisor
 
-    /// This property can be set to show a privacy view on top of the visible view controller.
-    open var backgroundPrivacyView: UIView = ApplicationSupervisor.defaultPrivacyView()
-    /// The default value is Opt-In.
-    open var backgroundPrivacyOptions = BackgroundPrivacyOptions.optIn
+@objc
+public final class ApplicationSupervisor: NSObject {
+    public static let sharedInstance = ApplicationSupervisor()
     
-    open func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        var result = true
+    public private(set) var startedPlugins = [Pluggable]()
+    
+    /// Get all of the started plugins that conform to PluggableFeature
+    var startedFeaturePlugins: [PluggableFeature] {
+        return startedPlugins.flatMap { $0 as? PluggableFeature }
+    }
+    
+    // unordered, keyed collection of started plugins for faster lookup
+    private var startedPluginsLookup = [String: Pluggable]()
+    private var proposedPlugins = [Pluggable]()
+    private var loadedPlugins = [Pluggable]()
+    
+    public func loadPlugin(_ pluginType: AnyObject.Type) {
+        // I used AnyObject.Type here, because Pluggable.Type translates
+        // to Class<Pluggable> in objc, but returns an AnyObject.Type instead.
         
-        if startedPlugins.count == 0 {
-            assertionFailure("Perform plugin startup before calling application:didFinishLaunchWithOptions:")
-        } else {
-            for feature in startedFeaturePlugins {
-                // coalesce our return values together
-                if let value = feature.application?(application, didFinishLaunchingWithOptions: launchOptions) {
-                    result = result || value
-                }
+        // WARNING: Don't step through this, or you'll crash Xcode.. cuz it sucks.
+        if let pluginType = pluginType as? Pluggable.Type {
+            if let plugin = pluginType.init(containerBundleID: "com.walmart.ELMaestro") {
+                proposedPlugins.append(plugin)
             }
+        }
+        // END WARNING.
+    }
+    
+    public func startup() {
+        // identify the plugins we will actually load.
+        loadedPlugins = validateProposedPlugins(proposedPlugins)
+        
+        for i in 0..<loadedPlugins.count {
+            let plugin = loadedPlugins[i]
+            
+            start(plugin: plugin)
+        }
+    }
+    
+    public func pluginLoaded(dependencyID: DependencyID) -> Bool {
+        return loadedPlugins.contains(where: { (item) -> Bool in
+            return (item.identifier == dependencyID)
+        })
+    }
+    
+    public func pluginStarted(dependencyID: DependencyID) -> Bool {
+        return startedPlugins.contains(where: { (item) -> Bool in
+            return (item.identifier == dependencyID)
+        })
+    }
+    
+    public func pluginAPI(forIdentifier id: DependencyID) -> AnyObject? {
+        var result: AnyObject? = nil
+        
+        if let plugin = plugin(forIdentifier: id) as? PluggableFeature {
+            result = plugin.pluginAPI?()
         }
         
         return result
     }
     
-    open func applicationWillResignActive(_ application: UIApplication) {
-        for feature in startedFeaturePlugins {
-            feature.applicationWillResignActive?()
-        }
+    private func plugin(forIdentifier id: DependencyID) -> Pluggable? {
+        return startedPluginsLookup[id.lowercased()]
     }
     
-    open func applicationDidEnterBackground(_ application: UIApplication) {
-        // this will only show the privacy view if the proper criteria is met.
-        showPrivacyView()
-        
-        for feature in startedFeaturePlugins {
-            feature.applicationDidEnterBackground?()
-        }
-    }
-    
-    open func applicationWillEnterForeground(_ application: UIApplication) {
-        for feature in startedFeaturePlugins {
-            feature.applicationWillEnterForeground?()
-        }
-        
-        // this will remove the privacy view if it was displayed.
-        hidePrivacyView()
-    }
-    
-    open func applicationDidBecomeActive(_ application: UIApplication) {
-        for feature in startedFeaturePlugins {
-            feature.applicationDidBecomeActive?()
-        }
-    }
-    
-    open func applicationWillTerminate(_ application: UIApplication) {
-        for feature in startedFeaturePlugins {
-            feature.applicationWillTerminate()
-        }
-    }
-    
-    open func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
-        for feature in startedFeaturePlugins {
-            feature.applicationDidReceiveMemoryWarning()
-        }
-    }
-    
-    open func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
-        for feature in startedFeaturePlugins {
-            feature.application?(application, didRegisterUserNotificationSettings: notificationSettings)
-        }
-    }
-    
-    open func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
-        for feature in startedFeaturePlugins {
-            feature.application?(application, didReceiveLocalNotification: notification)
-        }
-    }
-    
-    open func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, for notification: UILocalNotification, completionHandler: @escaping () -> Void) {
-        for feature in startedFeaturePlugins {
-            feature.application?(application, handleActionWithIdentifier: identifier, forLocalNotification: notification, completionHandler: completionHandler)
-        }
-    }
-    
-    open func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        for feature in startedFeaturePlugins {
-            feature.application?(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
-        }
-    }
-    
-    open func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        for feature in startedFeaturePlugins {
-            feature.application?(application, didFailToRegisterForRemoteNotificationsWithError: error as NSError)
-        }
-    }
-    
-    // NOTE: Don't implement:  application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject])
-    //      ...because application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void)
-    //      will always be called in favor of application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject])
-    //      if both are implemented.
-    //      xcdoc://?url=developer.apple.com/library/etc/redirect/xcode/ios/1151/documentation/UIKit/Reference/UIApplicationDelegate_Protocol/index.html
-    open func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        for feature in startedFeaturePlugins {
-            feature.application?(application, didReceiveRemoteNotification: userInfo, fetchCompletionHandler: completionHandler)
-        }
-    }
-    
-    open func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
-        for feature in startedFeaturePlugins {
-            feature.application?(application, handleActionWithIdentifier: identifier, forRemoteNotification: userInfo, completionHandler: completionHandler)
-        }
-    }
-    
-    @available(iOS 9.0, *)
-    open func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, for notification: UILocalNotification, withResponseInfo responseInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
-        for feature in startedFeaturePlugins {
-            feature.application?(application, handleActionWithIdentifier: identifier, forLocalNotification: notification, withResponseInfo: responseInfo, completionHandler: completionHandler)
-        }
-    }
-
-    @available(iOS 9.0, *)
-    open func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable: Any], withResponseInfo responseInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
-        for feature in startedFeaturePlugins {
-            feature.application?(application, handleActionWithIdentifier: identifier, forRemoteNotification: userInfo, withResponseInfo: responseInfo, completionHandler: completionHandler)
-        }
-    }
-    
-    @available(iOS 9.0, *)
-    open func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-        for feature in startedFeaturePlugins {
-            let handled = feature.applicationPerformActionForShortcutItem?(shortcutItem, completionHandler: completionHandler)
-            if handled == true {
-                break
-            }
-        }
-    }
-    
-    // MARK: Handoff
-    // continueUserActivity will be used for features such as universal linking
-    // https://developer.apple.com/library/prerelease/content/documentation/General/Conceptual/AppSearch/UniversalLinks.html#//apple_ref/doc/uid/TP40016308-CH12-SW2
-    open func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
-        for feature in startedFeaturePlugins {
-            if let featureHandled = feature.application?(application, continue: userActivity, restorationHandler: restorationHandler) {
-                if featureHandled {
-                    return true
+    private func start(plugin: Pluggable) {
+        if !pluginStarted(dependencyID: plugin.identifier) {
+            print("starting: \(plugin.identifier)")
+            
+            // try find any dependencies that haven't been started yet.
+            if let deps = plugin.dependencies {
+                for i in 0..<deps.count {
+                    if let dep = self.plugin(forIdentifier: deps[i]) {
+                        // if it's already loaded, this does nothing.
+                        start(plugin: dep)
+                    }
                 }
             }
+            
+            plugin.startup(self)
+            startedPlugins.append(plugin)
+            let lowercasedIdentifier = plugin.identifier.lowercased()
+            guard startedPluginsLookup[lowercasedIdentifier] == nil else {
+                assertionFailure("tried to started more than one plugin with id \(plugin.identifier)!")
+                return
+            }
+            startedPluginsLookup[plugin.identifier.lowercased()] = plugin
+            print("started: \(plugin.identifier)")
         }
-        return false // Not handled by any feature plugin
     }
     
+    private func validateProposedPlugins(_ proposedPlugins: [Pluggable]) -> [Pluggable] {
+        var acceptedPlugins = [Pluggable]()
+        
+        for i in 0..<proposedPlugins.count {
+            print("checking proposal: \(proposedPlugins[i].identifier).")
+            var hasDeps = true
+            // look at the dependencies and make sure they're all there.
+            if let deps = proposedPlugins[i].dependencies {
+                for item in deps {
+                    let present = proposedPlugins.contains { (plugin) -> Bool in
+                        return (plugin.identifier == item)
+                    }
+                    
+                    // the dependency is present, validate it.
+                    if present {
+                        hasDeps = true
+                        acceptedPlugins.append(proposedPlugins[i])
+                    } else {
+                        print("ERROR: proposed plugin \(item) is missing dependency \(item).")
+                    }
+                }
+            } else {
+                // it doesn't have any dependencies, so it's validated.
+                hasDeps = false
+                acceptedPlugins.append(proposedPlugins[i])
+            }
+            let subtext = hasDeps ? "(dependencies present)" : "(no dependencies required)"
+            print("validating proposal: \(proposedPlugins[i].identifier) \(subtext)")
+        }
+        
+        return acceptedPlugins
+    }
 }
