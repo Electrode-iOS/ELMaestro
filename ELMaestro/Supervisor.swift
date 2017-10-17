@@ -8,24 +8,19 @@
 
 import Foundation
 
-@objc open class Supervisor: UIResponder {
-    public private(set) var startedPlugins = [Pluggable]()
-    // unordered, keyed collection of started plugins for faster lookup
-    private var startedPluginsLookup = [String: Pluggable]()
-    
-    public var navigator: SupervisorNavigator?
-    
-    private var proposedPlugins = [Pluggable]()
-    private var loadedPlugins = [Pluggable]()
+@objc
+public class Supervisor: NSObject {
+    var startedPlugins = [Pluggable]()
     
     /// Get all of the started plugins that conform to PluggableFeature
     var startedFeaturePlugins: [PluggableFeature] {
         return startedPlugins.flatMap { $0 as? PluggableFeature }
     }
     
-    override init() {
-        super.init()
-    }
+    // unordered, keyed collection of started plugins for faster lookup
+    private var startedPluginsLookup = [String: Pluggable]()
+    private var proposedPlugins = [Pluggable]()
+    private var loadedPlugins = [Pluggable]()
     
     public func loadPlugin(_ pluginType: AnyObject.Type) {
         // I used AnyObject.Type here, because Pluggable.Type translates
@@ -33,11 +28,17 @@ import Foundation
         
         // WARNING: Don't step through this, or you'll crash Xcode.. cuz it sucks.
         if let pluginType = pluginType as? Pluggable.Type {
-            if let plugin = pluginType.init(containerBundleID: "com.walmartlabs.ELMaestro") {
+            if let plugin = pluginType.init(containerBundleID: "com.walmart.ELMaestro") {
                 proposedPlugins.append(plugin)
             }
         }
         // END WARNING.
+    }
+    
+    public func loadPlugins(_ pluginTypes: [Pluggable.Type]) {
+        for plugin in pluginTypes {
+            loadPlugin(plugin)
+        }
     }
     
     public func startup() {

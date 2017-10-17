@@ -11,6 +11,7 @@
 		17AFCE6C1DB73BE300F2DD81 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AFCE6B1DB73BE300F2DD81 /* Navigator.swift */; };
 		17FF6D241CEE699F00F843B6 /* ApplicationSupervisor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FF6D231CEE699F00F843B6 /* ApplicationSupervisor.swift */; };
 		17FF6D291CEE69C300F843B6 /* PluggableFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FF6D281CEE69C300F843B6 /* PluggableFeature.swift */; };
+		1907DC011F91334A003996C0 /* ApplicationDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1907DC001F91334A003996C0 /* ApplicationDelegateProxy.swift */; };
 		CA2079791BB323B0005353D9 /* ELMaestro.h in Headers */ = {isa = PBXBuildFile; fileRef = CA2079781BB323B0005353D9 /* ELMaestro.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA20797F1BB323B0005353D9 /* ELMaestro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2079731BB323B0005353D9 /* ELMaestro.framework */; };
 		CA2079861BB323B0005353D9 /* ELMaestroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2079851BB323B0005353D9 /* ELMaestroTests.swift */; };
@@ -107,6 +108,7 @@
 		17AFCE6B1DB73BE300F2DD81 /* Navigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		17FF6D231CEE699F00F843B6 /* ApplicationSupervisor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSupervisor.swift; sourceTree = "<group>"; };
 		17FF6D281CEE69C300F843B6 /* PluggableFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluggableFeature.swift; sourceTree = "<group>"; };
+		1907DC001F91334A003996C0 /* ApplicationDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationDelegateProxy.swift; sourceTree = "<group>"; };
 		CA2079731BB323B0005353D9 /* ELMaestro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ELMaestro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA2079771BB323B0005353D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA2079781BB323B0005353D9 /* ELMaestro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ELMaestro.h; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				CA2079781BB323B0005353D9 /* ELMaestro.h */,
+				1907DC001F91334A003996C0 /* ApplicationDelegateProxy.swift */,
 				17FF6D231CEE699F00F843B6 /* ApplicationSupervisor.swift */,
 				CAB863341CA1C2380051F45A /* Module.swift */,
 				CA20799A1BB32406005353D9 /* Pluggable.swift */,
@@ -430,6 +433,7 @@
 			files = (
 				17AFCE6C1DB73BE300F2DD81 /* Navigator.swift in Sources */,
 				17FF6D241CEE699F00F843B6 /* ApplicationSupervisor.swift in Sources */,
+				1907DC011F91334A003996C0 /* ApplicationDelegateProxy.swift in Sources */,
 				CA5EAD791D00E4BD00C40E8B /* BackgroundPrivacy.swift in Sources */,
 				CA20799B1BB32406005353D9 /* Pluggable.swift in Sources */,
 				CA2079991BB323F7005353D9 /* Supervisor.swift in Sources */,
