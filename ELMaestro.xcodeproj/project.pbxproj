@@ -12,14 +12,13 @@
 		17FF6D241CEE699F00F843B6 /* ApplicationSupervisor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FF6D231CEE699F00F843B6 /* ApplicationSupervisor.swift */; };
 		17FF6D291CEE69C300F843B6 /* PluggableFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FF6D281CEE69C300F843B6 /* PluggableFeature.swift */; };
 		1907DC011F91334A003996C0 /* ApplicationDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1907DC001F91334A003996C0 /* ApplicationDelegateProxy.swift */; };
+		198B76B21F969E83004CAEFF /* TestObjcClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 198B76B11F969E83004CAEFF /* TestObjcClass.m */; };
 		CA2079791BB323B0005353D9 /* ELMaestro.h in Headers */ = {isa = PBXBuildFile; fileRef = CA2079781BB323B0005353D9 /* ELMaestro.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA20797F1BB323B0005353D9 /* ELMaestro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2079731BB323B0005353D9 /* ELMaestro.framework */; };
 		CA2079861BB323B0005353D9 /* ELMaestroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2079851BB323B0005353D9 /* ELMaestroTests.swift */; };
 		CA2079991BB323F7005353D9 /* Supervisor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2079981BB323F7005353D9 /* Supervisor.swift */; };
 		CA20799B1BB32406005353D9 /* Pluggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA20799A1BB32406005353D9 /* Pluggable.swift */; };
 		CA5EAD791D00E4BD00C40E8B /* BackgroundPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EAD781D00E4BD00C40E8B /* BackgroundPrivacy.swift */; };
-		CA6822CB1BB4674300562A62 /* testFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA6822BB1BB466F000562A62 /* testFramework.framework */; };
-		CA6822CC1BB4674300562A62 /* testObjcFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA6822C41BB466F700562A62 /* testObjcFramework.framework */; };
 		CAB863351CA1C2380051F45A /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB863341CA1C2380051F45A /* Module.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,48 +58,6 @@
 			remoteGlobalIDString = CA2079721BB323B0005353D9;
 			remoteInfo = ELMaestro;
 		};
-		CA6822BA1BB466F000562A62 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CA6822B51BB466F000562A62 /* testFramework.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CA85A8EC1B31F83A0000FEEF;
-			remoteInfo = testFramework;
-		};
-		CA6822BC1BB466F000562A62 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CA6822B51BB466F000562A62 /* testFramework.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CA85A8F71B31F83A0000FEEF;
-			remoteInfo = testFrameworkTests;
-		};
-		CA6822C31BB466F700562A62 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CA6822BE1BB466F700562A62 /* testObjcFramework.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CA85A99E1B322F940000FEEF;
-			remoteInfo = testObjcFramework;
-		};
-		CA6822C51BB466F700562A62 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CA6822BE1BB466F700562A62 /* testObjcFramework.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CA85A9A91B322F940000FEEF;
-			remoteInfo = testObjcFrameworkTests;
-		};
-		CA6822C71BB4673B00562A62 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CA6822BE1BB466F700562A62 /* testObjcFramework.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = CA85A99D1B322F940000FEEF;
-			remoteInfo = testObjcFramework;
-		};
-		CA6822C91BB4673B00562A62 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CA6822B51BB466F000562A62 /* testFramework.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = CA85A8EB1B31F83A0000FEEF;
-			remoteInfo = testFramework;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +66,9 @@
 		17FF6D231CEE699F00F843B6 /* ApplicationSupervisor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSupervisor.swift; sourceTree = "<group>"; };
 		17FF6D281CEE69C300F843B6 /* PluggableFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluggableFeature.swift; sourceTree = "<group>"; };
 		1907DC001F91334A003996C0 /* ApplicationDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationDelegateProxy.swift; sourceTree = "<group>"; };
+		198B76AF1F969E83004CAEFF /* ELMaestroTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ELMaestroTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		198B76B01F969E83004CAEFF /* TestObjcClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestObjcClass.h; sourceTree = "<group>"; };
+		198B76B11F969E83004CAEFF /* TestObjcClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestObjcClass.m; sourceTree = "<group>"; };
 		CA2079731BB323B0005353D9 /* ELMaestro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ELMaestro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA2079771BB323B0005353D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA2079781BB323B0005353D9 /* ELMaestro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ELMaestro.h; sourceTree = "<group>"; };
@@ -118,8 +78,6 @@
 		CA2079981BB323F7005353D9 /* Supervisor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Supervisor.swift; sourceTree = "<group>"; };
 		CA20799A1BB32406005353D9 /* Pluggable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pluggable.swift; sourceTree = "<group>"; };
 		CA5EAD781D00E4BD00C40E8B /* BackgroundPrivacy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundPrivacy.swift; sourceTree = "<group>"; };
-		CA6822B51BB466F000562A62 /* testFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = testFramework.xcodeproj; path = testFramework/testFramework.xcodeproj; sourceTree = "<group>"; };
-		CA6822BE1BB466F700562A62 /* testObjcFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = testObjcFramework.xcodeproj; path = testObjcFramework/testObjcFramework.xcodeproj; sourceTree = "<group>"; };
 		CAB863341CA1C2380051F45A /* Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,8 +94,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA6822CB1BB4674300562A62 /* testFramework.framework in Frameworks */,
-				CA6822CC1BB4674300562A62 /* testObjcFramework.framework in Frameworks */,
 				CA20797F1BB323B0005353D9 /* ELMaestro.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,8 +167,10 @@
 			isa = PBXGroup;
 			children = (
 				CA2079851BB323B0005353D9 /* ELMaestroTests.swift */,
-				CA6822841BB466DD00562A62 /* TestPlugins */,
 				CA2079831BB323B0005353D9 /* Supporting Files */,
+				198B76B01F969E83004CAEFF /* TestObjcClass.h */,
+				198B76B11F969E83004CAEFF /* TestObjcClass.m */,
+				198B76AF1F969E83004CAEFF /* ELMaestroTests-Bridging-Header.h */,
 			);
 			path = ELMaestroTests;
 			sourceTree = "<group>";
@@ -223,33 +181,6 @@
 				CA2079841BB323B0005353D9 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		CA6822841BB466DD00562A62 /* TestPlugins */ = {
-			isa = PBXGroup;
-			children = (
-				CA6822BE1BB466F700562A62 /* testObjcFramework.xcodeproj */,
-				CA6822B51BB466F000562A62 /* testFramework.xcodeproj */,
-			);
-			path = TestPlugins;
-			sourceTree = "<group>";
-		};
-		CA6822B61BB466F000562A62 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CA6822BB1BB466F000562A62 /* testFramework.framework */,
-				CA6822BD1BB466F000562A62 /* testFrameworkTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		CA6822BF1BB466F700562A62 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CA6822C41BB466F700562A62 /* testObjcFramework.framework */,
-				CA6822C61BB466F700562A62 /* testObjcFrameworkTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,8 +227,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				CA6822C81BB4673B00562A62 /* PBXTargetDependency */,
-				CA6822CA1BB4673B00562A62 /* PBXTargetDependency */,
 				CA2079811BB323B0005353D9 /* PBXTargetDependency */,
 			);
 			name = ELMaestroTests;
@@ -321,7 +250,7 @@
 					};
 					CA20797D1BB323B0005353D9 = {
 						CreatedOnToolsVersion = 6.4;
-						LastSwiftMigration = 0810;
+						LastSwiftMigration = 0830;
 					};
 				};
 			};
@@ -339,14 +268,6 @@
 				{
 					ProductGroup = 17743C601DB738D10011F500 /* Products */;
 					ProjectRef = 17743C5F1DB738D10011F500 /* ELLog.xcodeproj */;
-				},
-				{
-					ProductGroup = CA6822B61BB466F000562A62 /* Products */;
-					ProjectRef = CA6822B51BB466F000562A62 /* testFramework.xcodeproj */;
-				},
-				{
-					ProductGroup = CA6822BF1BB466F700562A62 /* Products */;
-					ProjectRef = CA6822BE1BB466F700562A62 /* testObjcFramework.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -377,34 +298,6 @@
 			fileType = wrapper.framework;
 			path = ELLog.framework;
 			remoteRef = 17743C691DB738D10011F500 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CA6822BB1BB466F000562A62 /* testFramework.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = testFramework.framework;
-			remoteRef = CA6822BA1BB466F000562A62 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CA6822BD1BB466F000562A62 /* testFrameworkTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = testFrameworkTests.xctest;
-			remoteRef = CA6822BC1BB466F000562A62 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CA6822C41BB466F700562A62 /* testObjcFramework.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = testObjcFramework.framework;
-			remoteRef = CA6822C31BB466F700562A62 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CA6822C61BB466F700562A62 /* testObjcFrameworkTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = testObjcFrameworkTests.xctest;
-			remoteRef = CA6822C51BB466F700562A62 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -446,6 +339,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				198B76B21F969E83004CAEFF /* TestObjcClass.m in Sources */,
 				CA2079861BB323B0005353D9 /* ELMaestroTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,16 +356,6 @@
 			isa = PBXTargetDependency;
 			target = CA2079721BB323B0005353D9 /* ELMaestro */;
 			targetProxy = CA2079801BB323B0005353D9 /* PBXContainerItemProxy */;
-		};
-		CA6822C81BB4673B00562A62 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = testObjcFramework;
-			targetProxy = CA6822C71BB4673B00562A62 /* PBXContainerItemProxy */;
-		};
-		CA6822CA1BB4673B00562A62 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = testFramework;
-			targetProxy = CA6822C91BB4673B00562A62 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -548,6 +432,7 @@
 		071268EC1C8F8FEC002A6106 /* QADeployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -556,6 +441,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.walmartlabs.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ELMaestroTests/ELMaestroTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = QADeployment;
@@ -697,6 +584,7 @@
 		CA20798D1BB323B0005353D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -705,6 +593,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.walmartlabs.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ELMaestroTests/ELMaestroTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -712,10 +602,12 @@
 		CA20798E1BB323B0005353D9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = ELMaestroTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.walmartlabs.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ELMaestroTests/ELMaestroTests-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
