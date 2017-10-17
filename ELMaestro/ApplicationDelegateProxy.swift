@@ -10,7 +10,7 @@ import Foundation
 
 @objc
 open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {
-    public private(set) var supervisor = ApplicationSupervisor.sharedInstance
+    public internal(set) var supervisor = ApplicationSupervisor.sharedInstance
     
     override public init() {
         super.init()
