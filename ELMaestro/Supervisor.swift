@@ -11,15 +11,12 @@ import ELLog
 
 @objc
 public class Supervisor: NSObject {
-    var startedPlugins = [Pluggable]()
+    internal private(set) var startedPlugins = [String: Pluggable]()
     
     /// Get all of the started plugins that conform to PluggableFeature
-    var startedFeaturePlugins: [PluggableFeature] {
-        return startedPlugins.flatMap { $0 as? PluggableFeature }
-    }
+    internal private(set) var startedFeaturePlugins = [PluggableFeature]()
     
     // unordered, keyed collection of started plugins for faster lookup
-    private var startedPluginsLookup = [String: Pluggable]()
     private var proposedPlugins = [Pluggable]()
     private var loadedPlugins = [Pluggable]()
     
@@ -51,6 +48,12 @@ public class Supervisor: NSObject {
             
             start(plugin: plugin)
         }
+        
+        for (_, plugin) in startedPlugins {
+            if let featurePlugin = plugin as? PluggableFeature {
+                startedFeaturePlugins.append(featurePlugin)
+            }
+        }
     }
     
     public func pluginLoaded(dependencyID: DependencyID) -> Bool {
@@ -60,9 +63,10 @@ public class Supervisor: NSObject {
     }
     
     public func pluginStarted(dependencyID: DependencyID) -> Bool {
-        return startedPlugins.contains(where: { (item) -> Bool in
-            return (item.identifier == dependencyID)
-        })
+        for (_, plugin) in startedPlugins where plugin.identifier == dependencyID {
+            return true
+        }
+        return false
     }
     
     public func pluginAPI(forIdentifier id: DependencyID) -> AnyObject? {
@@ -76,7 +80,7 @@ public class Supervisor: NSObject {
     }
     
     private func plugin(forIdentifier id: DependencyID) -> Pluggable? {
-        return startedPluginsLookup[id.lowercased()]
+        return startedPlugins[id.lowercased()]
     }
     
     private func start(plugin: Pluggable) {
@@ -94,13 +98,13 @@ public class Supervisor: NSObject {
             }
             
             plugin.startup(self)
-            startedPlugins.append(plugin)
+
             let lowercasedIdentifier = plugin.identifier.lowercased()
-            guard startedPluginsLookup[lowercasedIdentifier] == nil else {
+            guard startedPlugins[lowercasedIdentifier] == nil else {
                 assertionFailure("tried to started more than one plugin with id \(plugin.identifier)!")
                 return
             }
-            startedPluginsLookup[plugin.identifier.lowercased()] = plugin
+            startedPlugins[plugin.identifier.lowercased()] = plugin
             log(.Debug, "started: \(plugin.identifier)")
         }
     }
