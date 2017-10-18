@@ -43,9 +43,7 @@ public class Supervisor: NSObject {
         // identify the plugins we will actually load.
         loadedPlugins = validateProposedPlugins(proposedPlugins)
         
-        for i in 0..<loadedPlugins.count {
-            let plugin = loadedPlugins[i]
-            
+        for plugin in loadedPlugins {
             start(plugin: plugin)
         }
         
@@ -89,11 +87,12 @@ public class Supervisor: NSObject {
             
             // try find any dependencies that haven't been started yet.
             if let deps = plugin.dependencies {
-                for i in 0..<deps.count {
-                    if let dep = self.plugin(forIdentifier: deps[i]) {
-                        // if it's already loaded, this does nothing.
-                        start(plugin: dep)
+                for requiredDependencyID in deps {
+                    guard let dependency = self.plugin(forIdentifier: requiredDependencyID) else {
+                        continue
                     }
+                    // if it's already loaded, this does nothing.
+                    start(plugin: dependency)
                 }
             }
             
@@ -112,11 +111,12 @@ public class Supervisor: NSObject {
     private func validateProposedPlugins(_ proposedPlugins: [Pluggable]) -> [Pluggable] {
         var acceptedPlugins = [Pluggable]()
         
-        for i in 0..<proposedPlugins.count {
-            log(.Debug, "checking proposal: \(proposedPlugins[i].identifier).")
+        for proposedPlugin in proposedPlugins {
+            log(.Debug, "checking proposal: \(proposedPlugin.identifier).")
+            
             var hasDeps = true
             // look at the dependencies and make sure they're all there.
-            if let deps = proposedPlugins[i].dependencies {
+            if let deps = proposedPlugin.dependencies {
                 for item in deps {
                     let present = proposedPlugins.contains { (plugin) -> Bool in
                         return (plugin.identifier == item)
@@ -125,7 +125,7 @@ public class Supervisor: NSObject {
                     // the dependency is present, validate it.
                     if present {
                         hasDeps = true
-                        acceptedPlugins.append(proposedPlugins[i])
+                        acceptedPlugins.append(proposedPlugin)
                     } else {
                         log(.Error, "ERROR: proposed plugin \(item) is missing dependency \(item).")
                     }
@@ -133,10 +133,10 @@ public class Supervisor: NSObject {
             } else {
                 // it doesn't have any dependencies, so it's validated.
                 hasDeps = false
-                acceptedPlugins.append(proposedPlugins[i])
+                acceptedPlugins.append(proposedPlugin)
             }
             let subtext = hasDeps ? "(dependencies present)" : "(no dependencies required)"
-            log(.Debug, "validating proposal: \(proposedPlugins[i].identifier) \(subtext)")
+            log(.Debug, "validating proposal: \(proposedPlugin.identifier) \(subtext)")
         }
         
         return acceptedPlugins
