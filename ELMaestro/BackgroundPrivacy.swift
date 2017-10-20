@@ -33,7 +33,7 @@ public protocol BackgroundPrivacy {
 extension ApplicationSupervisor {
     /// Returns a white UIView the size of the screen to use a privacy view.
     public static func defaultPrivacyView() -> UIView {
-        let view = UIView(frame: UIScreen.main.applicationFrame)
+        let view = UIView(frame: UIScreen.main.bounds)
         view.backgroundColor = UIColor.white
         return view
     }
