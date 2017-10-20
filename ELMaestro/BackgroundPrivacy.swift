@@ -22,19 +22,16 @@ public enum BackgroundPrivacyOptions: Int {
 @objc
 public protocol BackgroundPrivacy {
     /**
-    This is typically not needed, however in the case of a VC that subclasses another
-    it could be beneficial to have a different behavior in the subclass.
+     This is typically not needed, however in the case of a VC that subclasses another
+     it could be beneficial to have a different behavior in the subclass.
     */
     @objc optional func shouldShowPrivacyView() -> Bool
 }
 
-
 // MARK: Privacy extensions for ApplicationSupervisor
 
 extension ApplicationSupervisor {
-    /**
-    Returns a white UIView the size of the screen to use a privacy view.
-    */
+    /// Returns a white UIView the size of the screen to use a privacy view.
     public static func defaultPrivacyView() -> UIView {
         let view = UIView(frame: UIScreen.main.applicationFrame)
         view.backgroundColor = UIColor.white
@@ -42,19 +39,19 @@ extension ApplicationSupervisor {
     }
     
     internal func showPrivacyView() {
-        // get the navigator's selected vc.
-        let activeVC = navigator?.selectedViewController
-        // if it's a nav controller, get that too.
-        let activeNav = activeVC as? UINavigationController
-        // if we have a nav controller, see if we can get it's visible VC.
-        let navVisibleVC: UIViewController? = activeNav?.visibleViewController
+        guard let selectedViewController = navigator?.selectedViewController else {
+            return
+        }
+        guard let navigationController = selectedViewController as? UINavigationController else {
+            return
+        }
         
         var workingVC: UIViewController
         
-        if navVisibleVC != nil {
-            workingVC = navVisibleVC!
+        if let visibleViewController = navigationController.visibleViewController {
+            workingVC = visibleViewController
         } else {
-            workingVC = activeVC!
+            workingVC = selectedViewController
         }
         
         switch backgroundPrivacyOptions {
@@ -74,7 +71,7 @@ extension ApplicationSupervisor {
                 }
                 
                 if shouldShow {
-                    _showPrivacyView()
+                    addPrivacyView()
                 }
             }
             break
@@ -83,7 +80,7 @@ extension ApplicationSupervisor {
             // we have a workingVC, does it conform to BackgroundPrivacy?
             // no.. then show it.
             if (workingVC is BackgroundPrivacy) == false {
-                _showPrivacyView()
+                addPrivacyView()
             } else if (workingVC is BackgroundPrivacy) == true {
                 // a superclass might conform to it, so see if it has implemented
                 // the optional protocol method.
@@ -91,23 +88,25 @@ extension ApplicationSupervisor {
                     break
                 }
                 if workingVC.shouldShowPrivacyView?() == true {
-                    _showPrivacyView()
+                    addPrivacyView()
                 }
             }
             break
         }
     }
     
-    fileprivate func _showPrivacyView() {
-        let window = UIApplication.shared.keyWindow
-        
+    fileprivate func addPrivacyView() {
+        guard let window = UIApplication.shared.keyWindow else {
+            return
+        }
+
         backgroundPrivacyView.translatesAutoresizingMaskIntoConstraints = false
-        window?.addSubview(backgroundPrivacyView)
+        window.addSubview(backgroundPrivacyView)
         
-        window?.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[view]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": backgroundPrivacyView]))
-        window?.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": backgroundPrivacyView]))
+        window.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[view]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": backgroundPrivacyView]))
+        window.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": backgroundPrivacyView]))
         
-        window?.bringSubview(toFront: backgroundPrivacyView)
+        window.bringSubview(toFront: backgroundPrivacyView)
     }
     
     internal func hidePrivacyView() {
