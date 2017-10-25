@@ -9,15 +9,6 @@
 import Foundation
 import UIKit
 
-/* 
-
-Plugin implementor provides a top level function in their bundle defined as:
-
-swift: public func pluginInit(appBundleID: String, supervisor: Supervisor) -> Plugin?
-objc : extern MyPluginClass * __nullable pluginForBundle(NSString * __nonnull appBundleID, Supervisor * __nonnull supervisor);
-
-*/
-
 public typealias DependencyID = String
 
 @objc
@@ -40,9 +31,7 @@ public extension Pluggable {
     }
     
     func pluginDescription() -> String {
-        var result = ""
-        
-        result += "\(identifier)\n"
+        var result = "\(identifier)\n"
         
         if let deps = dependencies {
             for i in 0..<deps.count {
@@ -53,5 +42,3 @@ public extension Pluggable {
         return result
     }    
 }
-
-

@@ -7,25 +7,21 @@
 //
 
 import Foundation
+import ELLog
 
-@objc open class Supervisor: UIResponder {
-    public private(set) var startedPlugins = [Pluggable]()
-    // unordered, keyed collection of started plugins for faster lookup
-    private var startedPluginsLookup = [String: Pluggable]()
-    
-    public var navigator: SupervisorNavigator?
-    
-    private var proposedPlugins = [Pluggable]()
-    private var loadedPlugins = [Pluggable]()
+@objc
+public class Supervisor: NSObject {
+    var startedPlugins = [Pluggable]()
     
     /// Get all of the started plugins that conform to PluggableFeature
     var startedFeaturePlugins: [PluggableFeature] {
         return startedPlugins.flatMap { $0 as? PluggableFeature }
     }
     
-    override init() {
-        super.init()
-    }
+    // unordered, keyed collection of started plugins for faster lookup
+    private var startedPluginsLookup = [String: Pluggable]()
+    private var proposedPlugins = [Pluggable]()
+    private var loadedPlugins = [Pluggable]()
     
     public func loadPlugin(_ pluginType: AnyObject.Type) {
         // I used AnyObject.Type here, because Pluggable.Type translates
@@ -33,11 +29,17 @@ import Foundation
         
         // WARNING: Don't step through this, or you'll crash Xcode.. cuz it sucks.
         if let pluginType = pluginType as? Pluggable.Type {
-            if let plugin = pluginType.init(containerBundleID: "com.walmartlabs.ELMaestro") {
+            if let plugin = pluginType.init(containerBundleID: "com.walmart.ELMaestro") {
                 proposedPlugins.append(plugin)
             }
         }
         // END WARNING.
+    }
+    
+    public func loadPlugins(_ pluginTypes: [Pluggable.Type]) {
+        for plugin in pluginTypes {
+            loadPlugin(plugin)
+        }
     }
     
     public func startup() {
@@ -79,7 +81,7 @@ import Foundation
     
     private func start(plugin: Pluggable) {
         if !pluginStarted(dependencyID: plugin.identifier) {
-            print("starting: \(plugin.identifier)")
+            log(.Debug, "starting: \(plugin.identifier)")
             
             // try find any dependencies that haven't been started yet.
             if let deps = plugin.dependencies {
@@ -99,7 +101,7 @@ import Foundation
                 return
             }
             startedPluginsLookup[plugin.identifier.lowercased()] = plugin
-            print("started: \(plugin.identifier)")
+            log(.Debug, "started: \(plugin.identifier)")
         }
     }
     
@@ -107,7 +109,7 @@ import Foundation
         var acceptedPlugins = [Pluggable]()
         
         for i in 0..<proposedPlugins.count {
-            print("checking proposal: \(proposedPlugins[i].identifier).")
+            log(.Debug, "checking proposal: \(proposedPlugins[i].identifier).")
             var hasDeps = true
             // look at the dependencies and make sure they're all there.
             if let deps = proposedPlugins[i].dependencies {
@@ -121,7 +123,7 @@ import Foundation
                         hasDeps = true
                         acceptedPlugins.append(proposedPlugins[i])
                     } else {
-                        print("ERROR: proposed plugin \(item) is missing dependency \(item).")
+                        log(.Error, "ERROR: proposed plugin \(item) is missing dependency \(item).")
                     }
                 }
             } else {
@@ -130,7 +132,7 @@ import Foundation
                 acceptedPlugins.append(proposedPlugins[i])
             }
             let subtext = hasDeps ? "(dependencies present)" : "(no dependencies required)"
-            print("validating proposal: \(proposedPlugins[i].identifier) \(subtext)")
+            log(.Debug, "validating proposal: \(proposedPlugins[i].identifier) \(subtext)")
         }
         
         return acceptedPlugins

@@ -8,75 +8,72 @@
 
 import UIKit
 import XCTest
-import ELMaestro
-
-// test plugins
-import testFramework
-import testObjcFramework
+@testable import ELMaestro
 
 class ELMaestroTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
-    func testBasicLoading() {
-        let testPluginID = "com.walmartlabs.testplugin"
-        let testObjcPluginID = "com.walmartlabs.testObjcFramework"
+    func test_pluginLoaded_returnsTrueWhenPluginLoaded() {
+        let supervisor = ApplicationSupervisor()
+        supervisor.loadPlugin(TestPlugin.self)
+        supervisor.startup()
 
+        XCTAssertTrue(supervisor.pluginLoaded(dependencyID: testPluginID))
+    }
+    
+    func test_pluginLoaded_returnsFalseWhenPluginIsNotLoaded() {
         let supervisor = ApplicationSupervisor()
         
-        supervisor.loadPlugin(testFramework.pluginClass())
-        supervisor.loadPlugin(testObjcFramework.pluginClass())
-        
+        XCTAssertFalse(supervisor.pluginLoaded(dependencyID: testPluginID))
+    }
+    
+    func test_pluginStarted_returnsTrueAfterStartup() {
+        let supervisor = ApplicationSupervisor()
+        supervisor.loadPlugin(TestPlugin.self)
         supervisor.startup()
         
+        XCTAssertTrue(supervisor.pluginStarted(dependencyID: testPluginID))
+    }
+    
+    func test_pluginStarted_returnsFalseBeforeStartup() {
+        let supervisor = ApplicationSupervisor()
+        supervisor.loadPlugin(TestPlugin.self)
+        
+        XCTAssertFalse(supervisor.pluginStarted(dependencyID: testPluginID))
+    }
+    
+    func test_pluginLoaded_returnsTrueWithDependencies() {
+        let testObjcPluginID = "com.walmartlabs.testObjcFramework"
+        let supervisor = ApplicationSupervisor()
+        supervisor.loadPlugin(TestObjcClass.self)
+        supervisor.loadPlugin(TestPlugin.self)
+        supervisor.startup()
+
         XCTAssertTrue(supervisor.pluginLoaded(dependencyID: testPluginID))
         XCTAssertTrue(supervisor.pluginLoaded(dependencyID: testObjcPluginID))
-
+    }
+    
+    func test_pluginStarted_returnsTrueWithDependencies() {
+        let testObjcPluginID = "com.walmartlabs.testObjcFramework"
+        let supervisor = ApplicationSupervisor()
+        supervisor.loadPlugin(TestObjcClass.self)
+        supervisor.loadPlugin(TestPlugin.self)
+        supervisor.startup()
+        
         XCTAssertTrue(supervisor.pluginStarted(dependencyID: testPluginID))
         XCTAssertTrue(supervisor.pluginStarted(dependencyID: testObjcPluginID))
     }
     
-    func testContinuity() {
-        let testPluginID = "com.walmartlabs.testplugin"
-        let testObjcPluginID = "com.walmartlabs.testObjcFramework"
-
+    func test_supervisor_handlesContinueUserActivity() {
         let supervisor = ApplicationSupervisor()
+        let applicationDelegate = ApplicationDelegateProxy()
+        applicationDelegate.supervisor = supervisor
         
-        supervisor.loadPlugin(testFramework.pluginClass())
-        supervisor.loadPlugin(testObjcFramework.pluginClass())
-
+        supervisor.loadPlugin(TestObjcClass.self)
+        supervisor.loadPlugin(TestPlugin.self)
         supervisor.startup()
         
-        XCTAssertTrue(supervisor.pluginLoaded(dependencyID: testPluginID))
-        XCTAssertTrue(supervisor.pluginLoaded(dependencyID: testObjcPluginID))
-        
-        XCTAssertTrue(supervisor.pluginStarted(dependencyID: testPluginID))
-
         let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
-
-        let application = UIApplication.shared
         let userActivity = NSUserActivity(activityType: NSUserActivityTypeBrowsingWeb)
-        let handled = supervisor.application(application, continue: userActivity, restorationHandler:{ arr in })
+        let handled = applicationDelegate.application(UIApplication.shared, continue: userActivity, restorationHandler:{ arr in })
         
         XCTAssertTrue(handled, "Expected a plugin to handle continuity")
         XCTAssertTrue(api.continuityType == NSUserActivityTypeBrowsingWeb, "Expected NSUserActivityTypeBrowsingWeb")
