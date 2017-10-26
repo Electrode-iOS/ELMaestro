@@ -1,3 +1,7 @@
+# [3.0.0](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v3.0.0)
+
+- Decouple `ApplicationSupervisor` from `UIApplicationDelegate`
+
 # [2.0.6](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v2.0.6)
 
 - Add efficient plugin lookup by id
