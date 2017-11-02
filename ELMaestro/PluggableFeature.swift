@@ -15,7 +15,7 @@ public protocol PluggableFeature: Pluggable {
      API factory method for a module's API it exports. You will likely want to
      typecast this, ie:
      
-     let wishListAPI = supervisor.pluginAPIForID(WishListID) as? WishListAPI
+     let pluginAPI = supervisor.pluginAPI(forIdentifier: "com.myorg.mymodule") as? MyPluginAPI
      */
     @objc optional func pluginAPI() -> AnyObject?
     
