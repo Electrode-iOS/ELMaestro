@@ -1,3 +1,7 @@
+# [4.0.0](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v4.0.0)
+
+- Migrate to Swift 4
+
 # [3.0.0](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v3.0.0)
 
 - Decouple `ApplicationSupervisor` from `UIApplicationDelegate`
