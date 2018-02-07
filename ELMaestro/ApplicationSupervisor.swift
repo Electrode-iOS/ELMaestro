@@ -10,7 +10,7 @@ import Foundation
 
 @objc
 public final class ApplicationSupervisor: Supervisor {
-    public static let sharedInstance = ApplicationSupervisor()
+    @objc public static let sharedInstance = ApplicationSupervisor()
     public var window: UIWindow?
     public var navigator: SupervisorNavigator?
     
