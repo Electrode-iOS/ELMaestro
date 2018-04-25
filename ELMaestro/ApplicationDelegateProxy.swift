@@ -12,6 +12,15 @@ import Foundation
 open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {
     public internal(set) var supervisor = ApplicationSupervisor.sharedInstance
     
+    public var window: UIWindow? {
+        get {
+            return supervisor.window
+        }
+        set {
+            supervisor.window = newValue
+        }
+    }
+    
     override public init() {
         super.init()
     }
