@@ -15,7 +15,7 @@ public class Supervisor: NSObject {
     
     /// Get all of the started plugins that conform to PluggableFeature
     var startedFeaturePlugins: [PluggableFeature] {
-        return startedPlugins.flatMap { $0 as? PluggableFeature }
+        return startedPlugins.compactMap { $0 as? PluggableFeature }
     }
     
     // unordered, keyed collection of started plugins for faster lookup
