@@ -1,3 +1,7 @@
+# [4.0.2](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v4.0.2)
+
+- Xcode 9.3 updates
+
 # [4.0.1](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v4.0.1)
 
 - Satisfy `window` property requirement of `UIApplicationDelegate`
