@@ -16,6 +16,15 @@
 		199CFEC21F98ECD1004D8FB3 /* ApplicationDelegateProxyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199CFEC11F98ECD1004D8FB3 /* ApplicationDelegateProxyTests.swift */; };
 		199CFEC61F9909DA004D8FB3 /* TestPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199CFEC51F9909DA004D8FB3 /* TestPlugin.swift */; };
 		199CFEC81F9909FB004D8FB3 /* TestPluginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199CFEC71F9909FB004D8FB3 /* TestPluginAPI.swift */; };
+		3E8CA3CF20E580CE00CBDA69 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AFCE6B1DB73BE300F2DD81 /* Navigator.swift */; };
+		3E8CA3D020E580CE00CBDA69 /* ApplicationSupervisor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FF6D231CEE699F00F843B6 /* ApplicationSupervisor.swift */; };
+		3E8CA3D120E580CE00CBDA69 /* ApplicationDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1907DC001F91334A003996C0 /* ApplicationDelegateProxy.swift */; };
+		3E8CA3D220E580CE00CBDA69 /* BackgroundPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EAD781D00E4BD00C40E8B /* BackgroundPrivacy.swift */; };
+		3E8CA3D320E580CE00CBDA69 /* Pluggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA20799A1BB32406005353D9 /* Pluggable.swift */; };
+		3E8CA3D420E580CE00CBDA69 /* Supervisor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2079981BB323F7005353D9 /* Supervisor.swift */; };
+		3E8CA3D520E580CE00CBDA69 /* PluggableFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FF6D281CEE69C300F843B6 /* PluggableFeature.swift */; };
+		3E8CA3D620E580CE00CBDA69 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB863341CA1C2380051F45A /* Module.swift */; };
+		3E8CA3DA20E580CE00CBDA69 /* ELMaestro.h in Headers */ = {isa = PBXBuildFile; fileRef = CA2079781BB323B0005353D9 /* ELMaestro.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA2079791BB323B0005353D9 /* ELMaestro.h in Headers */ = {isa = PBXBuildFile; fileRef = CA2079781BB323B0005353D9 /* ELMaestro.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA20797F1BB323B0005353D9 /* ELMaestro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2079731BB323B0005353D9 /* ELMaestro.framework */; };
 		CA2079861BB323B0005353D9 /* ELMaestroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2079851BB323B0005353D9 /* ELMaestroTests.swift */; };
@@ -54,6 +63,20 @@
 			remoteGlobalIDString = CA8D47BA1AAE6FF50028B74D;
 			remoteInfo = ELLog;
 		};
+		3E8CA3E520E580CE00CBDA69 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17743C5F1DB738D10011F500 /* ELLog.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3EBC4B8E20E55C2D00013E61;
+			remoteInfo = ELLog_static;
+		};
+		3E8CA44C20E5823A00CBDA69 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17743C5F1DB738D10011F500 /* ELLog.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 3EBC4B7C20E55C2D00013E61;
+			remoteInfo = ELLog_static;
+		};
 		CA2079801BB323B0005353D9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CA20796A1BB323B0005353D9 /* Project object */;
@@ -75,6 +98,7 @@
 		199CFEC11F98ECD1004D8FB3 /* ApplicationDelegateProxyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationDelegateProxyTests.swift; sourceTree = "<group>"; };
 		199CFEC51F9909DA004D8FB3 /* TestPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPlugin.swift; sourceTree = "<group>"; };
 		199CFEC71F9909FB004D8FB3 /* TestPluginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPluginAPI.swift; sourceTree = "<group>"; };
+		3E8CA3E020E580CE00CBDA69 /* ELMaestro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ELMaestro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA2079731BB323B0005353D9 /* ELMaestro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ELMaestro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA2079771BB323B0005353D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA2079781BB323B0005353D9 /* ELMaestro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ELMaestro.h; sourceTree = "<group>"; };
@@ -88,6 +112,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3E8CA3D720E580CE00CBDA69 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA20796F1BB323B0005353D9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -119,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				17743C661DB738D10011F500 /* ELLog.framework */,
+				3E8CA3E620E580CE00CBDA69 /* ELLog.framework */,
 				17743C681DB738D10011F500 /* ELLogTests.xctest */,
 				17743C6A1DB738D10011F500 /* ELLog.framework */,
 			);
@@ -140,6 +172,7 @@
 			children = (
 				CA2079731BB323B0005353D9 /* ELMaestro.framework */,
 				CA20797E1BB323B0005353D9 /* ELMaestroTests.xctest */,
+				3E8CA3E020E580CE00CBDA69 /* ELMaestro.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -195,6 +228,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		3E8CA3D920E580CE00CBDA69 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E8CA3DA20E580CE00CBDA69 /* ELMaestro.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA2079701BB323B0005353D9 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -206,6 +247,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		3E8CA3CB20E580CE00CBDA69 /* ELMaestro_static */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E8CA3DC20E580CE00CBDA69 /* Build configuration list for PBXNativeTarget "ELMaestro_static" */;
+			buildPhases = (
+				3E8CA3CE20E580CE00CBDA69 /* Sources */,
+				3E8CA3D720E580CE00CBDA69 /* Frameworks */,
+				3E8CA3D920E580CE00CBDA69 /* Headers */,
+				3E8CA3DB20E580CE00CBDA69 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3E8CA44D20E5823A00CBDA69 /* PBXTargetDependency */,
+			);
+			name = ELMaestro_static;
+			productName = ELMaestro;
+			productReference = 3E8CA3E020E580CE00CBDA69 /* ELMaestro.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		CA2079721BB323B0005353D9 /* ELMaestro */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA2079891BB323B0005353D9 /* Build configuration list for PBXNativeTarget "ELMaestro" */;
@@ -282,6 +342,7 @@
 			projectRoot = "";
 			targets = (
 				CA2079721BB323B0005353D9 /* ELMaestro */,
+				3E8CA3CB20E580CE00CBDA69 /* ELMaestro_static */,
 				CA20797D1BB323B0005353D9 /* ELMaestroTests */,
 			);
 		};
@@ -309,9 +370,23 @@
 			remoteRef = 17743C691DB738D10011F500 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		3E8CA3E620E580CE00CBDA69 /* ELLog.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ELLog.framework;
+			remoteRef = 3E8CA3E520E580CE00CBDA69 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3E8CA3DB20E580CE00CBDA69 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA2079711BB323B0005353D9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -329,6 +404,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3E8CA3CE20E580CE00CBDA69 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E8CA3CF20E580CE00CBDA69 /* Navigator.swift in Sources */,
+				3E8CA3D020E580CE00CBDA69 /* ApplicationSupervisor.swift in Sources */,
+				3E8CA3D120E580CE00CBDA69 /* ApplicationDelegateProxy.swift in Sources */,
+				3E8CA3D220E580CE00CBDA69 /* BackgroundPrivacy.swift in Sources */,
+				3E8CA3D320E580CE00CBDA69 /* Pluggable.swift in Sources */,
+				3E8CA3D420E580CE00CBDA69 /* Supervisor.swift in Sources */,
+				3E8CA3D520E580CE00CBDA69 /* PluggableFeature.swift in Sources */,
+				3E8CA3D620E580CE00CBDA69 /* Module.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA20796E1BB323B0005353D9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -363,6 +453,11 @@
 			isa = PBXTargetDependency;
 			name = ELLog;
 			targetProxy = 17743C6E1DB738E80011F500 /* PBXContainerItemProxy */;
+		};
+		3E8CA44D20E5823A00CBDA69 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ELLog_static;
+			targetProxy = 3E8CA44C20E5823A00CBDA69 /* PBXContainerItemProxy */;
 		};
 		CA2079811BB323B0005353D9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -468,6 +563,71 @@
 				SWIFT_VERSION = 4.0;
 			};
 			name = QADeployment;
+		};
+		3E8CA3DD20E580CE00CBDA69 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ELMaestro/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.walmartlabs.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = ELMaestro;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		3E8CA3DE20E580CE00CBDA69 /* QADeployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ELMaestro/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.walmartlabs.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = ELMaestro;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
+			};
+			name = QADeployment;
+		};
+		3E8CA3DF20E580CE00CBDA69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ELMaestro/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.walmartlabs.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = ELMaestro;
+				SKIP_INSTALL = YES;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
 		};
 		CA2079871BB323B0005353D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -657,6 +817,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3E8CA3DC20E580CE00CBDA69 /* Build configuration list for PBXNativeTarget "ELMaestro_static" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E8CA3DD20E580CE00CBDA69 /* Debug */,
+				3E8CA3DE20E580CE00CBDA69 /* QADeployment */,
+				3E8CA3DF20E580CE00CBDA69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CA20796D1BB323B0005353D9 /* Build configuration list for PBXProject "ELMaestro" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
