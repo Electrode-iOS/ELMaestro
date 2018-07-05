@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 @objc
 public final class ApplicationSupervisor: Supervisor {

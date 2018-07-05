@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 @objc
 open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {

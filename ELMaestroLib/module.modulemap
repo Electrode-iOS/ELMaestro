@@ -1,0 +1,10 @@
+module ELMaestro {
+    umbrella header "ELMaestro.h"
+    
+    export *
+}
+
+module ELMaestro.Swift {
+    header "ELMaestro-Swift.h"
+    requires objc
+}
