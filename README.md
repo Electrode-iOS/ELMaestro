@@ -18,7 +18,11 @@ github "Electrode-iOS/ELMaestro"
 
 ### Manual
 
-Install by adding ELMaestro.xcodeproj to your project and configuring your target to link ELMaestro.framework.
+Install by adding ELMaestro.xcodeproj to your project and configuring your target to link ELMaestro.framework from `ELMaestro` target.
+
+There are two target that builds `ELMaestro.framework`.
+1. `ELMaestro`: Creates dynamically linked `ELMaestro.framework.`
+2. `ELMaestro_static`: Creates statically linked `ELMaestro.framework`.
 
 ## Usage
 
