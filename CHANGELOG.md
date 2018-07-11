@@ -1,3 +1,7 @@
+# [4.1.0](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v4.1.0)
+
+- Add a target that builds a static framework for iOS platform.
+
 # [4.0.2](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v4.0.2)
 
 - Xcode 9.3 updates
