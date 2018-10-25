@@ -44,13 +44,11 @@ A Plugin is composed of three different protocols:
 
 #### Module
 
-The `Module` protocol defines a logger instance and plugin type for a plugin.
+The `Module` protocol defines a plugin type for a plugin.
 
 ```
-import ELLog
 
 public protocol Module {
-    static var logging: Logger { get }
     static func pluginClass() -> Pluggable.Type
 }
 ```
@@ -59,9 +57,7 @@ Example implementation:
 
 ```
 @objc
-open class MyPlugin: NSObject, Module {
-    open static let logging = Logger()
-    
+open class MyPlugin: NSObject, Module {    
     open static func pluginClass() -> Pluggable.Type {
         return MyPlugin.self
     }

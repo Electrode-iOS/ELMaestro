@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import ELLog
 
 @objc
 public class Supervisor: NSObject {
@@ -81,8 +80,6 @@ public class Supervisor: NSObject {
     
     private func start(plugin: Pluggable) {
         if !pluginStarted(dependencyID: plugin.identifier) {
-            log(.Debug, "starting: \(plugin.identifier)")
-            
             // try find any dependencies that haven't been started yet.
             if let deps = plugin.dependencies {
                 for i in 0..<deps.count {
@@ -101,7 +98,6 @@ public class Supervisor: NSObject {
                 return
             }
             startedPluginsLookup[plugin.identifier.lowercased()] = plugin
-            log(.Debug, "started: \(plugin.identifier)")
         }
     }
     
@@ -109,7 +105,6 @@ public class Supervisor: NSObject {
         var acceptedPlugins = [Pluggable]()
         
         for i in 0..<proposedPlugins.count {
-            log(.Debug, "checking proposal: \(proposedPlugins[i].identifier).")
             var hasDeps = true
             // look at the dependencies and make sure they're all there.
             if let deps = proposedPlugins[i].dependencies {
@@ -123,7 +118,7 @@ public class Supervisor: NSObject {
                         hasDeps = true
                         acceptedPlugins.append(proposedPlugins[i])
                     } else {
-                        log(.Error, "ERROR: proposed plugin \(item) is missing dependency \(item).")
+                        assertionFailure("ERROR: proposed plugin \(item) is missing dependency \(item).")
                     }
                 }
             } else {
@@ -132,7 +127,6 @@ public class Supervisor: NSObject {
                 acceptedPlugins.append(proposedPlugins[i])
             }
             let subtext = hasDeps ? "(dependencies present)" : "(no dependencies required)"
-            log(.Debug, "validating proposal: \(proposedPlugins[i].identifier) \(subtext)")
         }
         
         return acceptedPlugins
