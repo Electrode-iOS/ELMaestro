@@ -15,7 +15,7 @@ public final class ApplicationSupervisor: Supervisor {
     public var navigator: SupervisorNavigator?
     
     /// This property can be set to show a privacy view on top of the visible view controller.
-    public var backgroundPrivacyView: UIView = ApplicationSupervisor.defaultPrivacyView()
+    open var backgroundPrivacyView: UIView = ApplicationSupervisor.defaultPrivacyView()
     /// The default value is Opt-In.
-    public var backgroundPrivacyOptions = BackgroundPrivacyOptions.optIn
+    open var backgroundPrivacyOptions = BackgroundPrivacyOptions.optIn
 }
