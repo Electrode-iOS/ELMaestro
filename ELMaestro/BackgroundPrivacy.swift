@@ -103,10 +103,10 @@ extension ApplicationSupervisor {
         backgroundPrivacyView.translatesAutoresizingMaskIntoConstraints = false
         window.addSubview(backgroundPrivacyView)
         
-        window.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[view]|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": backgroundPrivacyView]))
-        window.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": backgroundPrivacyView]))
+        window.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[view]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": backgroundPrivacyView]))
+        window.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": backgroundPrivacyView]))
         
-        window.bringSubviewToFront(backgroundPrivacyView)
+        window.bringSubview(toFront: backgroundPrivacyView)
     }
     
     internal func hidePrivacyView() {
