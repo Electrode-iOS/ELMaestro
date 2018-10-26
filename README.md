@@ -6,7 +6,7 @@ ELMaestro is a Swift framework that provides plugin system for iOS applications.
 
 ## Installation
 
-ELMaestro requires Swift 4.2 and Xcode 10.
+ELMaestro requires Swift 4 and Xcode 9.2.
 
 ### Carthage
 
