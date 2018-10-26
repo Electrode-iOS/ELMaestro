@@ -54,8 +54,8 @@ public protocol PluggableFeature: Pluggable {
     
     // Continuity
     
-    @objc optional func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool
-    
+    @objc optional func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool
+
     /**
      Application events for background event handling
      */

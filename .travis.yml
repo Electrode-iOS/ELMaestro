@@ -1,9 +1,6 @@
 language: objective-c
-osx_image: xcode9.3
-
-install: 
-  - carthage update --no-build
+osx_image: xcode10
 
 script:
-   - xcodebuild -scheme ELMaestro -sdk iphonesimulator clean test -destination 'OS=10.0,name=iPhone 6s Plus' CODE_SIGNING_REQUIRED=NO
-   - xcodebuild -scheme ELMaestro_static -sdk iphonesimulator clean build -destination 'OS=10.0,name=iPhone 6s Plus' CODE_SIGNING_REQUIRED=NO
+   - xcodebuild -scheme ELMaestro -sdk iphonesimulator clean test -destination 'OS=12.0,name=iPhone XR' CODE_SIGNING_REQUIRED=NO
+   - xcodebuild -scheme ELMaestro_static -sdk iphonesimulator clean build -destination 'OS=12.0,name=iPhone XR' CODE_SIGNING_REQUIRED=NO

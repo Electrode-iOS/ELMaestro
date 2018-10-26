@@ -7,13 +7,11 @@
 //
 
 import Foundation
-import ELLog
 
 /**
  Module definition protocol.  This provides standardized logging and plugin retrieval.
  */
 public protocol Module {
-    static var logging: Logger { get }
     static func pluginClass() -> Pluggable.Type
 }
 
