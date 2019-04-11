@@ -246,6 +246,9 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = WalmartLabs;
 				TargetAttributes = {
+					3E8CA3CB20E580CE00CBDA69 = {
+						LastSwiftMigration = 1020;
+					};
 					CA2079721BB323B0005353D9 = {
 						CreatedOnToolsVersion = 6.4;
 						LastSwiftMigration = 1020;
@@ -464,7 +467,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.walmartlabs.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = ELMaestro;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -482,7 +485,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.walmartlabs.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = ELMaestro;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = QADeployment;
 		};
@@ -500,7 +503,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.walmartlabs.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = ELMaestro;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
