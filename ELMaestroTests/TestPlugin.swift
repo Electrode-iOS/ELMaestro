@@ -26,13 +26,13 @@ final class TestPlugin: NSObject, PluggableFeature {
     }
     
     // Provides the default route to this plugin or feature.
-    open func startup(_ supervisor: Supervisor) {
+    public func startup(_ supervisor: Supervisor) {
         
     }
     
     // MARK: API
     
-    open func pluginAPI() -> AnyObject? {
+    public func pluginAPI() -> AnyObject? {
         return api
     }
     

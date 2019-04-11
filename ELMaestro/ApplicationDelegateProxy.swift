@@ -25,7 +25,7 @@ open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {
         super.init()
     }
     
-    open func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    open func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         var result = true
         
         if supervisor.startedPlugins.count == 0 {
@@ -158,9 +158,9 @@ open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {
     // MARK: Handoff
     // continueUserActivity will be used for features such as universal linking
     // https://developer.apple.com/library/prerelease/content/documentation/General/Conceptual/AppSearch/UniversalLinks.html#//apple_ref/doc/uid/TP40016308-CH12-SW2
-    open func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+    open func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         for feature in supervisor.startedFeaturePlugins {
-            if let featureHandled = feature.application?(application, continue: userActivity, restorationHandler: restorationHandler) {
+            if let featureHandled = feature.application?(application, continue: userActivity, restorationHandler: restorationHandler as! ([Any]?) -> Void) {
                 if featureHandled {
                     return true
                 }
