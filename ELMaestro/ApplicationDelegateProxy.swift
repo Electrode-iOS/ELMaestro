@@ -160,7 +160,7 @@ open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {
     // https://developer.apple.com/library/prerelease/content/documentation/General/Conceptual/AppSearch/UniversalLinks.html#//apple_ref/doc/uid/TP40016308-CH12-SW2
     open func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         for feature in supervisor.startedFeaturePlugins {
-            if let featureHandled = feature.application?(application, continue: userActivity, restorationHandler: restorationHandler as! ([Any]?) -> Void) {
+            if let featureHandled = feature.application?(application, continue: userActivity, restorationHandler: restorationHandler) {
                 if featureHandled {
                     return true
                 }

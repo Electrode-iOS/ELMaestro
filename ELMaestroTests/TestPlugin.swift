@@ -38,12 +38,12 @@ final class TestPlugin: NSObject, PluggableFeature {
     
     // MARK: Application  lifecycle events
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [AnyHashable : Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         api.applicationDidFinishLaunchingWithOptionsCalled?.fulfill()
         return true
     }
     
-    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Swift.Void) -> Bool {
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Swift.Void) -> Bool {
         api.continuityType = userActivity.activityType
         return true
     }

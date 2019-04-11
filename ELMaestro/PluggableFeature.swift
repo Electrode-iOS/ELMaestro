@@ -22,7 +22,7 @@ public protocol PluggableFeature: Pluggable {
     /**
      After all plugins have been started, the system will dispatch this to your plugin.
      */
-    @objc optional func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [AnyHashable: Any]?) -> Bool
+    @objc optional func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
     
     /**
      Application lifecycle events
@@ -54,7 +54,7 @@ public protocol PluggableFeature: Pluggable {
     
     // Continuity
     
-    @objc optional func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool
+    @objc optional func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool
     
     /**
      Application events for background event handling
