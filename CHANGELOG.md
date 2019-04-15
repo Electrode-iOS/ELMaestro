@@ -1,3 +1,7 @@
+# [6.0.0](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v6.0.0)
+
+- Migrate to Swift 5 and Xcode 10.2
+
 # [5.0.0](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v5.0.0)
 
 - Remove ELLog dependency
