@@ -26,24 +26,24 @@ final class TestPlugin: NSObject, PluggableFeature {
     }
     
     // Provides the default route to this plugin or feature.
-    open func startup(_ supervisor: Supervisor) {
+    public func startup(_ supervisor: Supervisor) {
         
     }
     
     // MARK: API
     
-    open func pluginAPI() -> AnyObject? {
+    public func pluginAPI() -> AnyObject? {
         return api
     }
     
     // MARK: Application  lifecycle events
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [AnyHashable : Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         api.applicationDidFinishLaunchingWithOptionsCalled?.fulfill()
         return true
     }
     
-    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Swift.Void) -> Bool {
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Swift.Void) -> Bool {
         api.continuityType = userActivity.activityType
         return true
     }

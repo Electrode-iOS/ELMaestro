@@ -105,7 +105,6 @@ public class Supervisor: NSObject {
         var acceptedPlugins = [Pluggable]()
         
         for i in 0..<proposedPlugins.count {
-            var hasDeps = true
             // look at the dependencies and make sure they're all there.
             if let deps = proposedPlugins[i].dependencies {
                 for item in deps {
@@ -115,7 +114,6 @@ public class Supervisor: NSObject {
                     
                     // the dependency is present, validate it.
                     if present {
-                        hasDeps = true
                         acceptedPlugins.append(proposedPlugins[i])
                     } else {
                         assertionFailure("ERROR: proposed plugin \(item) is missing dependency \(item).")
@@ -123,10 +121,8 @@ public class Supervisor: NSObject {
                 }
             } else {
                 // it doesn't have any dependencies, so it's validated.
-                hasDeps = false
                 acceptedPlugins.append(proposedPlugins[i])
             }
-            let subtext = hasDeps ? "(dependencies present)" : "(no dependencies required)"
         }
         
         return acceptedPlugins
