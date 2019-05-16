@@ -105,28 +105,6 @@ class ApplicationDelegateProxyTests: XCTestCase {
         waitForExpectations(timeout: 2.0, handler: nil)
     }
     
-    func test_didRegisterNotificationSettings_shouldCallPlugin() {
-        let proxy = proxyForTesting()
-        let supervisor = supervisorForTesting(proxy: proxy)
-        let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
-        api.didRegisterUserNotificationSettingsCalled = expectation(description: "Should call `didRegisterUserNotificationSettings`")
-        
-        proxy.application(UIApplication.shared, didRegister: UIUserNotificationSettings())
-        
-        waitForExpectations(timeout: 2.0, handler: nil)
-    }
-    
-    func test_didReceiveLocalNotification_shouldCallPlugin() {
-        let proxy = proxyForTesting()
-        let supervisor = supervisorForTesting(proxy: proxy)
-        let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
-        api.didReceiveLocalNotificationCalled = expectation(description: "Should call `didReceiveLocalNotification`")
-        
-        proxy.application(UIApplication.shared, didReceive: UILocalNotification())
-        
-        waitForExpectations(timeout: 2.0, handler: nil)
-    }
-    
     func test_didReceiveRemoteNotification_shouldCallPlugin() {
         let proxy = proxyForTesting()
         let supervisor = supervisorForTesting(proxy: proxy)
@@ -134,19 +112,6 @@ class ApplicationDelegateProxyTests: XCTestCase {
         api.didReceiveRemoteNotificationCalled = expectation(description: "Should call `didReceiveRemoteNotification`")
         
         proxy.application(UIApplication.shared, didReceiveRemoteNotification: [AnyHashable: Any]()) { result in
-            
-        }
-        
-        waitForExpectations(timeout: 2.0, handler: nil)
-    }
-    
-    func test_handleActionWithIdentifierForLocalNotification_shouldCallPlugin() {
-        let proxy = proxyForTesting()
-        let supervisor = supervisorForTesting(proxy: proxy)
-        let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
-        api.handleActionWithIdentifierForLocalNotificationCalled = expectation(description: "Should call `handleActionWithIdentifierForLocalNotification`")
-        
-        proxy.application(UIApplication.shared, handleActionWithIdentifier: nil, for: UILocalNotification()) { 
             
         }
         
@@ -199,23 +164,6 @@ class ApplicationDelegateProxyTests: XCTestCase {
         api.handleActionWithIdentifierWithResponseInfoCalled = expectation(description: "Should call `handleActionWithIdentifierWithResponseInfo`")
         
         proxy.application(UIApplication.shared, handleActionWithIdentifier: nil, forRemoteNotification: [AnyHashable: Any](), withResponseInfo: [AnyHashable: Any]()) {
-            
-        }
-        
-        waitForExpectations(timeout: 2.0, handler: nil)
-    }
-    
-    func test_handleActionWithIdentifierForLocalNotificationWithResponseInfo_shouldCallPlugin() {
-        guard #available(iOS 9.0, *) else {
-            return
-        }
-        
-        let proxy = proxyForTesting()
-        let supervisor = supervisorForTesting(proxy: proxy)
-        let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
-        api.handleActionWithIdentifierForLocalNotificationWithResponseInfoCalled = expectation(description: "Should call `handleActionWithIdentifierForLocalNotificationWithResponseInfo`")
-        
-        proxy.application(UIApplication.shared, handleActionWithIdentifier: nil, for: UILocalNotification(), withResponseInfo: [AnyHashable: Any]()) { 
             
         }
         

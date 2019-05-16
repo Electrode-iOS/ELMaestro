@@ -5,9 +5,9 @@
 //  Created by Angelo Di Paolo on 5/19/16.
 //  Copyright © 2016 WalmartLabs. All rights reserved.
 //
-
 import Foundation
 import UIKit
+import UserNotifications
 
 @objc
 public protocol PluggableFeature: Pluggable {
@@ -36,18 +36,13 @@ public protocol PluggableFeature: Pluggable {
     @objc optional func applicationDidBecomeActive()
     
     /**
-     Local and Remote Notification events
+     Remote Notification events
      */
-    @objc optional func application(_ application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings)
-    @objc optional func application(_ application: UIApplication, didReceiveLocalNotification notification: UILocalNotification)
-    @objc optional func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: @escaping () -> Void)
+
     @objc optional func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data)
     @objc optional func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError)
     @objc optional func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void)
     @objc optional func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void)
-    
-    @objc @available(iOS 9.0, *)
-    optional func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, withResponseInfo responseInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void)
     
     @objc @available(iOS 9.0, *)
     optional func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable : Any], withResponseInfo responseInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void)

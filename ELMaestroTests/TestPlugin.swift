@@ -72,18 +72,6 @@ final class TestPlugin: NSObject, PluggableFeature {
         api.applicationDidReceiveMemoryWarningCalled?.fulfill()
     }
     
-    func application(_ application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
-        api.didRegisterUserNotificationSettingsCalled?.fulfill()
-    }
-    
-    func application(_ application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        api.didReceiveLocalNotificationCalled?.fulfill()
-    }
-    
-    func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, withResponseInfo responseInfo: [AnyHashable : Any], completionHandler: @escaping () -> Void) {
-        api.handleActionWithIdentifierForLocalNotificationWithResponseInfoCalled?.fulfill()
-    }
-    
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         api.didRegisterForRemoteNotificationsWithDeviceTokenCalled?.fulfill()
     }
@@ -98,10 +86,6 @@ final class TestPlugin: NSObject, PluggableFeature {
     
     func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable : Any], withResponseInfo responseInfo: [AnyHashable : Any], completionHandler: @escaping () -> Void) {
         api.handleActionWithIdentifierWithResponseInfoCalled?.fulfill()
-    }
-    
-    func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: @escaping () -> Void) {
-        api.handleActionWithIdentifierForLocalNotificationCalled?.fulfill()
     }
     
     func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable : Any], completionHandler: @escaping () -> Void) {
