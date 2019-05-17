@@ -154,10 +154,7 @@ class ApplicationDelegateProxyTests: XCTestCase {
     }
     
     func test_handleActionWithIdentifierForRemoteNotificationWithResponseInfo_shouldCallPlugin() {
-        guard #available(iOS 9.0, *) else {
-            return
-        }
-        
+
         let proxy = proxyForTesting()
         let supervisor = supervisorForTesting(proxy: proxy)
         let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
@@ -171,9 +168,6 @@ class ApplicationDelegateProxyTests: XCTestCase {
     }
     
     func test_performActionForShorcutItem_shouldCallPlugin() {
-        guard #available(iOS 9.0, *) else {
-            return
-        }
         
         let proxy = proxyForTesting()
         let supervisor = supervisorForTesting(proxy: proxy)

@@ -112,17 +112,13 @@ open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {
             feature.application?(application, handleActionWithIdentifier: identifier, forRemoteNotification: userInfo, completionHandler: completionHandler)
         }
     }
-    
 
-    
-    @available(iOS 9.0, *)
     open func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable: Any], withResponseInfo responseInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
         for feature in supervisor.startedFeaturePlugins {
             feature.application?(application, handleActionWithIdentifier: identifier, forRemoteNotification: userInfo, withResponseInfo: responseInfo, completionHandler: completionHandler)
         }
     }
-    
-    @available(iOS 9.0, *)
+
     open func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         for feature in supervisor.startedFeaturePlugins {
             let handled = feature.applicationPerformActionForShortcutItem?(shortcutItem, completionHandler: completionHandler)
