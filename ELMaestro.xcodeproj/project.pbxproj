@@ -24,7 +24,6 @@
 		3E8CA3D520E580CE00CBDA69 /* PluggableFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FF6D281CEE69C300F843B6 /* PluggableFeature.swift */; };
 		3E8CA3D620E580CE00CBDA69 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB863341CA1C2380051F45A /* Module.swift */; };
 		3E8CA3DA20E580CE00CBDA69 /* ELMaestro.h in Headers */ = {isa = PBXBuildFile; fileRef = CA2079781BB323B0005353D9 /* ELMaestro.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		88AA341C2286060E009CF97A /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88AA341B2286060E009CF97A /* UserNotifications.framework */; };
 		CA2079791BB323B0005353D9 /* ELMaestro.h in Headers */ = {isa = PBXBuildFile; fileRef = CA2079781BB323B0005353D9 /* ELMaestro.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA20797F1BB323B0005353D9 /* ELMaestro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2079731BB323B0005353D9 /* ELMaestro.framework */; };
 		CA2079861BB323B0005353D9 /* ELMaestroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2079851BB323B0005353D9 /* ELMaestroTests.swift */; };
@@ -56,7 +55,6 @@
 		199CFEC51F9909DA004D8FB3 /* TestPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPlugin.swift; sourceTree = "<group>"; };
 		199CFEC71F9909FB004D8FB3 /* TestPluginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPluginAPI.swift; sourceTree = "<group>"; };
 		3E8CA3E020E580CE00CBDA69 /* ELMaestro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ELMaestro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		88AA341B2286060E009CF97A /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		CA2079731BB323B0005353D9 /* ELMaestro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ELMaestro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA2079771BB323B0005353D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA2079781BB323B0005353D9 /* ELMaestro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ELMaestro.h; sourceTree = "<group>"; };
@@ -81,7 +79,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88AA341C2286060E009CF97A /* UserNotifications.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +96,6 @@
 		88AA341A2286060E009CF97A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				88AA341B2286060E009CF97A /* UserNotifications.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

@@ -7,7 +7,6 @@
 //
 import Foundation
 import UIKit
-import UserNotifications
 
 @objc
 public protocol PluggableFeature: Pluggable {
@@ -44,8 +43,7 @@ public protocol PluggableFeature: Pluggable {
     @objc optional func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void)
     @objc optional func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void)
     
-    @objc @available(iOS 9.0, *)
-    optional func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable : Any], withResponseInfo responseInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void)
+    @objc optional func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable : Any], withResponseInfo responseInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void)
     
     // Continuity
     
@@ -60,8 +58,7 @@ public protocol PluggableFeature: Pluggable {
      Application events for watchkit handling -- is this needed?
      */
     @objc optional func applicationHandleWatchKitExtensionRequest(_ userInfo: [AnyHashable: Any]?, reply: (([AnyHashable: Any]?) -> Void)!)
-    
-    @objc @available(iOS 9.0, *)
+
     /**
      Application events for handling force touch springboard shortcuts
      
@@ -70,5 +67,5 @@ public protocol PluggableFeature: Pluggable {
      
      - returns: Whether the action was performed by the plugin
      */
-    optional func applicationPerformActionForShortcutItem(_ shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) -> Bool
+    @objc optional func applicationPerformActionForShortcutItem(_ shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) -> Bool
 }

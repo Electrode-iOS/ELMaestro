@@ -92,7 +92,6 @@ final class TestPlugin: NSObject, PluggableFeature {
         api.handleActionWithIdentifierForRemoteNotificationCalled?.fulfill()
     }
     
-    @available(iOS 9.0, *)
     func applicationPerformActionForShortcutItem(_ shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) -> Bool {
         api.performActionForShortcutItemCalled?.fulfill()
         return true
