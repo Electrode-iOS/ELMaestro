@@ -37,6 +37,12 @@ final class TestPlugin: NSObject, PluggableFeature {
     }
     
     // MARK: Application  lifecycle events
+
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
+        api.applicationWillFinishLaunchingWithOptionsCalled?.fulfill()
+        return true
+    }
+
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         api.applicationDidFinishLaunchingWithOptionsCalled?.fulfill()
@@ -111,6 +117,11 @@ final class TestPlugin: NSObject, PluggableFeature {
     @available(iOS 9.0, *)
     func applicationPerformActionForShortcutItem(_ shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) -> Bool {
         api.performActionForShortcutItemCalled?.fulfill()
+        return true
+    }
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+        api.applicationOpenOptionsCalled?.fulfill()
         return true
     }
 }

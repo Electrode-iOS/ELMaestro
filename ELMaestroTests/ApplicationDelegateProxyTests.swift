@@ -27,6 +27,17 @@ class ApplicationDelegateProxyTests: XCTestCase {
     }
     
     // MARK: - Tests
+
+    func test_applicationWillFinishLaunchingWithOptions_shouldCallPlugins() {
+        let proxy = proxyForTesting()
+        let supervisor = supervisorForTesting(proxy: proxy)
+        let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
+        api.applicationWillFinishLaunchingWithOptionsCalled = expectation(description: "Should call `applicationwillFinishLaunchingWithOptions`")
+
+        let _ =  proxy.application(UIApplication.shared, willFinishLaunchingWithOptions: nil)
+
+        waitForExpectations(timeout: 2.0, handler: nil)
+    }
     
     func test_applicationDidFinishLaunchingWithOptions_shouldCallPlugins() {
         let proxy = proxyForTesting()
@@ -236,6 +247,18 @@ class ApplicationDelegateProxyTests: XCTestCase {
             
         }
         
+        waitForExpectations(timeout: 2.0, handler: nil)
+    }
+
+    func test_applicationOpenOptions_shouldCallPlugin() {
+        let proxy = proxyForTesting()
+        let supervisor = supervisorForTesting(proxy: proxy)
+        let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
+        api.applicationOpenOptionsCalled = expectation(description: "Should call `application:open:options:`")
+        let url = URL(string: "https://www.walmart.com/")!
+
+        let _ = proxy.application(UIApplication.shared, open: url, options: [UIApplicationOpenURLOptionsKey : Any]())
+
         waitForExpectations(timeout: 2.0, handler: nil)
     }
 }
