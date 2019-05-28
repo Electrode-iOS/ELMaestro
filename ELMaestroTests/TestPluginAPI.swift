@@ -30,4 +30,6 @@ final class TestPluginAPI : NSObject {
     var handleActionWithIdentifierWithResponseInfoCalled: XCTestExpectation?
     var performActionForShortcutItemCalled: XCTestExpectation?
     var didReceiveLocalNotificationCalled: XCTestExpectation?
+    var applicationOpenOptionsCalled: XCTestExpectation?
+
 }

@@ -119,4 +119,9 @@ final class TestPlugin: NSObject, PluggableFeature {
         api.performActionForShortcutItemCalled?.fulfill()
         return true
     }
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+        api.applicationOpenOptionsCalled?.fulfill()
+        return true
+    }
 }

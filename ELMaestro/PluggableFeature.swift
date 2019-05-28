@@ -75,4 +75,6 @@ public protocol PluggableFeature: Pluggable {
      - returns: Whether the action was performed by the plugin
      */
     optional func applicationPerformActionForShortcutItem(_ shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) -> Bool
+
+    @objc optional func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool
 }
