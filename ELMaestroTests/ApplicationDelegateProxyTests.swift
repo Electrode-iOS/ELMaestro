@@ -257,7 +257,7 @@ class ApplicationDelegateProxyTests: XCTestCase {
         api.applicationOpenOptionsCalled = expectation(description: "Should call `application:open:options:`")
         let url = URL(string: "https://www.walmart.com/")!
 
-        let _ = proxy.application(UIApplication.shared, open: url, options: [UIApplicationOpenURLOptionsKey : Any]())
+        let _ = proxy.application(UIApplication.shared, open: url, options: [UIApplication.OpenURLOptionsKey : Any]())
 
         waitForExpectations(timeout: 2.0, handler: nil)
     }
