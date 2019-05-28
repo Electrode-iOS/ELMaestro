@@ -37,6 +37,12 @@ final class TestPlugin: NSObject, PluggableFeature {
     }
     
     // MARK: Application  lifecycle events
+
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
+        api.applicationWillFinishLaunchingWithOptionsCalled?.fulfill()
+        return true
+    }
+
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [AnyHashable : Any]?) -> Bool {
         api.applicationDidFinishLaunchingWithOptionsCalled?.fulfill()

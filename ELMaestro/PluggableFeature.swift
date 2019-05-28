@@ -18,10 +18,9 @@ public protocol PluggableFeature: Pluggable {
      let pluginAPI = supervisor.pluginAPI(forIdentifier: "com.myorg.mymodule") as? MyPluginAPI
      */
     @objc optional func pluginAPI() -> AnyObject?
-    
-    /**
-     After all plugins have been started, the system will dispatch this to your plugin.
-     */
+
+    @objc optional func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool
+
     @objc optional func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [AnyHashable: Any]?) -> Bool
     
     /**

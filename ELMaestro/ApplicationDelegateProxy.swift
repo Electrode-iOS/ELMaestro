@@ -24,6 +24,23 @@ open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {
     override public init() {
         super.init()
     }
+
+    open func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        var result = true
+
+        if supervisor.startedPlugins.count == 0 {
+            assertionFailure("Perform plugin startup before calling application:willFinishLaunchingWithOptions:")
+        } else {
+            for feature in supervisor.startedFeaturePlugins {
+                // coalesce our return values together
+                if let value = feature.application?(application, willFinishLaunchingWithOptions: launchOptions) {
+                    result = result || value
+                }
+            }
+        }
+
+        return result
+    }
     
     open func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         var result = true
