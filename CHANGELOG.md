@@ -1,3 +1,5 @@
+# [5.1.0](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v5.1.0)
+
 # [5.0.0](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v5.0.0)
 
 - Remove ELLog dependency
