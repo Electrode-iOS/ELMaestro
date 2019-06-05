@@ -84,24 +84,6 @@ open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {
         }
     }
     
-    open func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
-        for feature in supervisor.startedFeaturePlugins {
-            feature.application?(application, didRegisterUserNotificationSettings: notificationSettings)
-        }
-    }
-    
-    open func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
-        for feature in supervisor.startedFeaturePlugins {
-            feature.application?(application, didReceiveLocalNotification: notification)
-        }
-    }
-    
-    open func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, for notification: UILocalNotification, completionHandler: @escaping () -> Void) {
-        for feature in supervisor.startedFeaturePlugins {
-            feature.application?(application, handleActionWithIdentifier: identifier, forLocalNotification: notification, completionHandler: completionHandler)
-        }
-    }
-    
     open func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         for feature in supervisor.startedFeaturePlugins {
             feature.application?(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
@@ -130,22 +112,13 @@ open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {
             feature.application?(application, handleActionWithIdentifier: identifier, forRemoteNotification: userInfo, completionHandler: completionHandler)
         }
     }
-    
-    @available(iOS 9.0, *)
-    open func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, for notification: UILocalNotification, withResponseInfo responseInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
-        for feature in supervisor.startedFeaturePlugins {
-            feature.application?(application, handleActionWithIdentifier: identifier, forLocalNotification: notification, withResponseInfo: responseInfo, completionHandler: completionHandler)
-        }
-    }
-    
-    @available(iOS 9.0, *)
+
     open func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable: Any], withResponseInfo responseInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
         for feature in supervisor.startedFeaturePlugins {
             feature.application?(application, handleActionWithIdentifier: identifier, forRemoteNotification: userInfo, withResponseInfo: responseInfo, completionHandler: completionHandler)
         }
     }
-    
-    @available(iOS 9.0, *)
+
     open func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         for feature in supervisor.startedFeaturePlugins {
             let handled = feature.applicationPerformActionForShortcutItem?(shortcutItem, completionHandler: completionHandler)
