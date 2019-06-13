@@ -1,3 +1,7 @@
+# [6.1.0](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v6.1.0)
+
+- Add support for `application:open:options` and `application:willFinishLaunchingWithOptions`
+
 # [6.0.0](https://github.com/Electrode-iOS/ELMaestro/releases/tag/v6.0.0)
 
 - Migrate to Swift 5 and Xcode 10.2
