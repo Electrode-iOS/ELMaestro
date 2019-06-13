@@ -17,12 +17,10 @@ public protocol PluggableFeature: Pluggable {
      let pluginAPI = supervisor.pluginAPI(forIdentifier: "com.myorg.mymodule") as? MyPluginAPI
      */
     @objc optional func pluginAPI() -> AnyObject?
-    
-    /**
-     After all plugins have been started, the system will dispatch this to your plugin.
-     */
+
+    @objc optional func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool
     @objc optional func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
-    
+
     /**
      Application lifecycle events
      */
@@ -67,5 +65,8 @@ public protocol PluggableFeature: Pluggable {
      
      - returns: Whether the action was performed by the plugin
      */
+
     @objc optional func applicationPerformActionForShortcutItem(_ shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) -> Bool
+
+    @objc optional func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool
 }

@@ -11,7 +11,8 @@ import XCTest
 
 final class TestPluginAPI : NSObject {
     var continuityType: String = ""
-    
+
+    var applicationWillFinishLaunchingWithOptionsCalled: XCTestExpectation?
     var applicationDidFinishLaunchingWithOptionsCalled: XCTestExpectation?
     var applicationWillResignActiveCalled: XCTestExpectation?
     var applicationDidEnterBackgroundCalled: XCTestExpectation?
@@ -29,4 +30,6 @@ final class TestPluginAPI : NSObject {
     var handleActionWithIdentifierWithResponseInfoCalled: XCTestExpectation?
     var performActionForShortcutItemCalled: XCTestExpectation?
     var didReceiveLocalNotificationCalled: XCTestExpectation?
+    var applicationOpenOptionsCalled: XCTestExpectation?
+
 }
