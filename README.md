@@ -66,7 +66,7 @@ open class MyPlugin: NSObject, Module {
 
 #### Pluggable
 
-The `Pluggable` protocol defines the plugin indentifer, plugin dependencies, as well as startup and initialization methods.
+The `Pluggable` protocol defines the plugin identifier, plugin dependencies, as well as startup and initialization methods.
 
 ```
 @objc
@@ -90,7 +90,7 @@ extension MyPlugin: Pluggable {
 
     /**
      An array of identifiers of any other modules that 
-     this module is dependant on
+     this module is dependent on
     */
     let dependencies: [DependencyID]? = nil
 
@@ -103,7 +103,7 @@ extension MyPlugin: Pluggable {
     }
 
     /**
-     Called after all dependant plugins are started up
+     Called after all dependent plugins are started up
     */
     func startup(_ supervisor: Supervisor) {
 
@@ -211,7 +211,7 @@ For example, suppose the plugin needed to provide user data to other plugins. Yo
 }
 ```
 
-Define a type for the implementatino and declare it as `internal` to prevent it from being publicly accessible outside of the module.
+Define a type for the implementation and declare it as `internal` to prevent it from being publicly accessible outside of the module.
 
 ```
 internal final class MyPluginAPIImpl: MyPluginAPI {
@@ -253,7 +253,7 @@ extension MyPlugin: PluggableFeature {
 
 ### ApplicationSupervisor
 
-The `ApplicationSupervisor` is used to register a plugin. The `ApplicationSupervisor` will handle loading the plugin, loading any of the plugin's dependencies first, and calling the `startup()` method of the plugin once all dependant plugins are loaded.
+The `ApplicationSupervisor` is used to register a plugin. The `ApplicationSupervisor` will handle loading the plugin, loading any of the plugin's dependencies first, and calling the `startup()` method of the plugin once all dependent plugins are loaded.
 
 The `ApplicationSupervisor` will also handle sending app delegate events to the plugin.
 
