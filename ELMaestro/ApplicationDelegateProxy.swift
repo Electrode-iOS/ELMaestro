@@ -160,13 +160,14 @@ open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {
     }
 
     open func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
-        print("executed")
-//        for feature in supervisor.startedFeaturePlugins {
+
+        for feature in supervisor.startedFeaturePlugins {
+            print("featuer")
 //            let handled = feature.application?(app, open: url, options: options)
 //            if let featureHandled = handled, featureHandled {
 //                return true
 //            }
-//        }
+        }
 
         return false
     }
