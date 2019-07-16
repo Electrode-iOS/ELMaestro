@@ -160,9 +160,9 @@ open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {
     }
 
     open func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
-
+        print("ELMaestro started plugin count \(supervisor.startedFeaturePlugins.count)")
         for feature in supervisor.startedFeaturePlugins {
-            print("featuer")
+            print("feature")
 //            let handled = feature.application?(app, open: url, options: options)
 //            if let featureHandled = handled, featureHandled {
 //                return true
