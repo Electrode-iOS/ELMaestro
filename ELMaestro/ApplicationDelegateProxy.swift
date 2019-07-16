@@ -163,10 +163,12 @@ open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {
         print("ELMaestro started plugin count \(supervisor.startedFeaturePlugins.count)")
         for feature in supervisor.startedFeaturePlugins {
             print("feature")
-//            let handled = feature.application?(app, open: url, options: options)
-//            if let featureHandled = handled, featureHandled {
-//                return true
-//            }
+            let handled = feature.application?(app, open: url, options: options)
+            if let featureHandled = handled, featureHandled {
+                print("feature handled")
+
+                return true
+            }
         }
 
         return false
