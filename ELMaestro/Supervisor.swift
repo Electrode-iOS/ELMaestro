@@ -64,7 +64,7 @@ public class Supervisor: NSObject {
         })
     }
     
-    @objc public func pluginAPI(forIdentifier id: DependencyID) -> AnyObject? {
+    @objc public func pluginAPI(forIdentifier id: DependencyID) -> Any? {
         var result: AnyObject? = nil
         
         if let plugin = plugin(forIdentifier: id) as? PluggableFeature {
