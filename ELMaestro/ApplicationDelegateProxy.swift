@@ -169,4 +169,13 @@ open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {
 
         return false
     }
+
+    open func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        for feature in supervisor.startedFeaturePlugins {
+            if let orientationMask = feature.application?(application, supportedInterfaceOrientationsFor: window) {
+                return orientationMask
+            }
+        }
+        return .portrait
+    }
 }
