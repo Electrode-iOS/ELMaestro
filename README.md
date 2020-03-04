@@ -6,7 +6,7 @@ ELMaestro is a Swift framework that provides plugin system for iOS applications.
 
 ## Installation
 
-ELMaestro requires Swift 5 and Xcode 10.2.
+ELMaestro requires Swift 5 and Xcode 11.3.
 
 ### Carthage
 
@@ -36,33 +36,11 @@ ELMaestro consists of three main concepts:
 
 ### Plugins
 
-A Plugin is composed of three different protocols:
+A Plugin is composed of two different protocols:
 
-- `Module`
 - `Pluggable`
 - `PluggableFeature` (optional)
 
-#### Module
-
-The `Module` protocol defines a plugin type for a plugin.
-
-```
-
-public protocol Module {
-    static func pluginClass() -> Pluggable.Type
-}
-```
-
-Example implementation:
-
-```
-@objc
-open class MyPlugin: NSObject, Module {    
-    open static func pluginClass() -> Pluggable.Type {
-        return MyPlugin.self
-    }
-}
-```
 
 #### Pluggable
 

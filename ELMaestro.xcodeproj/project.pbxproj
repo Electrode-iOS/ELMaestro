@@ -22,7 +22,6 @@
 		3E8CA3D320E580CE00CBDA69 /* Pluggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA20799A1BB32406005353D9 /* Pluggable.swift */; };
 		3E8CA3D420E580CE00CBDA69 /* Supervisor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2079981BB323F7005353D9 /* Supervisor.swift */; };
 		3E8CA3D520E580CE00CBDA69 /* PluggableFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FF6D281CEE69C300F843B6 /* PluggableFeature.swift */; };
-		3E8CA3D620E580CE00CBDA69 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB863341CA1C2380051F45A /* Module.swift */; };
 		3E8CA3DA20E580CE00CBDA69 /* ELMaestro.h in Headers */ = {isa = PBXBuildFile; fileRef = CA2079781BB323B0005353D9 /* ELMaestro.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA2079791BB323B0005353D9 /* ELMaestro.h in Headers */ = {isa = PBXBuildFile; fileRef = CA2079781BB323B0005353D9 /* ELMaestro.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA20797F1BB323B0005353D9 /* ELMaestro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2079731BB323B0005353D9 /* ELMaestro.framework */; };
@@ -30,7 +29,6 @@
 		CA2079991BB323F7005353D9 /* Supervisor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2079981BB323F7005353D9 /* Supervisor.swift */; };
 		CA20799B1BB32406005353D9 /* Pluggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA20799A1BB32406005353D9 /* Pluggable.swift */; };
 		CA5EAD791D00E4BD00C40E8B /* BackgroundPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EAD781D00E4BD00C40E8B /* BackgroundPrivacy.swift */; };
-		CAB863351CA1C2380051F45A /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB863341CA1C2380051F45A /* Module.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +62,6 @@
 		CA2079981BB323F7005353D9 /* Supervisor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Supervisor.swift; sourceTree = "<group>"; };
 		CA20799A1BB32406005353D9 /* Pluggable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pluggable.swift; sourceTree = "<group>"; };
 		CA5EAD781D00E4BD00C40E8B /* BackgroundPrivacy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundPrivacy.swift; sourceTree = "<group>"; };
-		CAB863341CA1C2380051F45A /* Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +123,6 @@
 				CA2079781BB323B0005353D9 /* ELMaestro.h */,
 				1907DC001F91334A003996C0 /* ApplicationDelegateProxy.swift */,
 				17FF6D231CEE699F00F843B6 /* ApplicationSupervisor.swift */,
-				CAB863341CA1C2380051F45A /* Module.swift */,
 				CA20799A1BB32406005353D9 /* Pluggable.swift */,
 				17FF6D281CEE69C300F843B6 /* PluggableFeature.swift */,
 				CA2079981BB323F7005353D9 /* Supervisor.swift */,
@@ -323,7 +319,6 @@
 				3E8CA3D320E580CE00CBDA69 /* Pluggable.swift in Sources */,
 				3E8CA3D420E580CE00CBDA69 /* Supervisor.swift in Sources */,
 				3E8CA3D520E580CE00CBDA69 /* PluggableFeature.swift in Sources */,
-				3E8CA3D620E580CE00CBDA69 /* Module.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,7 +333,6 @@
 				CA20799B1BB32406005353D9 /* Pluggable.swift in Sources */,
 				CA2079991BB323F7005353D9 /* Supervisor.swift in Sources */,
 				17FF6D291CEE69C300F843B6 /* PluggableFeature.swift in Sources */,
-				CAB863351CA1C2380051F45A /* Module.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
