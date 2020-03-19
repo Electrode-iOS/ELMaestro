@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		175393ED2423F70F00E95610 /* RemotePluginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175393EC2423F70F00E95610 /* RemotePluginManager.swift */; };
 		17AFCE6C1DB73BE300F2DD81 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AFCE6B1DB73BE300F2DD81 /* Navigator.swift */; };
 		17FF6D241CEE699F00F843B6 /* ApplicationSupervisor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FF6D231CEE699F00F843B6 /* ApplicationSupervisor.swift */; };
 		17FF6D291CEE69C300F843B6 /* PluggableFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FF6D281CEE69C300F843B6 /* PluggableFeature.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		175393EC2423F70F00E95610 /* RemotePluginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePluginManager.swift; sourceTree = "<group>"; };
 		17AFCE6B1DB73BE300F2DD81 /* Navigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		17FF6D231CEE699F00F843B6 /* ApplicationSupervisor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSupervisor.swift; sourceTree = "<group>"; };
 		17FF6D281CEE69C300F843B6 /* PluggableFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluggableFeature.swift; sourceTree = "<group>"; };
@@ -123,11 +125,12 @@
 				CA2079781BB323B0005353D9 /* ELMaestro.h */,
 				1907DC001F91334A003996C0 /* ApplicationDelegateProxy.swift */,
 				17FF6D231CEE699F00F843B6 /* ApplicationSupervisor.swift */,
-				CA20799A1BB32406005353D9 /* Pluggable.swift */,
-				17FF6D281CEE69C300F843B6 /* PluggableFeature.swift */,
-				CA2079981BB323F7005353D9 /* Supervisor.swift */,
 				CA5EAD781D00E4BD00C40E8B /* BackgroundPrivacy.swift */,
 				17AFCE6B1DB73BE300F2DD81 /* Navigator.swift */,
+				CA20799A1BB32406005353D9 /* Pluggable.swift */,
+				17FF6D281CEE69C300F843B6 /* PluggableFeature.swift */,
+				175393EC2423F70F00E95610 /* RemotePluginManager.swift */,
+				CA2079981BB323F7005353D9 /* Supervisor.swift */,
 				CA2079761BB323B0005353D9 /* Supporting Files */,
 			);
 			path = ELMaestro;
@@ -328,6 +331,7 @@
 			files = (
 				17AFCE6C1DB73BE300F2DD81 /* Navigator.swift in Sources */,
 				17FF6D241CEE699F00F843B6 /* ApplicationSupervisor.swift in Sources */,
+				175393ED2423F70F00E95610 /* RemotePluginManager.swift in Sources */,
 				1907DC011F91334A003996C0 /* ApplicationDelegateProxy.swift in Sources */,
 				CA5EAD791D00E4BD00C40E8B /* BackgroundPrivacy.swift in Sources */,
 				CA20799B1BB32406005353D9 /* Pluggable.swift in Sources */,

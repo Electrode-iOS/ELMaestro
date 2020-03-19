@@ -21,18 +21,14 @@ public class Supervisor: NSObject {
     private var startedPluginsLookup = [String: Pluggable]()
     private var proposedPlugins = [Pluggable]()
     private var loadedPlugins = [Pluggable]()
+    private lazy var remotePluginManager = RemotePluginManager()
     
     public func loadPlugin(_ pluginType: AnyObject.Type) {
-        // I used AnyObject.Type here, because Pluggable.Type translates
-        // to Class<Pluggable> in objc, but returns an AnyObject.Type instead.
-        
-        // WARNING: Don't step through this, or you'll crash Xcode.. cuz it sucks.
         if let pluginType = pluginType as? Pluggable.Type {
             if let plugin = pluginType.init(containerBundleID: "com.walmart.ELMaestro") {
                 proposedPlugins.append(plugin)
             }
         }
-        // END WARNING.
     }
     
     public func loadPlugins(_ pluginTypes: [Pluggable.Type]) {
@@ -126,5 +122,9 @@ public class Supervisor: NSObject {
         }
         
         return acceptedPlugins
+    }
+    
+    public func loadRemotePlugin(_ url: URL) {
+        remotePluginManager.loadRemotePlugin(url)
     }
 }
