@@ -177,20 +177,6 @@ class ApplicationDelegateProxyTests: XCTestCase {
         
         waitForExpectations(timeout: 2.0, handler: nil)
     }
-    
-    func test_performActionForShorcutItem_shouldCallPlugin() {
-        
-        let proxy = proxyForTesting()
-        let supervisor = supervisorForTesting(proxy: proxy)
-        let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
-        api.performActionForShortcutItemCalled = expectation(description: "Should call `performActionForShortcutItem`")
-        
-        proxy.application(UIApplication.shared, performActionFor: UIApplicationShortcutItem(type: "test", localizedTitle: "test")) { _ in
-            
-        }
-        
-        waitForExpectations(timeout: 2.0, handler: nil)
-    }
 
     func test_applicationOpenOptions_shouldCallPlugin() {
         let proxy = proxyForTesting()

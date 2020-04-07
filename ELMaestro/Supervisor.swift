@@ -11,17 +11,12 @@ import Foundation
 @objc
 public class Supervisor: NSObject {
     var startedPlugins = [Pluggable]()
-    
-    /// Get all of the started plugins that conform to PluggableFeature
-    var startedFeaturePlugins: [PluggableFeature] {
-        return startedPlugins.compactMap { $0 as? PluggableFeature }
-    }
-    
+
     // unordered, keyed collection of started plugins for faster lookup
     private var startedPluginsLookup = [String: Pluggable]()
     private var proposedPlugins = [Pluggable]()
     private var loadedPlugins = [Pluggable]()
-    
+
     public func loadPlugin(_ pluginType: AnyObject.Type) {
         // I used AnyObject.Type here, because Pluggable.Type translates
         // to Class<Pluggable> in objc, but returns an AnyObject.Type instead.
@@ -65,13 +60,7 @@ public class Supervisor: NSObject {
     }
     
     @objc public func pluginAPI(forIdentifier id: DependencyID) -> AnyObject? {
-        var result: AnyObject? = nil
-        
-        if let plugin = plugin(forIdentifier: id) as? PluggableFeature {
-            result = plugin.pluginAPI?()
-        }
-        
-        return result
+        return plugin(forIdentifier: id)?.pluginAPI()
     }
     
     private func plugin(forIdentifier id: DependencyID) -> Pluggable? {

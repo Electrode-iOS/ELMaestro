@@ -10,7 +10,7 @@ import Foundation
 
 let testPluginID = "com.walmartlabs.testplugin"
 
-final class TestPlugin: NSObject, PluggableFeature {
+final class TestPlugin: NSObject, Pluggable, UIApplicationDelegate {
     var identifier: String {
         return testPluginID
     }
@@ -54,27 +54,27 @@ final class TestPlugin: NSObject, PluggableFeature {
         return true
     }
     
-    func applicationWillResignActive() {
+    func applicationWillResignActive(_ application: UIApplication) {
         api.applicationWillResignActiveCalled?.fulfill()
     }
     
-    func applicationDidEnterBackground() {
+    func applicationDidEnterBackground(_ application: UIApplication) {
         api.applicationDidEnterBackgroundCalled?.fulfill()
     }
     
-    func applicationWillEnterForeground() {
+    func applicationWillEnterForeground(_ application: UIApplication) {
         api.applicationWillEnterForegroundCalled?.fulfill()
     }
     
-    func applicationDidBecomeActive() {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         api.applicationDidBecomeActiveCalled?.fulfill()
     }
     
-    func applicationWillTerminate() {
+    func applicationWillTerminate(_ application: UIApplication) {
         api.applicationWillTerminateCalled?.fulfill()
     }
     
-    func applicationDidReceiveMemoryWarning() {
+    func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
         api.applicationDidReceiveMemoryWarningCalled?.fulfill()
     }
     
@@ -82,7 +82,7 @@ final class TestPlugin: NSObject, PluggableFeature {
         api.didRegisterForRemoteNotificationsWithDeviceTokenCalled?.fulfill()
     }
     
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         api.didFailToRegisterForRemoteNotificationsWithErrorCalled?.fulfill()
     }
     
@@ -98,7 +98,7 @@ final class TestPlugin: NSObject, PluggableFeature {
         api.handleActionWithIdentifierForRemoteNotificationCalled?.fulfill()
     }
     
-    func applicationPerformActionForShortcutItem(_ shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) -> Bool {
+    func applicationPerformActionForShortcutItem(_ application: UIApplication, _ shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) -> Bool {
         api.performActionForShortcutItemCalled?.fulfill()
         return true
     }

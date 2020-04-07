@@ -20,6 +20,10 @@ open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {
             supervisor.window = newValue
         }
     }
+
+    var applicationDelegates: [UIApplicationDelegate] {
+        return supervisor.startedPlugins.compactMap { $0 as? UIApplicationDelegate }
+    }
     
     override public init() {
         super.init()
@@ -31,7 +35,7 @@ open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {
         if supervisor.startedPlugins.count == 0 {
             assertionFailure("Perform plugin startup before calling application:willFinishLaunchingWithOptions:")
         } else {
-            for feature in supervisor.startedFeaturePlugins {
+            for feature in applicationDelegates {
                 // coalesce our return values together
                 if let value = feature.application?(application, willFinishLaunchingWithOptions: launchOptions) {
                     result = result || value
@@ -48,7 +52,7 @@ open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {
         if supervisor.startedPlugins.count == 0 {
             assertionFailure("Perform plugin startup before calling application:didFinishLaunchWithOptions:")
         } else {
-            for feature in supervisor.startedFeaturePlugins {
+            for feature in applicationDelegates {
                 // coalesce our return values together
                 if let value = feature.application?(application, didFinishLaunchingWithOptions: launchOptions) {
                     result = result || value
@@ -60,8 +64,8 @@ open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {
     }
     
     open func applicationWillResignActive(_ application: UIApplication) {
-        for feature in supervisor.startedFeaturePlugins {
-            feature.applicationWillResignActive?()
+        for feature in applicationDelegates {
+            feature.applicationWillResignActive?(application)
         }
     }
     
@@ -69,87 +73,75 @@ open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {
         // this will only show the privacy view if the proper criteria is met.
         supervisor.showPrivacyView()
         
-        for feature in supervisor.startedFeaturePlugins {
-            feature.applicationDidEnterBackground?()
+        for feature in applicationDelegates {
+            feature.applicationDidEnterBackground?(application)
         }
     }
     
     open func applicationWillEnterForeground(_ application: UIApplication) {
-        for feature in supervisor.startedFeaturePlugins {
-            feature.applicationWillEnterForeground?()
+        for feature in applicationDelegates {
+            feature.applicationWillEnterForeground?(application)
         }
         
-        // this will remove the privacy view if it was displayed.
         supervisor.hidePrivacyView()
     }
     
     open func applicationDidBecomeActive(_ application: UIApplication) {
-        for feature in supervisor.startedFeaturePlugins {
-            feature.applicationDidBecomeActive?()
+        for feature in applicationDelegates {
+            feature.applicationDidBecomeActive?(application)
         }
     }
     
     open func applicationWillTerminate(_ application: UIApplication) {
-        for feature in supervisor.startedFeaturePlugins {
-            feature.applicationWillTerminate()
+        for feature in applicationDelegates {
+            feature.applicationWillTerminate?(application)
         }
     }
     
     open func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
-        for feature in supervisor.startedFeaturePlugins {
-            feature.applicationDidReceiveMemoryWarning()
+        for feature in applicationDelegates {
+            feature.applicationDidReceiveMemoryWarning?(application)
         }
     }
     
     open func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        for feature in supervisor.startedFeaturePlugins {
+        for feature in applicationDelegates {
             feature.application?(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
         }
     }
     
     open func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        for feature in supervisor.startedFeaturePlugins {
+        for feature in applicationDelegates {
             feature.application?(application, didFailToRegisterForRemoteNotificationsWithError: error as NSError)
         }
     }
-    
-    // NOTE: Don't implement:  application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject])
-    //      ...because application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void)
-    //      will always be called in favor of application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject])
-    //      if both are implemented.
-    //      xcdoc://?url=developer.apple.com/library/etc/redirect/xcode/ios/1151/documentation/UIKit/Reference/UIApplicationDelegate_Protocol/index.html
+
     open func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        for feature in supervisor.startedFeaturePlugins {
+        for feature in applicationDelegates {
             feature.application?(application, didReceiveRemoteNotification: userInfo, fetchCompletionHandler: completionHandler)
         }
     }
     
     open func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
-        for feature in supervisor.startedFeaturePlugins {
+        for feature in applicationDelegates {
             feature.application?(application, handleActionWithIdentifier: identifier, forRemoteNotification: userInfo, completionHandler: completionHandler)
         }
     }
 
     open func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable: Any], withResponseInfo responseInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
-        for feature in supervisor.startedFeaturePlugins {
+        for feature in applicationDelegates {
             feature.application?(application, handleActionWithIdentifier: identifier, forRemoteNotification: userInfo, withResponseInfo: responseInfo, completionHandler: completionHandler)
         }
     }
 
     open func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-        for feature in supervisor.startedFeaturePlugins {
-            let handled = feature.applicationPerformActionForShortcutItem?(shortcutItem, completionHandler: completionHandler)
-            if handled == true {
-                break
-            }
+        for feature in applicationDelegates {
+            feature.application?(application, performActionFor: shortcutItem, completionHandler: completionHandler)
         }
     }
-    
-    // MARK: Handoff
-    // continueUserActivity will be used for features such as universal linking
-    // https://developer.apple.com/library/prerelease/content/documentation/General/Conceptual/AppSearch/UniversalLinks.html#//apple_ref/doc/uid/TP40016308-CH12-SW2
+
     open func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        for feature in supervisor.startedFeaturePlugins {
+        for feature in applicationDelegates {
             if let featureHandled = feature.application?(application, continue: userActivity, restorationHandler: restorationHandler) {
                 if featureHandled {
                     return true
@@ -160,7 +152,7 @@ open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {
     }
 
     public func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        for feature in supervisor.startedFeaturePlugins {
+        for feature in applicationDelegates {
             let handled = feature.application?(app, open: url, options: options)
             if let featureHandled = handled, featureHandled {
                 return true
@@ -171,7 +163,7 @@ open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {
     }
 
     open func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-        for feature in supervisor.startedFeaturePlugins {
+        for feature in applicationDelegates {
             if let orientationMask = feature.application?(application, supportedInterfaceOrientationsFor: window) {
                 return orientationMask
             }
