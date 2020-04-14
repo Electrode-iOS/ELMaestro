@@ -11,14 +11,6 @@ import Foundation
 open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {
     public internal(set) var supervisor = ApplicationSupervisor.sharedInstance
     
-    public var window: UIWindow? {
-        get {
-            return supervisor.window
-        }
-        set {
-            supervisor.window = newValue
-        }
-    }
 
     var applicationDelegates: [UIApplicationDelegate] {
         return supervisor.startedPlugins.compactMap { $0 as? UIApplicationDelegate }
@@ -70,7 +62,6 @@ open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {
     
     open func applicationDidEnterBackground(_ application: UIApplication) {
         // this will only show the privacy view if the proper criteria is met.
-        supervisor.showPrivacyView()
         
         for feature in applicationDelegates {
             feature.applicationDidEnterBackground?(application)
@@ -81,8 +72,6 @@ open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {
         for feature in applicationDelegates {
             feature.applicationWillEnterForeground?(application)
         }
-        
-        supervisor.hidePrivacyView()
     }
     
     open func applicationDidBecomeActive(_ application: UIApplication) {

@@ -7,16 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		17AFCE6C1DB73BE300F2DD81 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AFCE6B1DB73BE300F2DD81 /* Navigator.swift */; };
 		17FF6D241CEE699F00F843B6 /* ApplicationSupervisor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FF6D231CEE699F00F843B6 /* ApplicationSupervisor.swift */; };
 		1907DC011F91334A003996C0 /* ApplicationDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1907DC001F91334A003996C0 /* ApplicationDelegateProxy.swift */; };
 		199CFEC21F98ECD1004D8FB3 /* ApplicationDelegateProxyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199CFEC11F98ECD1004D8FB3 /* ApplicationDelegateProxyTests.swift */; };
 		199CFEC61F9909DA004D8FB3 /* TestPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199CFEC51F9909DA004D8FB3 /* TestPlugin.swift */; };
 		199CFEC81F9909FB004D8FB3 /* TestPluginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199CFEC71F9909FB004D8FB3 /* TestPluginAPI.swift */; };
-		3E8CA3CF20E580CE00CBDA69 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AFCE6B1DB73BE300F2DD81 /* Navigator.swift */; };
 		3E8CA3D020E580CE00CBDA69 /* ApplicationSupervisor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FF6D231CEE699F00F843B6 /* ApplicationSupervisor.swift */; };
 		3E8CA3D120E580CE00CBDA69 /* ApplicationDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1907DC001F91334A003996C0 /* ApplicationDelegateProxy.swift */; };
-		3E8CA3D220E580CE00CBDA69 /* BackgroundPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EAD781D00E4BD00C40E8B /* BackgroundPrivacy.swift */; };
 		3E8CA3D320E580CE00CBDA69 /* Pluggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA20799A1BB32406005353D9 /* Pluggable.swift */; };
 		3E8CA3D420E580CE00CBDA69 /* Supervisor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2079981BB323F7005353D9 /* Supervisor.swift */; };
 		3E8CA3DA20E580CE00CBDA69 /* ELMaestro.h in Headers */ = {isa = PBXBuildFile; fileRef = CA2079781BB323B0005353D9 /* ELMaestro.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -25,7 +22,6 @@
 		CA2079861BB323B0005353D9 /* ELMaestroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2079851BB323B0005353D9 /* ELMaestroTests.swift */; };
 		CA2079991BB323F7005353D9 /* Supervisor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2079981BB323F7005353D9 /* Supervisor.swift */; };
 		CA20799B1BB32406005353D9 /* Pluggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA20799A1BB32406005353D9 /* Pluggable.swift */; };
-		CA5EAD791D00E4BD00C40E8B /* BackgroundPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EAD781D00E4BD00C40E8B /* BackgroundPrivacy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +35,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		17AFCE6B1DB73BE300F2DD81 /* Navigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		17FF6D231CEE699F00F843B6 /* ApplicationSupervisor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSupervisor.swift; sourceTree = "<group>"; };
 		1907DC001F91334A003996C0 /* ApplicationDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationDelegateProxy.swift; sourceTree = "<group>"; };
 		198B76AF1F969E83004CAEFF /* ELMaestroTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ELMaestroTests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -55,7 +50,6 @@
 		CA2079851BB323B0005353D9 /* ELMaestroTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ELMaestroTests.swift; sourceTree = "<group>"; };
 		CA2079981BB323F7005353D9 /* Supervisor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Supervisor.swift; sourceTree = "<group>"; };
 		CA20799A1BB32406005353D9 /* Pluggable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pluggable.swift; sourceTree = "<group>"; };
-		CA5EAD781D00E4BD00C40E8B /* BackgroundPrivacy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundPrivacy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,8 +113,6 @@
 				17FF6D231CEE699F00F843B6 /* ApplicationSupervisor.swift */,
 				CA20799A1BB32406005353D9 /* Pluggable.swift */,
 				CA2079981BB323F7005353D9 /* Supervisor.swift */,
-				CA5EAD781D00E4BD00C40E8B /* BackgroundPrivacy.swift */,
-				17AFCE6B1DB73BE300F2DD81 /* Navigator.swift */,
 				CA2079761BB323B0005353D9 /* Supporting Files */,
 			);
 			path = ELMaestro;
@@ -303,10 +295,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E8CA3CF20E580CE00CBDA69 /* Navigator.swift in Sources */,
 				3E8CA3D020E580CE00CBDA69 /* ApplicationSupervisor.swift in Sources */,
 				3E8CA3D120E580CE00CBDA69 /* ApplicationDelegateProxy.swift in Sources */,
-				3E8CA3D220E580CE00CBDA69 /* BackgroundPrivacy.swift in Sources */,
 				3E8CA3D320E580CE00CBDA69 /* Pluggable.swift in Sources */,
 				3E8CA3D420E580CE00CBDA69 /* Supervisor.swift in Sources */,
 			);
@@ -316,10 +306,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17AFCE6C1DB73BE300F2DD81 /* Navigator.swift in Sources */,
 				17FF6D241CEE699F00F843B6 /* ApplicationSupervisor.swift in Sources */,
 				1907DC011F91334A003996C0 /* ApplicationDelegateProxy.swift in Sources */,
-				CA5EAD791D00E4BD00C40E8B /* BackgroundPrivacy.swift in Sources */,
 				CA20799B1BB32406005353D9 /* Pluggable.swift in Sources */,
 				CA2079991BB323F7005353D9 /* Supervisor.swift in Sources */,
 			);
