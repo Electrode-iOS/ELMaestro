@@ -31,7 +31,7 @@ class ApplicationDelegateProxyTests: XCTestCase {
     func test_applicationWillFinishLaunchingWithOptions_shouldCallPlugins() {
         let proxy = proxyForTesting()
         let supervisor = supervisorForTesting(proxy: proxy)
-        let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
+        let api = supervisor.pluginAPI(forIdentifier: TestPlugin.pluginID) as! TestPluginAPI
         api.applicationWillFinishLaunchingWithOptionsCalled = expectation(description: "Should call `applicationwillFinishLaunchingWithOptions`")
 
         let _ =  proxy.application(UIApplication.shared, willFinishLaunchingWithOptions: nil)
@@ -42,7 +42,7 @@ class ApplicationDelegateProxyTests: XCTestCase {
     func test_applicationDidFinishLaunchingWithOptions_shouldCallPlugins() {
         let proxy = proxyForTesting()
         let supervisor = supervisorForTesting(proxy: proxy)
-        let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
+        let api = supervisor.pluginAPI(forIdentifier: TestPlugin.pluginID) as! TestPluginAPI
         api.applicationDidFinishLaunchingWithOptionsCalled = expectation(description: "Should call `applicationDidFinishLaunchingWithOptions`")
         
         let _ =  proxy.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
@@ -53,7 +53,7 @@ class ApplicationDelegateProxyTests: XCTestCase {
     func test_applicationWillResignActive_shouldCallPlugins() {
         let proxy = proxyForTesting()
         let supervisor = supervisorForTesting(proxy: proxy)
-        let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
+        let api = supervisor.pluginAPI(forIdentifier: TestPlugin.pluginID) as! TestPluginAPI
         api.applicationWillResignActiveCalled = expectation(description: "Should call `applicationWillResignActive`")
         
         proxy.applicationWillResignActive(UIApplication.shared)
@@ -64,7 +64,7 @@ class ApplicationDelegateProxyTests: XCTestCase {
     func test_applicationDidEnterBackground_shouldCallPlugin() {
         let proxy = proxyForTesting()
         let supervisor = supervisorForTesting(proxy: proxy)
-        let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
+        let api = supervisor.pluginAPI(forIdentifier: TestPlugin.pluginID) as! TestPluginAPI
         api.applicationDidEnterBackgroundCalled = expectation(description: "Should call `applicationDidEnterBackground`")
         
         proxy.applicationDidEnterBackground(UIApplication.shared)
@@ -75,7 +75,7 @@ class ApplicationDelegateProxyTests: XCTestCase {
     func test_applicationWillEnterForeground_shouldCallPlugin() {
         let proxy = proxyForTesting()
         let supervisor = supervisorForTesting(proxy: proxy)
-        let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
+        let api = supervisor.pluginAPI(forIdentifier: TestPlugin.pluginID) as! TestPluginAPI
         api.applicationWillEnterForegroundCalled = expectation(description: "Should call `applicationWillEnterForeground`")
         
         proxy.applicationWillEnterForeground(UIApplication.shared)
@@ -86,7 +86,7 @@ class ApplicationDelegateProxyTests: XCTestCase {
     func test_applicationDidBecomeActive_shouldCallPlugin() {
         let proxy = proxyForTesting()
         let supervisor = supervisorForTesting(proxy: proxy)
-        let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
+        let api = supervisor.pluginAPI(forIdentifier: TestPlugin.pluginID) as! TestPluginAPI
         api.applicationDidBecomeActiveCalled = expectation(description: "Should call `applicationDidBecomeActive`")
         
         proxy.applicationDidBecomeActive(UIApplication.shared)
@@ -97,7 +97,7 @@ class ApplicationDelegateProxyTests: XCTestCase {
     func test_applicationWillTerminate_shouldCallPlugin() {
         let proxy = proxyForTesting()
         let supervisor = supervisorForTesting(proxy: proxy)
-        let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
+        let api = supervisor.pluginAPI(forIdentifier: TestPlugin.pluginID) as! TestPluginAPI
         api.applicationWillTerminateCalled = expectation(description: "Should call `applicationWillTerminate`")
         
         proxy.applicationWillTerminate(UIApplication.shared)
@@ -108,7 +108,7 @@ class ApplicationDelegateProxyTests: XCTestCase {
     func test_applicationDidReceiveMemoryWarning_shouldCallPlugin() {
         let proxy = proxyForTesting()
         let supervisor = supervisorForTesting(proxy: proxy)
-        let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
+        let api = supervisor.pluginAPI(forIdentifier: TestPlugin.pluginID) as! TestPluginAPI
         api.applicationDidReceiveMemoryWarningCalled = expectation(description: "Should call `applicationDidReceiveMemoryWarning`")
         
         proxy.applicationDidReceiveMemoryWarning(UIApplication.shared)
@@ -119,7 +119,7 @@ class ApplicationDelegateProxyTests: XCTestCase {
     func test_didReceiveRemoteNotification_shouldCallPlugin() {
         let proxy = proxyForTesting()
         let supervisor = supervisorForTesting(proxy: proxy)
-        let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
+        let api = supervisor.pluginAPI(forIdentifier: TestPlugin.pluginID) as! TestPluginAPI
         api.didReceiveRemoteNotificationCalled = expectation(description: "Should call `didReceiveRemoteNotification`")
         
         proxy.application(UIApplication.shared, didReceiveRemoteNotification: [AnyHashable: Any]()) { result in
@@ -132,7 +132,7 @@ class ApplicationDelegateProxyTests: XCTestCase {
     func test_didRegisterForRemoteNotificationsWithDeviceToken_shouldCallPlugin() {
         let proxy = proxyForTesting()
         let supervisor = supervisorForTesting(proxy: proxy)
-        let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
+        let api = supervisor.pluginAPI(forIdentifier: TestPlugin.pluginID) as! TestPluginAPI
         api.didRegisterForRemoteNotificationsWithDeviceTokenCalled = expectation(description: "Should call `didRegisterForRemoteNotificationsWithDeviceToken`")
         
         proxy.application(UIApplication.shared, didRegisterForRemoteNotificationsWithDeviceToken: Data())
@@ -143,7 +143,7 @@ class ApplicationDelegateProxyTests: XCTestCase {
     func test_didFailToRegisterForRemoteNotificationsWithError_shouldCallPlugin() {
         let proxy = proxyForTesting()
         let supervisor = supervisorForTesting(proxy: proxy)
-        let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
+        let api = supervisor.pluginAPI(forIdentifier: TestPlugin.pluginID) as! TestPluginAPI
         api.didFailToRegisterForRemoteNotificationsWithErrorCalled = expectation(description: "Should call `didFailToRegisterForRemoteNotificationsWithError`")
         
         proxy.application(UIApplication.shared, didFailToRegisterForRemoteNotificationsWithError: RemoteNotificationError.somethingsGoneWrong)
@@ -154,7 +154,7 @@ class ApplicationDelegateProxyTests: XCTestCase {
     func test_handleActionWithIdentifierForRemoteNotification_shouldCallPlugin() {
         let proxy = proxyForTesting()
         let supervisor = supervisorForTesting(proxy: proxy)
-        let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
+        let api = supervisor.pluginAPI(forIdentifier: TestPlugin.pluginID) as! TestPluginAPI
         api.handleActionWithIdentifierForRemoteNotificationCalled = expectation(description: "Should call `handleActionWithIdentifierForRemoteNotification`")
         
         proxy.application(UIApplication.shared, handleActionWithIdentifier: nil, forRemoteNotification: [AnyHashable: Any]()) { 
@@ -168,7 +168,7 @@ class ApplicationDelegateProxyTests: XCTestCase {
 
         let proxy = proxyForTesting()
         let supervisor = supervisorForTesting(proxy: proxy)
-        let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
+        let api = supervisor.pluginAPI(forIdentifier: TestPlugin.pluginID) as! TestPluginAPI
         api.handleActionWithIdentifierWithResponseInfoCalled = expectation(description: "Should call `handleActionWithIdentifierWithResponseInfo`")
         
         proxy.application(UIApplication.shared, handleActionWithIdentifier: nil, forRemoteNotification: [AnyHashable: Any](), withResponseInfo: [AnyHashable: Any]()) {
@@ -181,7 +181,7 @@ class ApplicationDelegateProxyTests: XCTestCase {
     func test_applicationOpenOptions_shouldCallPlugin() {
         let proxy = proxyForTesting()
         let supervisor = supervisorForTesting(proxy: proxy)
-        let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
+        let api = supervisor.pluginAPI(forIdentifier: TestPlugin.pluginID) as! TestPluginAPI
         api.applicationOpenOptionsCalled = expectation(description: "Should call `application:open:options:`")
         let url = URL(string: "https://www.walmart.com/")!
 

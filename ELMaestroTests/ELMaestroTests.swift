@@ -16,13 +16,13 @@ class ELMaestroTests: XCTestCase {
         supervisor.loadPlugin(TestPlugin.self)
         supervisor.startup()
 
-        XCTAssertTrue(supervisor.pluginLoaded(dependencyID: testPluginID))
+        XCTAssertTrue(supervisor.pluginLoaded(dependencyID: TestPlugin.pluginID))
     }
     
     func test_pluginLoaded_returnsFalseWhenPluginIsNotLoaded() {
         let supervisor = ApplicationSupervisor()
         
-        XCTAssertFalse(supervisor.pluginLoaded(dependencyID: testPluginID))
+        XCTAssertFalse(supervisor.pluginLoaded(dependencyID: TestPlugin.pluginID))
     }
     
     func test_pluginStarted_returnsTrueAfterStartup() {
@@ -30,36 +30,34 @@ class ELMaestroTests: XCTestCase {
         supervisor.loadPlugin(TestPlugin.self)
         supervisor.startup()
         
-        XCTAssertTrue(supervisor.pluginStarted(dependencyID: testPluginID))
+        XCTAssertTrue(supervisor.pluginStarted(dependencyID: TestPlugin.pluginID))
     }
     
     func test_pluginStarted_returnsFalseBeforeStartup() {
         let supervisor = ApplicationSupervisor()
         supervisor.loadPlugin(TestPlugin.self)
         
-        XCTAssertFalse(supervisor.pluginStarted(dependencyID: testPluginID))
+        XCTAssertFalse(supervisor.pluginStarted(dependencyID: TestPlugin.pluginID))
     }
     
     func test_pluginLoaded_returnsTrueWithDependencies() {
-        let testObjcPluginID = "com.walmartlabs.testObjcFramework"
         let supervisor = ApplicationSupervisor()
-        supervisor.loadPlugin(TestObjcClass.self)
+        supervisor.loadPlugin(TestPluginTwo.self)
         supervisor.loadPlugin(TestPlugin.self)
         supervisor.startup()
 
-        XCTAssertTrue(supervisor.pluginLoaded(dependencyID: testPluginID))
-        XCTAssertTrue(supervisor.pluginLoaded(dependencyID: testObjcPluginID))
+        XCTAssertTrue(supervisor.pluginLoaded(dependencyID: TestPlugin.pluginID))
+        XCTAssertTrue(supervisor.pluginLoaded(dependencyID: TestPluginTwo.pluginID))
     }
     
     func test_pluginStarted_returnsTrueWithDependencies() {
-        let testObjcPluginID = "com.walmartlabs.testObjcFramework"
         let supervisor = ApplicationSupervisor()
-        supervisor.loadPlugin(TestObjcClass.self)
+        supervisor.loadPlugin(TestPluginTwo.self)
         supervisor.loadPlugin(TestPlugin.self)
         supervisor.startup()
         
-        XCTAssertTrue(supervisor.pluginStarted(dependencyID: testPluginID))
-        XCTAssertTrue(supervisor.pluginStarted(dependencyID: testObjcPluginID))
+        XCTAssertTrue(supervisor.pluginStarted(dependencyID: TestPlugin.pluginID))
+        XCTAssertTrue(supervisor.pluginStarted(dependencyID: TestPluginTwo.pluginID))
     }
     
     func test_supervisor_handlesContinueUserActivity() {
@@ -67,11 +65,10 @@ class ELMaestroTests: XCTestCase {
         let applicationDelegate = ApplicationDelegateProxy()
         applicationDelegate.supervisor = supervisor
         
-        supervisor.loadPlugin(TestObjcClass.self)
         supervisor.loadPlugin(TestPlugin.self)
         supervisor.startup()
         
-        let api = supervisor.pluginAPI(forIdentifier: testPluginID) as! TestPluginAPI
+        let api = supervisor.pluginAPI(forIdentifier: TestPlugin.pluginID) as! TestPluginAPI
         let userActivity = NSUserActivity(activityType: NSUserActivityTypeBrowsingWeb)
         let handled = applicationDelegate.application(UIApplication.shared, continue: userActivity, restorationHandler:{ arr in })
         

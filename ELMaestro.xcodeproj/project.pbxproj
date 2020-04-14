@@ -10,7 +10,6 @@
 		17AFCE6C1DB73BE300F2DD81 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AFCE6B1DB73BE300F2DD81 /* Navigator.swift */; };
 		17FF6D241CEE699F00F843B6 /* ApplicationSupervisor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FF6D231CEE699F00F843B6 /* ApplicationSupervisor.swift */; };
 		1907DC011F91334A003996C0 /* ApplicationDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1907DC001F91334A003996C0 /* ApplicationDelegateProxy.swift */; };
-		198B76B21F969E83004CAEFF /* TestObjcClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 198B76B11F969E83004CAEFF /* TestObjcClass.m */; };
 		199CFEC21F98ECD1004D8FB3 /* ApplicationDelegateProxyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199CFEC11F98ECD1004D8FB3 /* ApplicationDelegateProxyTests.swift */; };
 		199CFEC61F9909DA004D8FB3 /* TestPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199CFEC51F9909DA004D8FB3 /* TestPlugin.swift */; };
 		199CFEC81F9909FB004D8FB3 /* TestPluginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199CFEC71F9909FB004D8FB3 /* TestPluginAPI.swift */; };
@@ -44,8 +43,6 @@
 		17FF6D231CEE699F00F843B6 /* ApplicationSupervisor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSupervisor.swift; sourceTree = "<group>"; };
 		1907DC001F91334A003996C0 /* ApplicationDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationDelegateProxy.swift; sourceTree = "<group>"; };
 		198B76AF1F969E83004CAEFF /* ELMaestroTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ELMaestroTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		198B76B01F969E83004CAEFF /* TestObjcClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestObjcClass.h; sourceTree = "<group>"; };
-		198B76B11F969E83004CAEFF /* TestObjcClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestObjcClass.m; sourceTree = "<group>"; };
 		199CFEC11F98ECD1004D8FB3 /* ApplicationDelegateProxyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationDelegateProxyTests.swift; sourceTree = "<group>"; };
 		199CFEC51F9909DA004D8FB3 /* TestPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPlugin.swift; sourceTree = "<group>"; };
 		199CFEC71F9909FB004D8FB3 /* TestPluginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPluginAPI.swift; sourceTree = "<group>"; };
@@ -145,8 +142,6 @@
 				198B76AF1F969E83004CAEFF /* ELMaestroTests-Bridging-Header.h */,
 				199CFEC51F9909DA004D8FB3 /* TestPlugin.swift */,
 				199CFEC71F9909FB004D8FB3 /* TestPluginAPI.swift */,
-				198B76B01F969E83004CAEFF /* TestObjcClass.h */,
-				198B76B11F969E83004CAEFF /* TestObjcClass.m */,
 				CA2079831BB323B0005353D9 /* Supporting Files */,
 			);
 			path = ELMaestroTests;
@@ -334,7 +329,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				198B76B21F969E83004CAEFF /* TestObjcClass.m in Sources */,
 				199CFEC21F98ECD1004D8FB3 /* ApplicationDelegateProxyTests.swift in Sources */,
 				199CFEC61F9909DA004D8FB3 /* TestPlugin.swift in Sources */,
 				CA2079861BB323B0005353D9 /* ELMaestroTests.swift in Sources */,

@@ -8,7 +8,6 @@
 
 import Foundation
 
-@objc
 open class ApplicationDelegateProxy: UIResponder, UIApplicationDelegate {
     public internal(set) var supervisor = ApplicationSupervisor.sharedInstance
     

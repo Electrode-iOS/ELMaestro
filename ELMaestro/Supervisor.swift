@@ -7,8 +7,6 @@
 //
 
 import Foundation
-
-@objc
 public class Supervisor: NSObject {
     var startedPlugins = [Pluggable]()
 
@@ -30,7 +28,7 @@ public class Supervisor: NSObject {
         // END WARNING.
     }
     
-    public func loadPlugins(_ pluginTypes: [Pluggable.Type]) {
+    public func loadPlugins(_ pluginTypes: [AnyObject.Type]) {
         for plugin in pluginTypes {
             loadPlugin(plugin)
         }
@@ -59,7 +57,7 @@ public class Supervisor: NSObject {
         })
     }
     
-    @objc public func pluginAPI(forIdentifier id: DependencyID) -> AnyObject? {
+    public func pluginAPI(forIdentifier id: DependencyID) -> AnyObject? {
         return plugin(forIdentifier: id)?.pluginAPI()
     }
     

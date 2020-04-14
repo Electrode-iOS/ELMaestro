@@ -11,7 +11,6 @@ import UIKit
 
 public typealias DependencyID = String
 
-@objc
 public protocol Pluggable {
     var identifier: DependencyID { get }
     var dependencies: [DependencyID]? { get }
@@ -21,13 +20,8 @@ public protocol Pluggable {
     // Provides the default route to this plugin or feature.
     func startup(_ supervisor: Supervisor)
 
-    /**
-     API factory method for a module's API it exports. You will likely want to
-     typecast this, ie:
-
-     let pluginAPI = supervisor.pluginAPI(forIdentifier: "com.myorg.mymodule") as? MyPluginAPI
-     */
-    @objc func pluginAPI() -> AnyObject?
+    /// API factory method for a module's API it exports.
+    func pluginAPI() -> AnyObject?
 }
 
 public extension Pluggable {

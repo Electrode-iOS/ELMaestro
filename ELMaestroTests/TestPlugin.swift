@@ -6,20 +6,14 @@
 //  Copyright © 2017 WalmartLabs. All rights reserved.
 //
 
+@testable import ELMaestro
 import Foundation
 
-let testPluginID = "com.walmartlabs.testplugin"
-
 final class TestPlugin: NSObject, Pluggable, UIApplicationDelegate {
-    var identifier: String {
-        return testPluginID
-    }
-    
-    var dependencies: [DependencyID]? {
-        return nil
-    }
-    
-    fileprivate let api = TestPluginAPI()
+    static let pluginID = "TestPlugin"
+    let identifier: String = pluginID
+    var dependencies: [DependencyID]?
+    fileprivate lazy var api = TestPluginAPI()
     
     required public init?(containerBundleID: String?) {
         super.init()
@@ -106,5 +100,23 @@ final class TestPlugin: NSObject, Pluggable, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
         api.applicationOpenOptionsCalled?.fulfill()
         return true
+    }
+}
+
+final class TestPluginTwo: Pluggable {
+    static let pluginID = "TestPluginTwo"
+    let identifier: DependencyID = pluginID
+    var dependencies: [DependencyID]?
+    
+    init?(containerBundleID: String?) {
+        
+    }
+    
+    func startup(_ supervisor: Supervisor) {
+        
+    }
+    
+    func pluginAPI() -> AnyObject? {
+        return nil
     }
 }
