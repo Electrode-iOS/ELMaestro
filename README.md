@@ -46,7 +46,7 @@ A Plugin is composed of two different protocols:
 
 The `Pluggable` protocol defines the plugin identifier, plugin dependencies, as well as startup and initialization methods.
 
-```
+```swift
 @objc
 public protocol Pluggable {
     var identifier: DependencyID { get }
@@ -59,7 +59,7 @@ public protocol Pluggable {
 
 Example implementation:
 
-```
+```swift
 /// Identifier used to lookup the instance with `ApplicationSupervisor`
 public let MyPluginID = "com.myorganization.mymodule"
 
@@ -93,7 +93,7 @@ extension MyPlugin: Pluggable {
 
 The `PluggableFeature` protocol defines all of the application delegate events that a plugin can handle. Aside from `applicationWillTerminate` and `applicationDidReceiveMemoryWarning`, all of the app delegate methods are defined as `optional` so you can choose which methods the plugin needs to handle.
 
-```
+```swift
 @objc public protocol PluggableFeature : Pluggable {
     /**
      API factory method for a module's API it exports. You will likely want to
@@ -162,7 +162,7 @@ The `PluggableFeature` protocol defines all of the application delegate events t
 
 Example implementation:
 
-```
+```swift
 extension MyPlugin: PluggableFeature {
     public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [AnyHashable: Any]?) -> Bool {
         // handle app launch event
@@ -183,7 +183,7 @@ The `PluggableFeature` defines an optional function `pluginAPI() -> AnyObject?` 
 
 For example, suppose the plugin needed to provide user data to other plugins. You can define an implementation for the plugin's API with a property to access the user's name.
 
-```
+```swift
 @objc public protocol MyPluginAPI {
     var username: String {get}
 }
@@ -191,7 +191,7 @@ For example, suppose the plugin needed to provide user data to other plugins. Yo
 
 Define a type for the implementation and declare it as `internal` to prevent it from being publicly accessible outside of the module.
 
-```
+```swift
 internal final class MyPluginAPIImpl: MyPluginAPI {
     let username: String = "mrmeeseeks"
 }
@@ -199,7 +199,7 @@ internal final class MyPluginAPIImpl: MyPluginAPI {
 
 Add a property to the plugin to contain the instance of the plugin API implementation.
 
-```
+```swift
 @objc
 open class MyPlugin: NSObject, Module {
     open static let logging = Logger()
@@ -213,7 +213,7 @@ open class MyPlugin: NSObject, Module {
 
 Return the instance of the plugin API in the `pluginAPI()` function.
 
-```
+```swift
 extension MyPlugin: PluggableFeature {
     func pluginAPI() -> AnyObject? {
         return pluginAPI
@@ -239,7 +239,7 @@ The `ApplicationSupervisor` will also handle sending app delegate events to the 
 
 Call `loadPlugin` to register a plugin to load upon startup.
 
-```
+```swift
 ApplicationSupervisor.sharedInstance.loadPlugin(MyPlugin.self)
 ```
 
@@ -247,7 +247,7 @@ ApplicationSupervisor.sharedInstance.loadPlugin(MyPlugin.self)
 
 After all plugins have been loaded, call the `startup` method to start the plugins.
 
-```
+```swift
 ApplicationSupervisor.sharedInstance.startup()
 ```
 
@@ -255,7 +255,7 @@ ApplicationSupervisor.sharedInstance.startup()
 
 Use the `pluginAPI(forIdentifier:)` method to get a reference to a plugin API.
 
-```
+```swift
 guard let pluginAPI = ApplicationSupervisor.sharedInstance.pluginAPI(forIdentifier: MyPluginID) as? MyPluginAPI else {
     // plugin API not found
     return
